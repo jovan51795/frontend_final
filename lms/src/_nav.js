@@ -40,7 +40,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Student List',
-        to: '/base/breadcrumbs',
+        to: '/students',
       },
     ],
   },

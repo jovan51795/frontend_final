@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import 'react-toastify/dist/ReactToastify.css'
 import { HashRouter } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 createRoot(document.getElementById('root')).render(
   <HashRouter>
