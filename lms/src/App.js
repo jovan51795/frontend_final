@@ -25,17 +25,17 @@ function App() {
   const navigate = useNavigate()
   const userInFo = getUserInfo()
 
-  useEffect(() => {
-    if (
-      (location.pathname === '/register' || location.pathname === '/login') &&
-      userInFo &&
-      userInFo.status === 1
-    ) {
-      navigate('/dashboard')
-    } else if (!userInFo || (userInFo && userInFo.status === 0)) {
-      navigate('/abcuniversity')
-    }
-  }, [userInFo])
+  // useEffect(() => {
+  //   if (
+  //     (location.pathname === '/register' || location.pathname === '/login') &&
+  //     userInFo &&
+  //     userInFo.status === 1
+  //   ) {
+  //     navigate('/dashboard')
+  //   } else if (!userInFo || (userInFo && userInFo.status === 0)) {
+  //     navigate('/abcuniversity')
+  //   }
+  // }, [userInFo])
 
   return (
     <Suspense fallback={loading}>

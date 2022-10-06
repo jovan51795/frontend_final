@@ -90,29 +90,27 @@ const Login = () => {
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput
-                        className={`form-control ${!!errors.username && 'is-invalid'}`}
-                        onChange={handleOnChange}
-                        value={loginForm.username}
                         placeholder="Username"
                         name="username"
-                        autoComplete="username"
+                        value={loginForm.username}
+                        onChange={handleOnChange}
+                        invalid={!!errors.username}
+                        feedback={errors.username}
                       />
-                      <CFormFeedback className="text-danger">{errors.username}</CFormFeedback>
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
                       <CFormInput
-                        className={`form-control ${!!errors.username && 'is-invalid'}`}
+                        type="password"
+                        placeholder="Password"
+                        name="password"
                         value={loginForm.password}
                         onChange={handleOnChange}
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        required
+                        invalid={!!errors.password}
+                        feedback={errors.password}
                       />
-                      <CFormFeedback className="text-danger">{errors.password}</CFormFeedback>
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
