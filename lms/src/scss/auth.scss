@@ -1,0 +1,6 @@
+@import 'mixins';
+.lms-pass-input {
+  @include breakpoint-max(sm) {
+    width: 100%;
+  }
+}
