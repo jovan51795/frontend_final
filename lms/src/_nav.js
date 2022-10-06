@@ -27,6 +27,24 @@ const _nav = [
     },
   },
   {
+    component: CNavGroup,
+    name: 'Students',
+    to: '/students',
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Add Student',
+        to: '/base/accordion',
+      },
+      {
+        component: CNavItem,
+        name: 'Student List',
+        to: '/base/breadcrumbs',
+      },
+    ],
+  },
+  {
     component: CNavTitle,
     name: 'Theme',
   },
