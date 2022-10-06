@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   InfoContainer,
   InfoWrapper,
@@ -12,8 +12,9 @@ import {
   Column2,
   ImgWrap,
   Img,
-} from "../styles/Info.styled";
-import { Button } from "../styles/Button.styled";
+} from 'src/styles/Info.styles'
+import { Button } from 'src/styles/Button.styles'
+import PropTypes from 'prop-types'
 
 const Info = ({
   id,
@@ -70,7 +71,25 @@ const Info = ({
         </InfoWrapper>
       </InfoContainer>
     </>
-  );
-};
+  )
+}
 
-export default Info;
+Info.propTypes = {
+  id: PropTypes.string,
+  lightBg: PropTypes.bool,
+  imgStart: PropTypes.bool,
+  topLine: PropTypes.string,
+  lightText: PropTypes.bool,
+  darkText: PropTypes.bool,
+  bigText: PropTypes.bool,
+  headLine: PropTypes.string,
+  description: PropTypes.string,
+  buttonLabel: PropTypes.string,
+  img: PropTypes.any,
+  alt: PropTypes.string,
+  primary: PropTypes.bool,
+  dark: PropTypes.bool,
+  dark2: PropTypes.bool,
+}
+
+export default Info
