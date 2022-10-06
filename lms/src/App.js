@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import './scss/style.scss'
 import { getUserInfo } from './services/userInfo'
@@ -14,6 +14,7 @@ const loading = (
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
 
 // Pages
+const Landing = React.lazy(() => import('./views/pages/landing/LandingPage'))
 const Login = React.lazy(() => import('./views/pages/login/Login'))
 const Register = React.lazy(() => import('./views/pages/register/Register'))
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
@@ -32,13 +33,16 @@ function App() {
     ) {
       navigate('/dashboard')
     } else if (!userInFo || (userInFo && userInFo.status === 0)) {
-      navigate('/login')
+      navigate('/abcuniversity')
     }
   }, [userInFo])
+
   return (
     <Suspense fallback={loading}>
       <ToastContainer />
       <Routes>
+        <Route path="/" element={<Navigate to="/abcuniversity" />} />
+        <Route exact path="/abcuniversity" name="Landing Page" element={<Landing />} />
         <Route exact path="/login" name="Login Page" element={<Login />} />
         <Route exact path="/register" name="Register Page" element={<Register />} />
         <Route exact path="/404" name="Page 404" element={<Page404 />} />
