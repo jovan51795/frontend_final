@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   Container,
   Section,
@@ -9,21 +9,22 @@ import {
   FeatureColumn,
   FeatureImageWrapper,
   FeatureImg,
+  FeatureLink,
   FeatureName,
   FeatureTextWrapper,
-} from "../styles/Courses.styled";
+} from 'src/styles/Programs.style'
 
-import { coursesData } from "./CoursesData";
+import { programsData } from './ProgramsData'
 
-const Courses = () => {
+const Programs = () => {
   const initial = {
     y: 40,
     opacity: 0,
-  };
+  }
   const animate = {
     y: 0,
     opacity: 1,
-  };
+  }
 
   return (
     <Section smPadding="50px 10px" position="relative" inverse id="programs">
@@ -31,12 +32,11 @@ const Courses = () => {
         <FeatureTextWrapper>
           <FeatureTitle>College Programs</FeatureTitle>
           <FeatureSubtitle>
-            Be life-ready with the necessary skills and knowledge to be an
-            in-demand professional.
+            Be life-ready with the necessary skills and knowledge to be an in-demand professional.
           </FeatureSubtitle>
         </FeatureTextWrapper>
         <FeatureWrapper>
-          {coursesData.map((el, index) => (
+          {programsData.map((el, index) => (
             <FeatureColumn
               initial={initial}
               animate={animate}
@@ -46,14 +46,16 @@ const Courses = () => {
               <FeatureImageWrapper>
                 <FeatureImg src={el.img} alt={el.alt} />
               </FeatureImageWrapper>
-              <FeatureName>{el.name}</FeatureName>
+              <FeatureLink to={el.link}>
+                <FeatureName>{el.name}</FeatureName>
+              </FeatureLink>
               <FeatureText>{el.description}</FeatureText>
             </FeatureColumn>
           ))}
         </FeatureWrapper>
       </Container>
     </Section>
-  );
-};
+  )
+}
 
-export default Courses;
+export default Programs

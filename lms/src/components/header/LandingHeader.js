@@ -1,9 +1,25 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
+import {
+  NavHead,
+  NavbarContainer,
+  NavLogo,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  SCTAButton,
+  DropDownContainer,
+  DropDownContainer2,
+  DropDownListContainer,
+  DropDownListContainer2,
+  DropDownList,
+  ListItem,
+} from 'src/styles/LandingHeader.styles'
 import { FaBars, FaUserTie, FaUserGraduate } from 'react-icons/fa'
 import { RiAdminFill, RiParentFill, RiArrowDownSFill } from 'react-icons/ri'
 import logo from 'src/assets/images/ABCUlogo.png'
 import { animateScroll as scroll } from 'react-scroll'
+import PropTypes from 'prop-types'
 
 const LandingHeader = ({ toggle }) => {
   const [ismenuOpen, setIsmenuOpen] = useState(false)
@@ -151,6 +167,10 @@ const LandingHeader = ({ toggle }) => {
       </NavHead>
     </>
   )
+}
+
+LandingHeader.propTypes = {
+  toggle: PropTypes.func.isRequired,
 }
 
 export default LandingHeader
