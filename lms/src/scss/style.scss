@@ -17,3 +17,16 @@ $enable-rtl: true;
 @import 'custom';
 
 @import 'auth.scss';
+
+.student-list-table {
+  @include breakpoint-max(xs) {
+    display: none !important;
+  }
+}
+
+.student-list-card {
+  display: none !important;
+  @include breakpoint-max(xs) {
+    display: block !important;
+  }
+}

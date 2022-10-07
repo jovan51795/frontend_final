@@ -52,6 +52,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 //lms imports
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
+const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -99,7 +100,8 @@ const routes = [
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
 
-  { path: 'students', name: 'Students', element: StudentList },
+  { path: '/students', name: 'Students', element: StudentList },
+  { path: '/student/add', name: 'Student Add', element: AddStudent },
 ]
 
 export default routes

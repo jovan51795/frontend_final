@@ -35,12 +35,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Add Student',
-        to: '/base/accordion',
+        to: '/student/add',
       },
       {
         component: CNavItem,
         name: 'Student List',
-        to: '/base/breadcrumbs',
+        to: '/students',
       },
     ],
   },
