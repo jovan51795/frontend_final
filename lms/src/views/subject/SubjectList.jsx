@@ -1,10 +1,10 @@
 import React from 'react'
-import SubjectListTable from 'src/components/subject/SubjectListTable'
+import SubjectsList from 'src/components/subject/SubjectsList'
 
 const SubjectList = () => {
   return (
     <div>
-      <SubjectListTable />
+      <SubjectsList />
     </div>
   )
 }

@@ -49,7 +49,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Subject List',
-        to: '/subject/list',
+        to: '/subjects',
       },
       {
         component: CNavItem,
