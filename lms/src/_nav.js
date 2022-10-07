@@ -35,7 +35,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Add Student',
-        to: '/base/accordion',
+        to: '/student/add',
       },
       {
         component: CNavItem,
