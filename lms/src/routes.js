@@ -54,6 +54,9 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
 const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
 
+const SubjectList = React.lazy(() => import('./views/subject/SubjectList'))
+const AddSubject = React.lazy(() => import('./views/subject/AddSubject'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -102,6 +105,9 @@ const routes = [
 
   { path: '/students', name: 'Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
+
+  { path: '/subjects', name: 'Subjects', element: SubjectList },
+  { path: '/subject/add', name: 'Add Subject', element: AddSubject },
 ]
 
 export default routes

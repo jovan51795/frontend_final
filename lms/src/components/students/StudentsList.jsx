@@ -17,7 +17,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllStudents } from 'src/redux/actions/studentActions'
 
-const StudentsListTable = () => {
+const StudentsList = () => {
   const students = useSelector((state) => state.students)
   console.log(students)
   const dispatch = useDispatch()
@@ -118,4 +118,4 @@ const StudentsListTable = () => {
   )
 }
 
-export default StudentsListTable
+export default StudentsList

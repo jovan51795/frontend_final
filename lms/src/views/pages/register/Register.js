@@ -84,69 +84,55 @@ const Register = () => {
           <CCol md={9} lg={7} xl={6}>
             <CCard className="mx-4">
               <CCardBody className="p-4">
-                <CForm className="row g-3 needs-validation" onSubmit={handleSubmit} noValidate>
+                <CForm onSubmit={handleSubmit}>
                   <h1>Register</h1>
                   <p className="text-medium-emphasis">Create your account</p>
                   <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilUser} />
-                    </CInputGroupText>
                     <CFormInput
-                      className={`form-control ${!!errors.firstName && 'is-invalid'}`}
-                      placeholder="Firstname"
+                      placeholder="First Name"
+                      name="firstName"
                       value={adminForm.firstName}
                       onChange={handleOnChange}
-                      name="firstName"
-                      type="text"
+                      invalid={!!errors.firstName}
+                      feedback={errors.firstName}
                     />
-                    <CFormFeedback className="text-danger">{errors.firstName}</CFormFeedback>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilUser} />
-                    </CInputGroupText>
                     <CFormInput
-                      className={`form-control ${!!errors.lastName && 'is-invalid'}`}
-                      placeholder="Lastname"
+                      placeholder="Last Name"
+                      name="lastName"
                       value={adminForm.lastName}
                       onChange={handleOnChange}
-                      name="lastName"
-                      type="text"
+                      invalid={!!errors.lastName}
+                      feedback={errors.lastName}
                     />
-                    <CFormFeedback className="text-danger">{errors.lastName}</CFormFeedback>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilUser} />
-                    </CInputGroupText>
                     <CFormInput
-                      className={`form-control ${!!errors.username && 'is-invalid'}`}
                       placeholder="Username"
-                      autoComplete="username"
+                      name="username"
                       value={adminForm.username}
                       onChange={handleOnChange}
-                      name="username"
-                      type="text"
+                      invalid={!!errors.username}
+                      feedback={errors.username}
                     />
-                    <CFormFeedback className="text-danger">{errors.username}</CFormFeedback>
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CInputGroupText>
-                      <CIcon icon={cilLockLocked} />
-                    </CInputGroupText>
+                    <CFormInput placeholder="Admin" value="Admin/Student" disabled />
+                  </CInputGroup>
+                  <CInputGroup className="mb-3">
                     <CFormInput
-                      className={`form-control ${!!errors.password && 'is-invalid'}`}
+                      type="password"
+                      placeholder="Password"
                       name="password"
                       value={adminForm.password}
                       onChange={handleOnChange}
-                      type="password"
-                      placeholder="Password"
-                      autoComplete="new-password"
+                      invalid={!!errors.password}
+                      feedback={errors.password}
                     />
-                    <CFormFeedback className="text-danger">{errors.password}</CFormFeedback>
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton color="success" type="submit" disabled={isFormInvalid()}>
+                    <CButton color="success" disabled={isFormInvalid()}>
                       Create Account
                     </CButton>
                   </div>

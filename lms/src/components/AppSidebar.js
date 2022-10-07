@@ -1,16 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+import { CImage, CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
 
 import { AppSidebarNav } from './AppSidebarNav'
 
-import { logoNegative } from 'src/assets/brand/logo-negative'
-import { sygnet } from 'src/assets/brand/sygnet'
-
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
+import logoLarge from '../assets/images/ABCUlogo.png'
+import logoSmall from '../assets/images/logo.png'
 
 // sidebar nav config
 import navigation from '../_nav'
@@ -24,14 +22,14 @@ const AppSidebar = () => {
     <CSidebar
       position="fixed"
       unfoldable={unfoldable}
-      visible={!sidebarShow}
+      visible={sidebarShow}
       onVisibleChange={(visible) => {
-        dispatch({ type: 'set', sidebarShow: visible })
+        // dispatch({ type: 'set', sidebarShow: visible })
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <CIcon className="sidebar-brand-full" icon={logoNegative} height={35} />
-        <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
+        <CImage src={logoLarge} className="sidebar-brand-full" height={60} alt="Logo" />
+        <CImage src={logoSmall} className="sidebar-brand-narrow" height={50} alt="Logo" />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
