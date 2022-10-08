@@ -13,7 +13,9 @@ import {
   DropDownListContainer,
   DropDownListContainer2,
   DropDownList,
+  DrpdownLink,
   ListItem,
+  Link,
 } from 'src/styles/LandingHeader.styles'
 import { FaBars, FaUserTie, FaUserGraduate } from 'react-icons/fa'
 import { RiAdminFill, RiParentFill, RiArrowDownSFill } from 'react-icons/ri'
@@ -72,8 +74,12 @@ const LandingHeader = ({ toggle }) => {
                 {isaboutOpen && (
                   <DropDownListContainer2>
                     <DropDownList>
-                      <ListItem>Vision, Mision, Core Values, Strategic Goals</ListItem>
-                      <ListItem>Contact Us</ListItem>
+                      <Link to="/about/vision-mission-core-values-strategic-goals">
+                        <ListItem>Vision, Mision, Core Values, Strategic Goals</ListItem>
+                      </Link>
+                      <Link to="/about/contact-us">
+                        <ListItem>Contact Us</ListItem>
+                      </Link>
                     </DropDownList>
                   </DropDownListContainer2>
                 )}
@@ -95,9 +101,15 @@ const LandingHeader = ({ toggle }) => {
                 {isadmissionOpen && (
                   <DropDownListContainer2>
                     <DropDownList>
-                      <ListItem>Admission Procedure</ListItem>
-                      <ListItem>Enrollment Procedure For Freshmen Students</ListItem>
-                      <ListItem>Estimated Tuition Fee</ListItem>
+                      <Link to="/admission/admission-procedures">
+                        <ListItem>Admission Procedure</ListItem>
+                      </Link>
+                      <Link to="/admission/enrollment-procedure">
+                        <ListItem>Enrollment Procedure For Freshmen Students</ListItem>
+                      </Link>
+                      <Link to="/admission/estimated-tuition-fees">
+                        <ListItem>Estimated Tuition Fee</ListItem>
+                      </Link>
                     </DropDownList>
                   </DropDownListContainer2>
                 )}
@@ -142,20 +154,28 @@ const LandingHeader = ({ toggle }) => {
                   <DropDownListContainer>
                     <DropDownList>
                       <ListItem>
-                        <FaUserGraduate style={{ marginBottom: '2px' }} />
-                        &nbsp;&nbsp;Student
+                        <DrpdownLink to="/login">
+                          <FaUserGraduate style={{ marginBottom: '2px' }} />
+                          &nbsp;&nbsp;Student
+                        </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <FaUserTie style={{ marginBottom: '2px' }} />
-                        &nbsp;&nbsp;Faculty
+                        <DrpdownLink to="/login">
+                          <FaUserTie style={{ marginBottom: '2px' }} />
+                          &nbsp;&nbsp;Faculty
+                        </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <RiParentFill style={{ marginBottom: '2px' }} />
-                        &nbsp;&nbsp;Parent
+                        <DrpdownLink to="/login">
+                          <RiParentFill style={{ marginBottom: '2px' }} />
+                          &nbsp;&nbsp;Parent
+                        </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <RiAdminFill style={{ marginBottom: '2px' }} />
-                        &nbsp;&nbsp;Administrator
+                        <DrpdownLink to="/login">
+                          <RiAdminFill style={{ marginBottom: '2px' }} />
+                          &nbsp;&nbsp;Administrator
+                        </DrpdownLink>
                       </ListItem>
                     </DropDownList>
                   </DropDownListContainer>

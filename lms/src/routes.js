@@ -49,10 +49,23 @@ const Modals = React.lazy(() => import('./views/notifications/modals/Modals'))
 const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
+//----------------------------------------------------------------------//
 
-//lms imports
+//LMS IMPORTS//
+
+//Student Module
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
 const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
+
+//LANDING HEADER ROUTES
+//About
+const About = React.lazy(() => import('./views/pages/about/About'))
+const ContactInfo = React.lazy(() => import('./views/pages/about/ContactInfo'))
+//Admission
+const AdminProcedure = React.lazy(() => import('./views/pages/admission/AdminProcedure'))
+const EnrollmentProcedure = React.lazy(() => import('./views/pages/admission/EnrollmentProcedure'))
+const EstTuition = React.lazy(() => import('./views/pages/admission/EstTuition'))
+//Access Modules
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -99,6 +112,15 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
+
+  //--------------------------------LMS ROUTES----------------------------------//
+
+  { path: '/about/vision-mission-core-values-strategic-goals', name: 'About ABC', element: About },
+  { path: '/about/contact-us', name: 'Contact', element: ContactInfo },
+
+  { path: '/admission/admission-procedures', name: 'Contact', element: AdminProcedure },
+  { path: '/admission/enrollment-procedure', name: 'Contact', element: EnrollmentProcedure },
+  { path: '/admission/estimated-tuition-fees', name: 'Contact', element: EstTuition },
 
   { path: '/students', name: 'Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },

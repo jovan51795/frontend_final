@@ -135,13 +135,14 @@ export const NavBtnLink = styled(LinkRouter)`
 `
 
 export const DrpdownLink = styled(LinkRouter)`
-  color: black;
-  padding: 12px 16px;
+  // color: black;
+  // padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  color: #022135;
+  // display: block;
 
-  &:hover {
-    background-color: #f1f1f1;
+  // &:hover {
+  //   background-color: #f1f1f1;
   }
 `
 
@@ -203,6 +204,9 @@ export const DropDownList = styled('ul')`
 export const ListItem = styled('li')`
   list-style: none;
   margin-bottom: 0.8em;
+  cursor: pointer;
+  color: #022135;
+  text-decoration: none;
 
   &:hover {
     padding: 0.2em 0.5em 0.2em 0.5em;
@@ -232,4 +236,9 @@ export const SCTAButton = styled.button`
   @media ${b.md} {
     display: initial;
   }
+`
+
+export const Link = styled(LinkRouter)`
+  text-decoration: none;
+  color: #022135;
 `
