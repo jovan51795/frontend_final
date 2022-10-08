@@ -26,6 +26,7 @@ export const ImageWrapper = styled.div`
 `
 
 export const ButtonContainer = styled(Row)`
+  margin: 0 50px;
   & svg {
     margin: 0 1rem;
     cursor: pointer;
@@ -37,7 +38,7 @@ export const ButtonContainer = styled(Row)`
     transition: opacity 0.2s ease-in;
   }
   @media screen and (max-width: 960px) {
-    margin: 0 auto;
+    margin: 0 25px;
   }
 `
 

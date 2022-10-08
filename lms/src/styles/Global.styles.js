@@ -31,6 +31,7 @@ export const Heading = styled.h2`
   line-height: 1.06;
   text-align: center;
   width: ${({ width }) => (width ? width : '100%')};
+  padding-left: 35px;
 `
 export const TextWrapper = styled.span`
   color: ${({ color }) => (color ? color : '')};
