@@ -4,6 +4,7 @@ import thunk from 'redux-thunk'
 
 import { adminAuth } from './redux/reducers/adminAuthreducer'
 import { students } from './redux/reducers/studentReducer'
+import { department } from './redux/reducers/departmentReducer'
 
 const initialState = {
   sidebarShow: true,
@@ -18,7 +19,7 @@ const changeState = (state = initialState, { type, ...rest }) => {
   }
 }
 
-const allReducers = combineReducers({ adminAuth, changeState, students })
+const allReducers = combineReducers({ adminAuth, changeState, students, department })
 
 const store = createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)))
 export default store

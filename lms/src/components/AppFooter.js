@@ -22,7 +22,7 @@ import footerlogo from '../assets/images/footerlogo.png'
 
 const AppFooter = () => {
   return (
-    <FooterContainer>
+    <FooterContainer className="mt-4">
       <FooterWrap>
         <FooterLinksContainer>
           <FooterLinksWrapper>
