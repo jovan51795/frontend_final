@@ -15,6 +15,7 @@ import {
 } from '@coreui/react'
 import React, { useState } from 'react'
 import Joi from 'joi'
+import { useSelector } from 'react-redux'
 
 const DepartmentForm = ({ onSubmit }) => {
   const [department, setDepartment] = useState({
@@ -26,6 +27,15 @@ const DepartmentForm = ({ onSubmit }) => {
     departmentName: '',
     course: [{ courseTitle: '', courseCode: '' }],
   })
+
+  const departmentCopy = {
+    departmentName: '',
+    course: [],
+  }
+  const errorsCopy = {
+    departmentName: '',
+    course: [{ courseTitle: '', courseCode: '' }],
+  }
 
   const schema = Joi.object({
     departmentName: Joi.string().required(),
@@ -49,6 +59,9 @@ const DepartmentForm = ({ onSubmit }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault()
     onSubmit(department)
+    setDepartment(departmentCopy)
+    setErrors(errorsCopy)
+    console.log(departmentCopy, 'the copy')
   }
 
   const handleOnChange = (event) => {
