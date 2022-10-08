@@ -13,14 +13,31 @@ import {
   cilPuzzle,
   cilSchool,
   cilSpeedometer,
+  cilInstitution,
   cilStar,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
 const _nav = [
   {
+    component: CNavItem,
+    name: 'Dashboard',
+    to: '/dashboard',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+      text: 'NEW',
+    },
+  },
+  {
     component: CNavTitle,
     name: 'MAIN MENU',
+  },
+  {
+    component: CNavItem,
+    name: 'Departments',
+    to: '/departments',
+    icon: <CIcon icon={cilInstitution} customClassName="nav-icon" />,
   },
   {
     component: CNavGroup,
