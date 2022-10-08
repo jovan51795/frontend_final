@@ -17,7 +17,8 @@ import { cilChartPie } from '@coreui/icons'
 const StudentDashboardWidgets = () => {
   return (
     <CRow>
-      <CCol xs={4}>
+      <CCol xs={12} sm={6} lg={4}>
+        {/* edit lg for size */}
         <CWidgetStatsF
           className="mb-4"
           color="primary"
@@ -25,8 +26,8 @@ const StudentDashboardWidgets = () => {
           title="Total Units Earned"
           value="60 Units"
         />
-      </CCol>{' '}
-      <CCol xs={4}>
+      </CCol>
+      <CCol xs={12} sm={6} lg={4}>
         <CWidgetStatsF
           className="mb-4"
           color="warning"
@@ -35,7 +36,7 @@ const StudentDashboardWidgets = () => {
           value="20 Subjects"
         />
       </CCol>
-      <CCol xs={4}>
+      <CCol xs={12} sm={6} lg={4}>
         <CWidgetStatsF
           className="mb-4"
           color="success"

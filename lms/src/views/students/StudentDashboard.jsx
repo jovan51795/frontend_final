@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { useState } from 'react'
 import {
   CAvatar,
   CButton,
@@ -19,6 +19,7 @@ import {
   CTableRow,
 } from '@coreui/react'
 import StudentDashboardWidgetsDropdown from 'src/components/Student-Module/StudentDashboardWidgets'
+import StudentDashboardCalendar from 'src/components/Student-Module/StudentDashboardCalendar'
 
 const StudentDashboard = () => {
   return (
@@ -26,8 +27,11 @@ const StudentDashboard = () => {
       <StudentDashboardWidgetsDropdown />
       <CCard className="mb-12">
         <CCardHeader>
-          <strong></strong>
+          <strong>Schedule</strong>
         </CCardHeader>
+        <CCardBody>
+          <StudentDashboardCalendar />
+        </CCardBody>
       </CCard>
     </>
   )
