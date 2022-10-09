@@ -19,7 +19,6 @@ import { getAllStudents } from 'src/redux/actions/studentActions'
 
 const StudentsList = () => {
   const students = useSelector((state) => state.students)
-  console.log(students)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllStudents())

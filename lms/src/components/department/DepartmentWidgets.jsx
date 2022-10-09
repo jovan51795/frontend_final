@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-  CRow,
-  CCol,
   CDropdown,
   CDropdownMenu,
   CDropdownItem,
@@ -9,8 +7,7 @@ import {
   CWidgetStatsA,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilArrowBottom, cilOptions } from '@coreui/icons'
-import Typography from 'src/views/theme/typography/Typography'
+import { cilOptions } from '@coreui/icons'
 
 const DepartmentWidgets = ({ dep }) => {
   return (
