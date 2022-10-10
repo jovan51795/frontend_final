@@ -17,7 +17,7 @@ import {
 import Joi from 'joi'
 import React, { useEffect, useState } from 'react'
 import { getAll } from '../../services/departmentService'
-import _ from 'lodash'
+import camelCaseToWords from '../../services/lodashService'
 
 const StudentForm = ({ onSubmit }) => {
   const [departments, setDepartments] = useState([])
@@ -93,10 +93,6 @@ const StudentForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     onSubmit(form)
-  }
-
-  const camelCaseToWords = (s) => {
-    return _.startCase(_.words(s).join(' '))
   }
 
   const isFormInvalid = () => {
