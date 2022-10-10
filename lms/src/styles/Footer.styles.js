@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
   padding: 0px !important;
 `
 export const FooterWrap = styled.div`
-  padding: 48px 26px;
+  padding: 10px 26px;
   padding-right: 50px;
   display: flex;
   flex-direction: column;
@@ -60,7 +60,7 @@ export const FooterLinkItems = styled.div`
 export const FooterLogo = styled.img`
   height: 225px;
   width: auto;
-  margin-top: -40px;
+  margin-top: -20px;
   padding-right: 50px;
   padding-left: 50px;
 
@@ -99,7 +99,7 @@ export const SocialMediaWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 1100px;
-  margin: 40px auto 0 auto;
+  margin: 25px auto 0 auto;
 
   @media screen and (max-width: 820px) {
     flex-direction: column;
@@ -124,6 +124,7 @@ export const SocialIcons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: -20px;
   width: 240px;
 `
 export const SocialIconLink = styled.a`

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link as LinkRouter } from 'react-router-dom'
 
 export const InfoContainer = styled.div`
   color: #fff;
@@ -103,4 +104,7 @@ export const Img = styled.img`
   height: 460px;
   margin: -22px 0 10px 0;
   padding-right: 0;
+`
+export const Link = styled(LinkRouter)`
+  text-decoration: none;
 `

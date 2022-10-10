@@ -7,7 +7,8 @@ import { AppSidebarNav } from './AppSidebarNav'
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
-import logoLarge from '../assets/images/ABCUlogo-white.png'
+import logoLarge from '../assets/images/ABCwhitelogo.png'
+
 import logoSmall from '../assets/images/logo.png'
 
 // sidebar nav config
@@ -26,6 +27,7 @@ const AppSidebar = () => {
       onVisibleChange={(visible) => {
         // dispatch({ type: 'set', sidebarShow: visible })
       }}
+      style={{ backgroundColor: '#022135' }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
         <CImage src={logoLarge} className="sidebar-brand-full" height={60} alt="Logo" />
@@ -33,7 +35,7 @@ const AppSidebar = () => {
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          <AppSidebarNav items={navigation} style={{ color: '#fff' }} />
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
