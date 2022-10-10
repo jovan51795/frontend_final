@@ -8,6 +8,7 @@ import { AppSidebarNav } from './AppSidebarNav'
 import SimpleBar from 'simplebar-react'
 import 'simplebar/dist/simplebar.min.css'
 import logoLarge from '../assets/images/ABCwhitelogo.png'
+
 import logoSmall from '../assets/images/logo.png'
 
 // sidebar nav config
@@ -30,7 +31,7 @@ const AppSidebar = () => {
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
         <CImage src={logoLarge} className="sidebar-brand-full" height={60} alt="Logo" />
-        <CImage src={logoSmall} className="sidebar-brand-narrow" height={50} alt="Logo" />
+        <CImage src={logoSmall} className="sidebar-brand-narrow" height={60} alt="Logo" />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>

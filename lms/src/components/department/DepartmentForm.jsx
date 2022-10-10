@@ -28,15 +28,6 @@ const DepartmentForm = ({ onSubmit }) => {
     course: [{ courseTitle: '', courseCode: '' }],
   })
 
-  const departmentCopy = {
-    departmentName: '',
-    course: [],
-  }
-  const errorsCopy = {
-    departmentName: '',
-    course: [{ courseTitle: '', courseCode: '' }],
-  }
-
   const schema = Joi.object({
     departmentName: Joi.string().required(),
     course: Joi.array().items(
@@ -59,9 +50,14 @@ const DepartmentForm = ({ onSubmit }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault()
     onSubmit(department)
-    setDepartment(departmentCopy)
-    setErrors(errorsCopy)
-    console.log(departmentCopy, 'the copy')
+    setDepartment({
+      departmentName: '',
+      course: [],
+    })
+    setErrors({
+      departmentName: '',
+      course: [{ courseTitle: '', courseCode: '' }],
+    })
   }
 
   const handleOnChange = (event) => {
