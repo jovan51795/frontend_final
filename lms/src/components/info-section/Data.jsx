@@ -1,5 +1,6 @@
 export const homeData1 = {
   id: 'about',
+  link: '/about/vision-mission-core-values-strategic-goals',
   lightBg: true,
   lightText: true,
   lightTextDesc: true,
@@ -20,6 +21,7 @@ export const homeData1 = {
 
 export const homeData2 = {
   id: 'apply',
+  link: '/admission/enrollment-procedure',
   lightBg: true,
   lightText: true,
   lightTextDesc: true,
@@ -39,6 +41,7 @@ export const homeData2 = {
 
 export const homeData3 = {
   id: 'campus',
+  link: '/campus-life',
   lightBg: true,
   lightText: true,
   lightTextDesc: true,
