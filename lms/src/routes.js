@@ -76,7 +76,6 @@ const AddSubject = React.lazy(() => import('./views/subject/AddSubject'))
 const Departments = React.lazy(() => import('./views/department/Department'))
 const AddDepartment = React.lazy(() => import('./views/department/AddDepartment'))
 
-
 //Faculty
 const FacultyDashboard = React.lazy(() => import('./views/faculty/FacultyDashboard'))
 const FacultyProfile = React.lazy(() => import('./views/faculty/FacultyProfile'))
@@ -87,7 +86,6 @@ const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //Student Module
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
-
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -158,7 +156,6 @@ const routes = [
   { path: '/departments', name: 'Department', element: Departments },
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
 
-
   //Faculty
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },
   { path: '/faculty/profile', name: 'Profile', element: FacultyProfile },
@@ -169,7 +166,6 @@ const routes = [
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
-
 ]
 
 export default routes
