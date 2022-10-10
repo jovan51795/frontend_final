@@ -74,7 +74,7 @@ const Departments = React.lazy(() => import('./views/department/Department'))
 const AddDepartment = React.lazy(() => import('./views/department/AddDepartment'))
 
 //Student Module
-const StudentDashboard = React.lazy(()=> import('./views/students/StudentDashboard'))
+const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -140,7 +140,7 @@ const routes = [
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
 
   //Student Module
-  {path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard},
+  { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
 ]
 
 export default routes

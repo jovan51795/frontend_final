@@ -20,12 +20,11 @@ export const addDepartment = (data) => {
 
 export const getAll = () => {
   return async function (dispatch) {
-    http.get('/departments/all').then((res) => {
-      if (res && res.data && res.data.status === 1) {
-        console.log(res.data)
+    await http.get('/departments/all').then((res) => {
+      if (res && res.data && res.data.status === 1 && res.data.object.length > 0) {
         return dispatch({
           type: variables.GETALLDEPARTMENTS,
-          payload: res.data,
+          payload: res.data.object,
         })
       }
     })
