@@ -86,6 +86,7 @@ const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //Student Module
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
+const StudentProfile = React.lazy(() => import('./views/students/StudentProfile'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -166,6 +167,7 @@ const routes = [
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
+  { path: '/student/profile', name: 'Student Profile', element: StudentProfile },
 ]
 
 export default routes

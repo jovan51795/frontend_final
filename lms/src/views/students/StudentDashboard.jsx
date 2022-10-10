@@ -26,17 +26,19 @@ const StudentDashboard = () => {
   return (
     <>
       <StudentDashboardWidgetsDropdown />
-      <CCard>
+
+      <CCard className="mb-4">
         <CCardHeader>
-          <strong>University News</strong>
+          <strong>ABCUniversity News</strong>
         </CCardHeader>
         <CCardBody>
           <StudentNews />
         </CCardBody>
       </CCard>
-      <CCard className="mb-12">
+
+      <CCard className="mb-4">
         <CCardHeader>
-          <strong>Schedule</strong>
+          <strong>My Schedule</strong>
         </CCardHeader>
         <CCardBody>
           <StudentDashboardCalendar />
