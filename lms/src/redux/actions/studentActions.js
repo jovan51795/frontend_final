@@ -17,3 +17,15 @@ export const getAllStudents = () => {
     }
   }
 }
+
+export const addStudent = (data) => {
+  return async function (dispatch) {
+    try {
+      await http.post('/student/add', data).then((res) => {
+        console.log(res)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -6,22 +6,35 @@ import {
   CCardHeader,
   CCol,
   CForm,
+  CFormCheck,
   CFormInput,
   CFormLabel,
   CRow,
 } from '@coreui/react'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { getAll } from '../../services/departmentService'
 import Joi from 'joi'
 
 const SubjectForm = () => {
+  const [departments, setDepartments] = useState([])
   const [subjectForm, setSubjectForm] = useState({
     title: '',
     subject_code: '',
     units: 0,
     prerequisites: '',
     active_deactive: true,
+    course: {},
+    department: {},
   })
+
+  useEffect(() => {
+    getAll().then((res) => {
+      if (res.data && res.data.status === 1) {
+        setDepartments(res.data.object)
+      }
+    })
+  }, [])
 
   const [errors, seterrors] = useState({})
   const dispatch = useDispatch()
@@ -69,90 +82,118 @@ const SubjectForm = () => {
   }
 
   return (
-    <CCol xs={12}>
-      <CCard className="mb-4">
-        <CCardHeader>
-          <strong>Subject Information</strong>
-        </CCardHeader>
-        <CCardBody>
-          <CForm onSubmit={handleSubmit}>
-            <CRow className="mb-3">
-              <CFormLabel htmlFor="title" className="col-sm-2 col-form-label">
-                Title:
-              </CFormLabel>
-              <CCol sm={10}>
-                <CFormInput
-                  type="text"
-                  id="title"
-                  placeholder="Enter subject title"
-                  name="title"
-                  value={subjectForm.title}
-                  onChange={handleOnChange}
-                  invalid={!!errors.title}
-                  feedback={errors.title}
-                />
-              </CCol>
-            </CRow>
-            <CRow className="mb-3">
-              <CFormLabel htmlFor="subject_code" className="col-sm-2 col-form-label">
-                Code:
-              </CFormLabel>
-              <CCol sm={10}>
-                <CFormInput
-                  type="text"
-                  id="subject_code"
-                  placeholder="Enter subject code"
-                  name="subject_code"
-                  value={subjectForm.subject_code}
-                  onChange={handleOnChange}
-                  invalid={!!errors.subject_code}
-                  feedback={errors.subject_code}
-                />
-              </CCol>
-            </CRow>
+    <CForm onSubmit={handleSubmit}>
+      <CRow className="mb-4">
+        <CCol>
+          <CCard>
+            <CCardBody>
+              <CRow>
+                {departments.map((dep) => (
+                  <CCol xs={12} lg={6} key={dep.departmentId}>
+                    <CFormCheck label={dep.departmentName} type="radio" className="mb-2" />
+                    <CCard>
+                      <CCardBody>
+                        {dep.course.map((course) => (
+                          <CFormCheck
+                            label={course.courseTitle}
+                            key={course.courseId}
+                            type="radio"
+                          />
+                        ))}
+                      </CCardBody>
+                    </CCard>
+                  </CCol>
+                ))}
+              </CRow>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+      <CRow>
+        <CCol xs={12}>
+          <CCard className="mb-4">
+            <CCardHeader>
+              <strong>Subject Information</strong>
+            </CCardHeader>
+            <CCardBody>
+              <CRow className="mb-3">
+                <CFormLabel htmlFor="title" className="col-sm-2 col-form-label">
+                  Title:
+                </CFormLabel>
+                <CCol sm={10}>
+                  <CFormInput
+                    type="text"
+                    id="title"
+                    placeholder="Enter subject title"
+                    name="title"
+                    value={subjectForm.title}
+                    onChange={handleOnChange}
+                    invalid={!!errors.title}
+                    feedback={errors.title}
+                  />
+                </CCol>
+              </CRow>
+              <CRow className="mb-3">
+                <CFormLabel htmlFor="subject_code" className="col-sm-2 col-form-label">
+                  Code:
+                </CFormLabel>
+                <CCol sm={10}>
+                  <CFormInput
+                    type="text"
+                    id="subject_code"
+                    placeholder="Enter subject code"
+                    name="subject_code"
+                    value={subjectForm.subject_code}
+                    onChange={handleOnChange}
+                    invalid={!!errors.subject_code}
+                    feedback={errors.subject_code}
+                  />
+                </CCol>
+              </CRow>
 
-            <CRow className="mb-3">
-              <CFormLabel htmlFor="units" className="col-sm-2 col-form-label">
-                Units:
-              </CFormLabel>
-              <CCol sm={10}>
-                <CFormInput
-                  type="number"
-                  id="units"
-                  placeholder="Enter number of units"
-                  name="units"
-                  onChange={handleOnChange}
-                  invalid={!!errors.units}
-                  feedback={errors.units}
-                />
-              </CCol>
-            </CRow>
-            <CRow className="mb-3">
-              <CFormLabel htmlFor="prerequisities" className="col-sm-2 col-form-label">
-                Prerequisities:
-              </CFormLabel>
-              <CCol sm={10}>
-                <CFormInput
-                  type="text"
-                  id="prerequisites"
-                  placeholder="Enter subject prerequisites"
-                  name="prerequisites"
-                  value={subjectForm.prerequisites}
-                  onChange={handleOnChange}
-                  invalid={!!errors.prerequisites}
-                  feedback={errors.prerequisites}
-                />
-              </CCol>
-            </CRow>
-            <div className="d-grid">
-              <CButton type="submit" color="primary" disabled={isFormInvalid()}>
-                Add Subject
-              </CButton>
-            </div>
-          </CForm>
-        </CCardBody>
-      </CCard>
-    </CCol>
+              <CRow className="mb-3">
+                <CFormLabel htmlFor="units" className="col-sm-2 col-form-label">
+                  Units:
+                </CFormLabel>
+                <CCol sm={10}>
+                  <CFormInput
+                    type="number"
+                    id="units"
+                    placeholder="Enter number of units"
+                    name="units"
+                    onChange={handleOnChange}
+                    invalid={!!errors.units}
+                    feedback={errors.units}
+                  />
+                </CCol>
+              </CRow>
+              <CRow className="mb-3">
+                <CFormLabel htmlFor="prerequisities" className="col-sm-2 col-form-label">
+                  Prerequisities:
+                </CFormLabel>
+                <CCol sm={10}>
+                  <CFormInput
+                    type="text"
+                    id="prerequisites"
+                    placeholder="Enter subject prerequisites"
+                    name="prerequisites"
+                    value={subjectForm.prerequisites}
+                    onChange={handleOnChange}
+                    invalid={!!errors.prerequisites}
+                    feedback={errors.prerequisites}
+                  />
+                </CCol>
+              </CRow>
+              <div className="d-grid">
+                <CButton type="submit" color="primary" disabled={isFormInvalid()}>
+                  Add Subject
+                </CButton>
+              </div>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+    </CForm>
   )
 }
 
