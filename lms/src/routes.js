@@ -53,7 +53,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 //LMS IMPORTS//
 
-//Student Module
+//Admin Module
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
 const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
 
@@ -72,6 +72,9 @@ const AddSubject = React.lazy(() => import('./views/subject/AddSubject'))
 
 const Departments = React.lazy(() => import('./views/department/Department'))
 const AddDepartment = React.lazy(() => import('./views/department/AddDepartment'))
+
+//Student Module
+const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -135,6 +138,9 @@ const routes = [
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },
   { path: '/departments', name: 'Department', element: Departments },
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
+
+  //Student Module
+  { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
 ]
 
 export default routes

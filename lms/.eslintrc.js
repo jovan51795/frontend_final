@@ -20,7 +20,7 @@ module.exports = {
   ],
   plugins: ['react', 'react-hooks'],
   rules: {
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'prettier/prettier': 0,
     'react/prop-types': 'off',
     'react/jsx-wrap-multilines': ['error', { arrow: true, return: true, declaration: true }],
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
