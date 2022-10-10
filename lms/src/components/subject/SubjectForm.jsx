@@ -4,6 +4,7 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
+  CCardTitle,
   CCol,
   CForm,
   CFormCheck,
@@ -12,20 +13,17 @@ import {
   CRow,
 } from '@coreui/react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { getAll } from '../../services/departmentService'
 import Joi from 'joi'
 
-const SubjectForm = () => {
+const SubjectForm = ({ onSubmit }) => {
   const [departments, setDepartments] = useState([])
   const [subjectForm, setSubjectForm] = useState({
-    title: '',
-    subject_code: '',
+    subjectTitle: '',
+    subjectCode: '',
     units: 0,
     prerequisites: '',
-    active_deactive: true,
     course: {},
-    department: {},
   })
 
   useEffect(() => {
@@ -37,14 +35,13 @@ const SubjectForm = () => {
   }, [])
 
   const [errors, seterrors] = useState({})
-  const dispatch = useDispatch()
 
   const schema = Joi.object({
-    subject_code: Joi.string().required(),
-    title: Joi.string().required(),
+    subjectCode: Joi.string().required(),
+    subjectTitle: Joi.string().required(),
     units: Joi.number().min(1).required(),
-    prerequisites: Joi.string(),
-    active_deactive: Joi.boolean(),
+    prerequisites: Joi.string().required(),
+    course: Joi.object().allow({}).optional(),
   })
 
   const handleOnChange = (e) => {
@@ -72,13 +69,16 @@ const SubjectForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(subjectForm)
-    // put dispatch function here
+    onSubmit(subjectForm)
   }
 
   const isFormInvalid = () => {
     const result = schema.validate(subjectForm)
     return !!result.error
+  }
+
+  const handleChangeCourse = (e, data) => {
+    setSubjectForm({ ...subjectForm, [e.currentTarget.name]: data })
   }
 
   return (
@@ -90,13 +90,15 @@ const SubjectForm = () => {
               <CRow>
                 {departments.map((dep) => (
                   <CCol xs={12} lg={6} key={dep.departmentId}>
-                    <CFormCheck label={dep.departmentName} type="radio" className="mb-2" />
+                    <CCardTitle>{dep.departmentName}</CCardTitle>
                     <CCard>
                       <CCardBody>
                         {dep.course.map((course) => (
                           <CFormCheck
+                            name="course"
                             label={course.courseTitle}
                             key={course.courseId}
+                            onChange={(e) => handleChangeCourse(e, course)}
                             type="radio"
                           />
                         ))}
@@ -125,7 +127,7 @@ const SubjectForm = () => {
                     type="text"
                     id="title"
                     placeholder="Enter subject title"
-                    name="title"
+                    name="subjectTitle"
                     value={subjectForm.title}
                     onChange={handleOnChange}
                     invalid={!!errors.title}
@@ -142,11 +144,11 @@ const SubjectForm = () => {
                     type="text"
                     id="subject_code"
                     placeholder="Enter subject code"
-                    name="subject_code"
-                    value={subjectForm.subject_code}
+                    name="subjectCode"
+                    value={subjectForm.subjectCode}
                     onChange={handleOnChange}
-                    invalid={!!errors.subject_code}
-                    feedback={errors.subject_code}
+                    invalid={!!errors.subjectCode}
+                    feedback={errors.subjectCode}
                   />
                 </CCol>
               </CRow>
