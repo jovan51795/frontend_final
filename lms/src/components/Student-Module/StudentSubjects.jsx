@@ -44,6 +44,12 @@ const StudentSubjects = () => {
                   </CButton>
                 </CTableDataCell>
               </CTableRow>
+              <CTableRow>
+                <CTableDataCell colSpan={2} style={{ textAlign: 'right' }}>
+                  <b>Total Units:</b>
+                </CTableDataCell>
+                <CTableDataCell colSpan={2}>Total</CTableDataCell>
+              </CTableRow>
             </CTableBody>
           </CTable>
           <CButton color="success" size="sm">

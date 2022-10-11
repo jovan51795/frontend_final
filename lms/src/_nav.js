@@ -105,9 +105,14 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Enroll Subjects',
-        to: '/student/enroll',
+        name: 'Grades',
+        to: '/student/grades',
       },
+      // {
+      //   component: CNavItem,
+      //   name: 'Enroll Subjects',
+      //   to: '/student/enroll',
+      // },
     ],
   },
 
