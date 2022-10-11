@@ -28,7 +28,7 @@ const StudentProfileForm = () => {
           <CCardBody>
             <CRow>
               <CCol sm={3}>
-                <h6 className="mb-0">Username</h6>
+                <h6 className="mb-0">Username:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
                 johndoe
@@ -37,7 +37,7 @@ const StudentProfileForm = () => {
             <hr />
             <CRow>
               <CCol sm={3}>
-                <h6 className="mb-0">First Name</h6>
+                <h6 className="mb-0">First Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
                 John
@@ -46,7 +46,7 @@ const StudentProfileForm = () => {
             <hr />
             <CRow>
               <CCol sm={3}>
-                <h6 className="mb-0">Last Name</h6>
+                <h6 className="mb-0">Last Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
                 Doe
@@ -55,10 +55,19 @@ const StudentProfileForm = () => {
             <hr />
             <CRow>
               <CCol sm={3}>
-                <h6 className="mb-0">Date of Birth</h6>
+                <h6 className="mb-0">Date of Birth:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
                 December 25, 2000
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={3}>
+                <h6 className="mb-0">Address:</h6>
+              </CCol>
+              <CCol sm={9} className="text-secondary">
+                Sampaloc, Manila
               </CCol>
             </CRow>
           </CCardBody>

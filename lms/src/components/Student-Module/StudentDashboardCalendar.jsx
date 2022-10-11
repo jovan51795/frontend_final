@@ -19,6 +19,13 @@ const StudentDashboardCalendar = () => {
         StartTime: new Date(2022, 9, 10, 4, 0),
         EndTime: new Date(2022, 9, 10, 6, 0),
       },
+
+      {
+        Id: 2,
+        Subject: 'English Subject',
+        StartTime: new Date(2022, 9, 11, 4, 0),
+        EndTime: new Date(2022, 9, 11, 6, 0),
+      },
     ],
   }
   return (

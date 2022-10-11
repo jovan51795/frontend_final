@@ -101,7 +101,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'My Subjects',
-        to: '/student/allsubjects',
+        to: '/student/subjects',
       },
       {
         component: CNavItem,
