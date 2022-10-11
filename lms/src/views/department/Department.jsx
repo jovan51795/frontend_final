@@ -8,7 +8,6 @@ const Department = () => {
   const [departments, setDepartments] = useState([])
   useEffect(() => {
     getAll().then((res) => {
-      console.log(res, 'the result')
       if (res.data && res.data.status === 1) {
         setDepartments(res.data.object)
       }

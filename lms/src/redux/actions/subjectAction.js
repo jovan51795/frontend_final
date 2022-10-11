@@ -5,7 +5,6 @@ import variables from '../constants/constantVariables'
 export const addSubject = (data) => {
   return async function (dispatch) {
     await http.post('/subject/add', data).then((res) => {
-      console.log(res.data, 'the data')
       if (res.data && res.data.status === 1) {
         dispatch({
           type: variables.ADDSUBJECT,

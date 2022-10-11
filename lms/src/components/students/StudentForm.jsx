@@ -13,35 +13,39 @@ import {
   CFormCheck,
   CCardHeader,
   CCardTitle,
+  CFormSelect,
 } from '@coreui/react'
 import Joi from 'joi'
 import React, { useEffect, useState } from 'react'
-import { getAll } from '../../services/departmentService'
+import { getAllDepartmentWithSubject } from '../../services/departmentService'
 import camelCaseToWords from '../../services/lodashService'
 
 const StudentForm = ({ onSubmit }) => {
   const [departments, setDepartments] = useState([])
+  const [subjects, setSubjects] = useState([])
   const [form, setForm] = useState({
     studentNo: '',
     firstName: '',
     middleName: '',
     lastName: '',
     academicYear: '',
-    sem: '',
+    sem: '1st Sem',
     birthDate: '',
     department: {},
     course: {},
+    subject: [],
   })
   const [errors, seterrors] = useState({})
   const [visible, setVisible] = useState(false)
   useEffect(() => {
-    getAll().then((res) => {
+    getAllDepartmentWithSubject().then((res) => {
       setDepartments([...res.data.object])
+      setSubjects([...res.data.subjects])
     })
   }, [])
 
   const schema = Joi.object({
-    studentNo: Joi.string().min(3).required(),
+    studentNo: Joi.string().required(),
     firstName: Joi.string().required(),
     middleName: Joi.string().required(),
     lastName: Joi.string().required(),
@@ -49,6 +53,7 @@ const StudentForm = ({ onSubmit }) => {
     sem: Joi.string().required(),
     birthDate: Joi.string()
       .required()
+      .optional()
       .custom((value, helper) => {
         var dob = new Date(value.split(' ')[0])
         var dateNow = new Date()
@@ -60,6 +65,7 @@ const StudentForm = ({ onSubmit }) => {
       }),
     department: Joi.object().allow({}).optional(),
     course: Joi.object().allow({}).optional(),
+    subject: Joi.array().optional().required(),
   })
 
   const handleChange = (e) => {
@@ -88,6 +94,15 @@ const StudentForm = ({ onSubmit }) => {
     }
 
     setForm({ ...form, [e.currentTarget.name]: data })
+  }
+
+  const handleChangeSub = (e, data) => {
+    if (!e.target.checked) {
+      const index = form.subject.findIndex((s) => s.subject_id === data.subject_id)
+      form.subject.splice(index, 1)
+      return setForm(form)
+    }
+    return setForm({ ...form, subject: [...form.subject, data] })
   }
 
   const handleSubmit = (e) => {
@@ -167,14 +182,19 @@ const StudentForm = ({ onSubmit }) => {
             </CCol>
             <CCol lg={6}>
               <CFormLabel>Sem</CFormLabel>
-              <CFormInput
+              <CFormSelect
                 name="sem"
                 value={form.sem}
                 onChange={handleChange}
                 placeholder="Sem"
                 invalid={!!errors.sem}
                 feedback={errors.sem}
-              />
+              >
+                <option defaultValue="1st Sem" value="1st Sem">
+                  1st Sem
+                </option>
+                <option value="2nd Sem">2nd Sem</option>
+              </CFormSelect>
             </CCol>
           </CRow>
           <CRow className="mb-4">
@@ -210,7 +230,7 @@ const StudentForm = ({ onSubmit }) => {
                           onChange={(e) => handleChangeDep(e, dep, 'dep')}
                         />
                         {dep.course.map((crs) => (
-                          <CRow key={crs.courseId} className="ms-4">
+                          <CRow key={crs.courseId} className="ms-2">
                             <CCol>
                               <CFormCheck
                                 value={crs}
@@ -219,6 +239,26 @@ const StudentForm = ({ onSubmit }) => {
                                 label={crs.courseTitle}
                                 onChange={(e) => handleChangeDep(e, crs, 'course')}
                               />
+                              <CCard>
+                                <CCardHeader>
+                                  <span>Subjects</span>
+                                </CCardHeader>
+                                <CCardBody>
+                                  {subjects.map((sub) => (
+                                    <CRow key={sub.subject_id}>
+                                      <CCol>
+                                        {crs.courseId === sub.course.courseId && (
+                                          <CFormCheck
+                                            name="subject"
+                                            onChange={(e) => handleChangeSub(e, sub)}
+                                            label={sub.subjectTitle}
+                                          />
+                                        )}
+                                      </CCol>
+                                    </CRow>
+                                  ))}
+                                </CCardBody>
+                              </CCard>
                             </CCol>
                           </CRow>
                         ))}

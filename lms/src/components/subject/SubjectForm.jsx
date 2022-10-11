@@ -15,6 +15,7 @@ import {
 import { useState } from 'react'
 import { getAll } from '../../services/departmentService'
 import Joi from 'joi'
+import camelCaseToWords from '../../services/lodashService'
 
 const SubjectForm = ({ onSubmit }) => {
   const [departments, setDepartments] = useState([])
@@ -28,6 +29,7 @@ const SubjectForm = ({ onSubmit }) => {
 
   useEffect(() => {
     getAll().then((res) => {
+      console.log(res, 'the res')
       if (res.data && res.data.status === 1) {
         setDepartments(res.data.object)
       }
@@ -51,9 +53,10 @@ const SubjectForm = ({ onSubmit }) => {
       [e.currentTarget.name]: e.currentTarget.value,
     })
 
+    const label = camelCaseToWords(e.currentTarget.name)
     const { error } = schema
       .extract(e.currentTarget.name)
-      .label(e.currentTarget.name.toUpperCase())
+      .label(label)
       .validate(e.currentTarget.value)
 
     if (error) {
@@ -69,6 +72,13 @@ const SubjectForm = ({ onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setSubjectForm({
+      subjectTitle: '',
+      subjectCode: '',
+      units: 0,
+      prerequisites: '',
+      course: {},
+    })
     onSubmit(subjectForm)
   }
 
@@ -96,6 +106,7 @@ const SubjectForm = ({ onSubmit }) => {
                         {dep.course.map((course) => (
                           <CFormCheck
                             name="course"
+                            checked={subjectForm.course.courseId === course.courseId ? true : false}
                             label={course.courseTitle}
                             key={course.courseId}
                             onChange={(e) => handleChangeCourse(e, course)}
@@ -130,8 +141,8 @@ const SubjectForm = ({ onSubmit }) => {
                     name="subjectTitle"
                     value={subjectForm.title}
                     onChange={handleOnChange}
-                    invalid={!!errors.title}
-                    feedback={errors.title}
+                    invalid={!!errors.subjectTitle}
+                    feedback={errors.subjectTitle}
                   />
                 </CCol>
               </CRow>
