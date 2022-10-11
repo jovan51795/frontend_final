@@ -30,6 +30,7 @@ const StudentForm = ({ onSubmit }) => {
     lastName: '',
     academicYear: '',
     sem: '1st Sem',
+    status: 'regular',
     birthDate: '',
     department: {},
     course: {},
@@ -51,6 +52,7 @@ const StudentForm = ({ onSubmit }) => {
     lastName: Joi.string().required(),
     academicYear: Joi.string().required(),
     sem: Joi.string().required(),
+    status: Joi.string().required(),
     birthDate: Joi.string()
       .required()
       .optional()
@@ -198,6 +200,19 @@ const StudentForm = ({ onSubmit }) => {
             </CCol>
           </CRow>
           <CRow className="mb-4">
+            <CCol lg={6}>
+              <CFormLabel>Status</CFormLabel>
+              <CFormSelect
+                name="status"
+                value={form.status}
+                onChange={handleChange}
+                invalid={!!errors.status}
+                feedback={errors.status}
+              >
+                <option value="regular">Regular</option>
+                <option value="irregular">Irregular</option>
+              </CFormSelect>
+            </CCol>
             <CCol lg={6}>
               <CFormLabel>Birth Date</CFormLabel>
               <CFormInput
