@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import http from 'src/services/http'
 import variables from '../constants/constantVariables'
 
@@ -22,7 +23,11 @@ export const addStudent = (data) => {
   return async function (dispatch) {
     try {
       await http.post('/student/add', data).then((res) => {
-        console.log(res)
+        if (res.data && res.data.status === 1) {
+          toast.success(res.data.message)
+        } else if (res.data && res.data.status === 0) {
+          toast.error(res.data.message)
+        }
       })
     } catch (error) {
       console.log(error)
