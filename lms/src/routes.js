@@ -56,6 +56,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 //Admin Module
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
 const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
+const EditDepartment = React.lazy(() => import('./views/department/EditDepartment'))
 
 //LANDING HEADER ROUTES
 //About
@@ -159,6 +160,7 @@ const routes = [
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },
   { path: '/departments', name: 'Department', element: Departments },
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
+  { path: '/department/edit/:id', name: 'Edit Department', element: EditDepartment },
 
   //Faculty
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },

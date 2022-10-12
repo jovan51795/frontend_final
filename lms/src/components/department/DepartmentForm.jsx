@@ -17,11 +17,13 @@ import React, { useState } from 'react'
 import Joi from 'joi'
 import { useSelector } from 'react-redux'
 
-const DepartmentForm = ({ onSubmit }) => {
-  const [department, setDepartment] = useState({
-    departmentName: '',
-    course: [],
-  })
+const DepartmentForm = ({ initialValue, onSubmit }) => {
+  const [department, setDepartment] = useState(
+    initialValue || {
+      departmentName: '',
+      course: [],
+    },
+  )
 
   const [errors, setErrors] = useState({
     departmentName: '',
@@ -29,9 +31,12 @@ const DepartmentForm = ({ onSubmit }) => {
   })
 
   const schema = Joi.object({
+    departmentId: Joi.number().allow(),
     departmentName: Joi.string().required(),
     course: Joi.array().items(
       Joi.object({
+        student: Joi.array().allow(),
+        courseId: Joi.number().allow(),
         courseCode: Joi.string().required(),
         courseTitle: Joi.string().required(),
       }),
@@ -50,10 +55,12 @@ const DepartmentForm = ({ onSubmit }) => {
   const handleOnSubmit = (event) => {
     event.preventDefault()
     onSubmit(department)
-    setDepartment({
-      departmentName: '',
-      course: [],
-    })
+    setDepartment(
+      initialValue || {
+        departmentName: '',
+        course: [],
+      },
+    )
     setErrors({
       departmentName: '',
       course: [{ courseTitle: '', courseCode: '' }],
