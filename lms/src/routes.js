@@ -148,9 +148,6 @@ const routes = [
 
   { path: '/campus-life', name: 'Campus Life', element: CampusLife },
 
-  { path: '/students', name: 'Students', element: StudentList },
-  { path: '/student/add', name: 'Student Add', element: AddStudent },
-
   { path: '/subjects', name: 'Subjects', element: SubjectList },
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },
   { path: '/departments', name: 'Department', element: Departments },
