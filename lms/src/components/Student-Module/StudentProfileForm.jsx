@@ -1,7 +1,7 @@
 import { CCard, CCardBody, CRow, CCol, CImage } from '@coreui/react'
 import React from 'react'
 
-const StudentProfileForm = () => {
+const StudentProfileForm = ({ student }) => {
   return (
     <CRow>
       <CCol xs={12} sm={6} lg={4}>
@@ -14,7 +14,9 @@ const StudentProfileForm = () => {
               style={{ width: '150px' }}
             />
             <div>
-              <h3>John Doe</h3>
+              <h3>
+                {student.firstName} {student.lastName}
+              </h3>
               <p className="mb-1">BSIT</p>
               <p className="text-muted font-size-sm">College of Computer Studies</p>
               {/* <button className="btn btn-primary">Follow</button>
@@ -31,7 +33,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Username:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                johndoe
+                {student.username}
               </CCol>
             </CRow>
             <hr />
@@ -40,7 +42,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">First Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                John
+                {student.firstName}
               </CCol>
             </CRow>
             <hr />
@@ -49,7 +51,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Last Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                Doe
+                {student.lastName}
               </CCol>
             </CRow>
             <hr />
@@ -58,7 +60,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Date of Birth:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                December 25, 2000
+                {student.birthdate}
               </CCol>
             </CRow>
             <hr />
@@ -67,7 +69,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Address:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                Sampaloc, Manila
+                {student.address}
               </CCol>
             </CRow>
           </CCardBody>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   ScheduleComponent,
   Day,
@@ -10,24 +10,20 @@ import {
   EventSettingsModel,
 } from '@syncfusion/ej2-react-schedule'
 
-const StudentDashboardCalendar = () => {
+const StudentDashboardCalendar = ({ schedules }) => {
   const EventSettingsModel = {
     dataSource: [
+      // schedules,
       {
         Id: 1,
         Subject: 'English Subject',
         StartTime: new Date(2022, 9, 10, 4, 0),
         EndTime: new Date(2022, 9, 10, 6, 0),
-      },
-
-      {
-        Id: 2,
-        Subject: 'English Subject',
-        StartTime: new Date(2022, 9, 11, 4, 0),
-        EndTime: new Date(2022, 9, 11, 6, 0),
+        Repeat: true,
       },
     ],
   }
+
   return (
     <>
       <ScheduleComponent currentView="Week" eventSettings={EventSettingsModel}>
