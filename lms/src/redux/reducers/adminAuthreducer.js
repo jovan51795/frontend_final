@@ -9,6 +9,8 @@ export const adminAuth = (state = {}, action) => {
       }
     case variables.ADMINLOGIN:
       return action.payload
+    case variables.STUDENTLOGIN:
+      return action.payload
     default:
       return state
   }
