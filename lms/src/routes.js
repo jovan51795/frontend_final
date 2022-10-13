@@ -87,6 +87,10 @@ const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //Student Module
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
+const StudentProfile = React.lazy(() => import('./views/students/StudentProfile'))
+const StudentSubject = React.lazy(() => import('./views/students/StudentSubjectsPage'))
+const StudentGrades = React.lazy(() => import('./views/students/StudentGradesPage'))
+const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsPage'))
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
@@ -172,6 +176,10 @@ const routes = [
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
+  { path: '/student/profile', name: 'Student Profile', element: StudentProfile },
+  { path: '/student/subjects', name: 'My Subjects', element: StudentSubject },
+  { path: '/student/grades', name: 'Grades', element: StudentGrades },
+  { path: '/student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
 ]
 
 export default routes

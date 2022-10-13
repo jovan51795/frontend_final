@@ -84,13 +84,18 @@ export const _navStudent = [
       {
         component: CNavItem,
         name: 'My Subjects',
-        to: '/student/allsubjects',
+        to: '/student/subjects',
       },
       {
         component: CNavItem,
-        name: 'Enroll Subjects',
-        to: '/student/enroll',
+        name: 'Grades',
+        to: '/student/grades',
       },
+      // {
+      //   component: CNavItem,
+      //   name: 'Enroll Subjects',
+      //   to: '/student/enroll',
+      // },
     ],
   },
 ]
