@@ -34,3 +34,40 @@ export const addStudent = (data) => {
     }
   }
 }
+
+export const deleteStudentById = (id) => {
+  return async function (dispatch) {
+    try {
+      await http.delete(`/student/delete-student/${id}`).then((res) => {
+        if (res.data && res.data.status === 1) {
+          toast.success(res.data.message)
+          dispatch(getAllStudents())
+        } else if (res.data && res.data.status === 0) {
+          toast.error(res.data.message)
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const updateStudentById = (data) => {
+  return async function (dispatch) {
+    try {
+      await http.patch(`/student/update-student-info/${data.student_id}`, data).then((res) => {
+        if (res.data && res.data.status === 1) {
+          toast.success(res.data.message)
+          dispatch({
+            type: variables.UPDATESTUDENT,
+            payload: res.data.object,
+          })
+        } else if (res.data && res.data.status === 0) {
+          toast.error(res.data.message)
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}

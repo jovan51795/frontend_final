@@ -91,6 +91,8 @@ const StudentProfile = React.lazy(() => import('./views/students/StudentProfile'
 const StudentSubject = React.lazy(() => import('./views/students/StudentSubjectsPage'))
 const StudentGrades = React.lazy(() => import('./views/students/StudentGradesPage'))
 const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsPage'))
+const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
+const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -155,6 +157,8 @@ const routes = [
 
   { path: '/students', name: 'Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
+  { path: '/student/details/:id', name: 'Student Details', element: StudentDetails },
+  { path: '/student/edit/:id', name: 'Student details', element: EditStudent },
 
   { path: '/subjects', name: 'Subjects', element: SubjectList },
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },

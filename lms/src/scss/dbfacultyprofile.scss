@@ -5,6 +5,12 @@
   background: transparent !important;
 }
 
+@media (min-width: 0px) and (max-width: 420px) {
+  .dbpfimg {
+    margin-left: 60px !important;
+  }
+}
+
 .bg-blue {
   background: #022135;
 }
@@ -13,17 +19,27 @@
   background: #000;
 }
 
-.skill-block {
-  width: 30%;
+.right {
+  margin-right: calc(2.5 * var(--cui-gutter-x)) !important;
+}
+
+.left {
+  margin-left: 2em !important;
 }
 
 .space {
   justify-content: space-between !important;
 }
 
-@media (min-width: 991px) and (max-width: 1200px) {
-  .skill-block {
-    padding: 32px !important;
+@media (min-width: 0px) and (max-width: 760px) {
+  .left {
+    margin-left: 0em !important;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 760px) {
+  .faculty {
+    margin-right: -4em !important;
   }
 }
 
