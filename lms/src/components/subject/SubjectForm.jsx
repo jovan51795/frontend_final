@@ -17,19 +17,20 @@ import { getAll } from '../../services/departmentService'
 import Joi from 'joi'
 import camelCaseToWords from '../../services/lodashService'
 
-const SubjectForm = ({ onSubmit }) => {
+const SubjectForm = ({ onSubmit, initialValue }) => {
   const [departments, setDepartments] = useState([])
-  const [subjectForm, setSubjectForm] = useState({
-    subjectTitle: '',
-    subjectCode: '',
-    units: 0,
-    prerequisites: '',
-    course: {},
-  })
+  const [subjectForm, setSubjectForm] = useState(
+    initialValue || {
+      subjectTitle: '',
+      subjectCode: '',
+      units: 0,
+      prerequisites: '',
+      course: {},
+    },
+  )
 
   useEffect(() => {
     getAll().then((res) => {
-      console.log(res, 'the res')
       if (res.data && res.data.status === 1) {
         setDepartments(res.data.object)
       }
@@ -44,6 +45,12 @@ const SubjectForm = ({ onSubmit }) => {
     units: Joi.number().min(1).required(),
     prerequisites: Joi.string().required(),
     course: Joi.object().allow({}).optional(),
+    subject_id: Joi.number().allow(),
+    activeDeactive: Joi.boolean().allow(),
+    professorLoad: Joi.number().allow(null),
+    professor: Joi.number().allow(null),
+    grades: Joi.object().allow(null),
+    student: Joi.array().allow(),
   })
 
   const handleOnChange = (e) => {
@@ -72,13 +79,7 @@ const SubjectForm = ({ onSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setSubjectForm({
-      subjectTitle: '',
-      subjectCode: '',
-      units: 0,
-      prerequisites: '',
-      course: {},
-    })
+
     onSubmit(subjectForm)
   }
 
@@ -139,7 +140,7 @@ const SubjectForm = ({ onSubmit }) => {
                     id="title"
                     placeholder="Enter subject title"
                     name="subjectTitle"
-                    value={subjectForm.title}
+                    value={subjectForm.subjectTitle}
                     onChange={handleOnChange}
                     invalid={!!errors.subjectTitle}
                     feedback={errors.subjectTitle}
@@ -174,6 +175,7 @@ const SubjectForm = ({ onSubmit }) => {
                     id="units"
                     placeholder="Enter number of units"
                     name="units"
+                    value={subjectForm.units}
                     onChange={handleOnChange}
                     invalid={!!errors.units}
                     feedback={errors.units}
