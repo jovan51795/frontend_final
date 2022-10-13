@@ -23,9 +23,9 @@ const AppSidebar = () => {
   const userInFo = getUserInfo()
 
   useEffect(() => {
-    if (userInFo.object.type === 'student') {
+    if (userInFo && userInFo.object.type === 'student') {
       setnavigation(_navStudent)
-    } else if (userInFo.object.type === 'Admin') {
+    } else if (userInFo && userInFo.object.type === 'Admin') {
       setnavigation(_nav)
     }
   }, [userInFo])

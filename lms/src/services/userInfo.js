@@ -1,3 +1,6 @@
 export const getUserInfo = () => {
-  return JSON.parse(localStorage.getItem('lms'))
+  if (localStorage.getItem('lms')) {
+    return JSON.parse(localStorage.getItem('lms'))
+  }
+  return false
 }
