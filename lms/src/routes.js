@@ -73,6 +73,8 @@ const CampusLife = React.lazy(() => import('./views/campus-life/CampusLife'))
 
 const SubjectList = React.lazy(() => import('./views/subject/SubjectList'))
 const AddSubject = React.lazy(() => import('./views/subject/AddSubject'))
+const SubjectDetails = React.lazy(() => import('./views/subject/SubjectDetails'))
+const EditSubject = React.lazy(() => import('./views/subject/EditSubject'))
 
 const Departments = React.lazy(() => import('./views/department/Department'))
 const AddDepartment = React.lazy(() => import('./views/department/AddDepartment'))
@@ -158,6 +160,9 @@ const routes = [
 
   { path: '/subjects', name: 'Subjects', element: SubjectList },
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },
+  { path: '/subject/details/:id', name: 'Subject Details', element: SubjectDetails },
+  { path: '/subject/edit/:id', name: 'Edit Subject', element: EditSubject },
+
   { path: '/departments', name: 'Department', element: Departments },
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
   { path: '/department/edit/:id', name: 'Edit Department', element: EditDepartment },
