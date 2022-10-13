@@ -25,7 +25,7 @@ const Register = () => {
   const navigate = useNavigate()
   useSelector((state) => {
     if (state && state.adminAuth && state.adminAuth.payload === 1) {
-      navigate('/login')
+      navigate('/login/admin')
     }
   })
   const [adminForm, setadminForm] = useState({
@@ -118,9 +118,6 @@ const Register = () => {
                     />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
-                    <CFormInput placeholder="Admin" value="Admin/Student" disabled />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
                     <CFormInput
                       type="password"
                       placeholder="Password"
@@ -132,7 +129,7 @@ const Register = () => {
                     />
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton color="success" disabled={isFormInvalid()}>
+                    <CButton color="success" type="submit" disabled={isFormInvalid()}>
                       Create Account
                     </CButton>
                   </div>

@@ -33,9 +33,10 @@ function App() {
       userInFo.status === 1
     ) {
       navigate('/dashboard')
-    } else if (!userInFo || (userInFo && userInFo.status === 0)) {
-      navigate('/abcuniversity')
     }
+    // else if (!userInFo || (userInFo && userInFo.status === 0)) {
+    //   navigate('/abcuniversity')
+    // }
   }, [userInFo])
 
   return (
@@ -44,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/abcuniversity" />} />
         <Route exact path="/abcuniversity" name="Landing Page" element={<Landing />} />
-        <Route exact path="/login" name="Login Page" element={<Login />} />
+        <Route exact path="/login/:type" name="Login Page" element={<Login />} />
         <Route exact path="/register" name="Register Page" element={<Register />} />
         <Route
           exact

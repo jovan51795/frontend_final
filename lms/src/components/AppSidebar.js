@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { CImage, CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from '@coreui/react'
@@ -10,14 +10,25 @@ import 'simplebar/dist/simplebar.min.css'
 import logoLarge from '../assets/images/ABCwhitelogo.png'
 
 import logoSmall from '../assets/images/logo.png'
+import { getUserInfo } from '../services/userInfo'
 
 // sidebar nav config
-import navigation from '../_nav'
+import { _nav, _navStudent } from '../_nav'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.changeState.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.changeState.sidebarShow)
+  const [navigation, setnavigation] = useState([])
+  const userInFo = getUserInfo()
+
+  useEffect(() => {
+    if (userInFo && userInFo.object.type === 'student') {
+      setnavigation(_navStudent)
+    } else if (userInFo && userInFo.object.type === 'Admin') {
+      setnavigation(_nav)
+    }
+  }, [userInFo])
 
   return (
     <CSidebar

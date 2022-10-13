@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -18,9 +18,10 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import Joi from 'joi'
 import { useDispatch, useSelector } from 'react-redux'
-import { adminLogin } from 'src/redux/actions/adminAuthActions'
+import { adminLogin, studentLogin } from 'src/redux/actions/adminAuthActions'
 
 const Login = () => {
+  const param = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -67,7 +68,13 @@ const Login = () => {
 
   const handleOnSubmit = (event) => {
     event.preventDefault()
-    dispatch(adminLogin(loginForm))
+    if (param.type === 'student') {
+      dispatch(studentLogin(loginForm))
+    } else if (param.type === 'admin') {
+      dispatch(adminLogin(loginForm))
+    } else if (param.type === 'faculty') {
+    } else if (param.type === 'parent') {
+    }
   }
 
   const isFormInvalid = () => {
@@ -132,7 +139,7 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
+              <CCard className="text-white bg-primary py-5">
                 <CCardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
