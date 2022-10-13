@@ -3,16 +3,16 @@ import 'src/scss/dbfacultyprofile.scss'
 
 const DashboardProfile = () => {
   return (
-    <div className="container mt-3 mb-3">
-      <div className="row no-gutters">
+    <div className="container mt-3">
+      <div className="row no-gutters right">
         <div className="col-md-4 col-lg-4">
           <img
             className="dbpfimg"
-            src="https://cdn1.iconfinder.com/data/icons/back-to-school-217/64/headmaster-avatar-professor-teacher-education-1024.png"
+            src="https://den.mercer.edu/wp-content/uploads/2021/02/Kedrick-Hartfield-1068x712.jpg"
           />
         </div>
-        <div className="col-md-8 col-lg-8">
-          <div className="d-flex flex-column">
+        <div className="col-md-8 col-lg-8 ">
+          <div className="d-flex flex-column faculty">
             <div className="d-flex flex-row justify-content-between align-items-center p-3 bg-blue text-white">
               <h3 className="display-5">Amelly Anderson</h3>
               <i className="fa fa-facebook"></i>
