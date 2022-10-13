@@ -87,6 +87,8 @@ const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //Student Module
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
+const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
+const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -151,6 +153,8 @@ const routes = [
 
   { path: '/students', name: 'Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
+  { path: '/student/details/:id', name: 'Student Details', element: StudentDetails },
+  { path: '/student/edit/:id', name: 'Student details', element: EditStudent },
 
   { path: '/subjects', name: 'Subjects', element: SubjectList },
   { path: '/subject/add', name: 'Add Subject', element: AddSubject },

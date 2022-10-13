@@ -4,12 +4,10 @@ import {
   CForm,
   CFormInput,
   CFormLabel,
-  CInputGroup,
   CRow,
   CCol,
   CCardFooter,
   CButton,
-  CCollapse,
   CFormCheck,
   CCardHeader,
   CCardTitle,
@@ -20,32 +18,35 @@ import React, { useEffect, useState } from 'react'
 import { getAllDepartmentWithSubject } from '../../services/departmentService'
 import camelCaseToWords from '../../services/lodashService'
 
-const StudentForm = ({ onSubmit }) => {
+const StudentForm = ({ onSubmit, initialValue }) => {
   const [departments, setDepartments] = useState([])
   const [subjects, setSubjects] = useState([])
-  const [form, setForm] = useState({
-    studentNo: '',
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    academicYear: '',
-    sem: '1st Sem',
-    status: 'regular',
-    birthDate: '',
-    department: {},
-    course: {},
-    subject: [],
-  })
+  const [form, setForm] = useState(
+    initialValue || {
+      studentNo: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      academicYear: '',
+      sem: '1st Sem',
+      status: 'regular',
+      birthDate: '',
+      department: {},
+      course: {},
+      subject: [],
+    },
+  )
   const [errors, seterrors] = useState({})
-  const [visible, setVisible] = useState(false)
   useEffect(() => {
     getAllDepartmentWithSubject().then((res) => {
       setDepartments([...res.data.object])
+      console.log(res.data)
       setSubjects([...res.data.subjects])
     })
   }, [])
 
   const schema = Joi.object({
+    student_id: Joi.number().allow(),
     studentNo: Joi.string().required(),
     firstName: Joi.string().required(),
     middleName: Joi.string().required(),
@@ -68,6 +69,11 @@ const StudentForm = ({ onSubmit }) => {
     department: Joi.object().allow({}).optional(),
     course: Joi.object().allow({}).optional(),
     subject: Joi.array().optional().required(),
+    password: Joi.string().allow(),
+    active_deactive: Joi.bool().allow(),
+    program: Joi.allow({}).optional(),
+    grades: Joi.allow(),
+    type: Joi.allow(),
   })
 
   const handleChange = (e) => {
@@ -109,7 +115,20 @@ const StudentForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(form)
     onSubmit(form)
+  }
+
+  const handleCourseCheck = (data) => {
+    var result = false
+    form.subject.filter((sub) => {
+      if (form.subject.length > 0 && sub.subject_id === data.subject_id) {
+        result = true
+      } else {
+        result = false
+      }
+    })
+    return result
   }
 
   const isFormInvalid = () => {
@@ -238,6 +257,7 @@ const StudentForm = ({ onSubmit }) => {
                     {departments.map((dep) => (
                       <CCol key={dep.departmentId} sm={6} lg={6} className="mb-2">
                         <CFormCheck
+                          checked={form.department.departmentId === dep.departmentId ? true : false}
                           type="radio"
                           value={dep}
                           name="department"
@@ -248,6 +268,7 @@ const StudentForm = ({ onSubmit }) => {
                           <CRow key={crs.courseId} className="ms-2">
                             <CCol>
                               <CFormCheck
+                                checked={form.course.courseId === crs.courseId ? true : false}
                                 value={crs}
                                 name="course"
                                 type="radio"
@@ -256,14 +277,15 @@ const StudentForm = ({ onSubmit }) => {
                               />
                               <CCard>
                                 <CCardHeader>
-                                  <span>Subjects</span>
+                                  <span>Subjects {!subjects.toString()}</span>
                                 </CCardHeader>
                                 <CCardBody>
-                                  {subjects.map((sub) => (
+                                  {subjects.map((sub, idx) => (
                                     <CRow key={sub.subject_id}>
                                       <CCol>
-                                        {crs.courseId === sub.course.courseId && (
+                                        {sub.course && crs.courseId === sub.course.courseId && (
                                           <CFormCheck
+                                            //   checked={handleCourseCheck(sub)}
                                             name="subject"
                                             onChange={(e) => handleChangeSub(e, sub)}
                                             label={sub.subjectTitle}
@@ -284,19 +306,10 @@ const StudentForm = ({ onSubmit }) => {
               </CCard>
             </CCol>
           </CRow>
-
-          <CCollapse visible={visible}>
-            <CCard>
-              <CCardBody>the body</CCardBody>
-            </CCard>
-          </CCollapse>
         </CCardBody>
         <CCardFooter>
           <CButton type="submit" className="mr-4" disabled={isFormInvalid()}>
             Submit
-          </CButton>
-          <CButton color="success" className="mx-4" onClick={() => setVisible(!visible)}>
-            Add Subject {isFormInvalid().toString()}
           </CButton>
         </CCardFooter>
       </CCard>
