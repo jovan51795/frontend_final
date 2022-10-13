@@ -154,25 +154,25 @@ const LandingHeader = ({ toggle }) => {
                   <DropDownListContainer>
                     <DropDownList>
                       <ListItem>
-                        <DrpdownLink to="/login">
+                        <DrpdownLink to="/login/student">
                           <FaUserGraduate style={{ marginBottom: '2px' }} />
                           &nbsp;&nbsp;Student
                         </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <DrpdownLink to="/login">
+                        <DrpdownLink to="/login/faculty">
                           <FaUserTie style={{ marginBottom: '2px' }} />
                           &nbsp;&nbsp;Faculty
                         </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <DrpdownLink to="/login">
+                        <DrpdownLink to="/login/parent">
                           <RiParentFill style={{ marginBottom: '2px' }} />
                           &nbsp;&nbsp;Parent
                         </DrpdownLink>
                       </ListItem>
                       <ListItem>
-                        <DrpdownLink to="/login">
+                        <DrpdownLink to="/login/admin">
                           <RiAdminFill style={{ marginBottom: '2px' }} />
                           &nbsp;&nbsp;Administrator
                         </DrpdownLink>
