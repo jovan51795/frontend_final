@@ -33,7 +33,7 @@ export const getAll = () => {
 
 export const updateDepartment = (dep) => {
   return async function (dispatch) {
-    await http.post(`/departments/update/${dep.departmentId}`, dep).then((res) => {
+    await http.patch(`/departments/update/${dep.departmentId}`, dep).then((res) => {
       if (res.data && res.data.status === 1) {
         toast.success(res.data.message)
         dispatch({

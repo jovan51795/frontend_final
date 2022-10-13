@@ -7,7 +7,6 @@ const AddDepartment = () => {
   const dispatch = useDispatch()
 
   const handleSubmit = (data) => {
-    console.log(data)
     dispatch(addDepartment(data))
   }
   return (
