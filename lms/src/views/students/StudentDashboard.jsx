@@ -27,28 +27,29 @@ const StudentDashboard = () => {
   const [schedule, setSchedule] = useState([])
 
   useEffect(() => {
-    getScheduleById(2)
+    getSchedules()
   }, [])
 
-  const getScheduleById = (id) => {
-    scheduleService.getScheduleById(id).then((res) => {
+  const getSchedules = () => {
+    scheduleService.getAll().then((res) => {
       if (res.data) {
-        setSchedule(res.data.object)
+        setSchedule(res.data)
       }
     })
   }
 
-  const currentSchedule = new Date(schedule.startTime)
-  // console.log(schedule)
+  const studentSchedules = []
 
-  const sampleSched = {
-    Id: schedule.schedule_id,
-    Subject: schedule.schedule_subject,
-    StartTime: new Date(schedule.startTime),
-    EndTime: new Date(schedule.endTime),
-  }
+  const fetchSchedules = schedule.map((sched) => {
+    studentSchedules.push({
+      Id: sched.schedule_id,
+      Subject: sched.schedule_subject,
+      StartTime: new Date(sched.startDate + ' ' + sched.startTime),
+      EndTime: new Date(sched.startDate + ' ' + sched.endTime),
+      RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
+    })
+  })
 
-  console.log(sampleSched)
   return (
     <>
       <StudentDashboardWidgetsDropdown />
@@ -67,7 +68,7 @@ const StudentDashboard = () => {
           <strong>My Schedule</strong>
         </CCardHeader>
         <CCardBody>
-          <StudentDashboardCalendar schedules={sampleSched} />
+          <StudentDashboardCalendar schedules={studentSchedules} />
         </CCardBody>
       </CCard>
     </>

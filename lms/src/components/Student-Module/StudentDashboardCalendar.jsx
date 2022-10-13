@@ -9,24 +9,34 @@ import {
   Inject,
   EventSettingsModel,
 } from '@syncfusion/ej2-react-schedule'
+import Colors from 'src/views/theme/colors/Colors'
 
 const StudentDashboardCalendar = ({ schedules }) => {
-  const EventSettingsModel = {
-    dataSource: [
-      // schedules,
-      {
-        Id: 1,
-        Subject: 'English Subject',
-        StartTime: new Date(2022, 9, 10, 4, 0),
-        EndTime: new Date(2022, 9, 10, 6, 0),
-        Repeat: true,
-      },
-    ],
+  // const EventSettingsModel = {
+  //   dataSource: [
+  //     {
+  //       Subject: 'English Subject1',
+  //       StartTime: new Date(2022, 9, 10, 4, 0),
+  //       EndTime: new Date(2022, 9, 10, 6, 0),
+  //       RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
+  //     },
+
+  //     {
+  //       Subject: 'Math Subject1',
+  //       StartTime: new Date(2022, 9, 10, 3, 0),
+  //       EndTime: new Date(2022, 9, 10, 4, 0),
+  //       RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
+  //     },
+  //   ],
+  // }
+
+  const events = {
+    dataSource: schedules,
   }
 
   return (
     <>
-      <ScheduleComponent currentView="Week" eventSettings={EventSettingsModel}>
+      <ScheduleComponent currentView="Week" eventSettings={events}>
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
     </>

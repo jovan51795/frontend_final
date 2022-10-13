@@ -1,7 +1,9 @@
 import { CCard, CCardBody, CRow, CCol, CImage } from '@coreui/react'
 import React from 'react'
+import { studentdata } from './studentdata'
 
-const StudentProfileForm = ({ student }) => {
+const StudentProfileForm = () => {
+  const student = studentdata[1]
   return (
     <CRow>
       <CCol xs={12} sm={6} lg={4}>
