@@ -39,9 +39,9 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
   const schema = Joi.object({
     departmentId: Joi.number().allow(),
     departmentName: Joi.string().required(),
-    logo: Joi.string().allow,
-    altlogo: Joi.string().allow,
-    link: Joi.string().allow,
+    logo: Joi.string().allow(''),
+    altlogo: Joi.string().allow(''),
+    link: Joi.string().allow(''),
     course: Joi.array().items(
       Joi.object({
         student: Joi.array().allow(),
@@ -149,7 +149,7 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
               <CFormLabel>Department Logo</CFormLabel>
               <CFormInput
                 onChange={handleOnChange}
-                name="departmentlogo"
+                name="logo"
                 value={department.logo}
                 invalid={!!errors.logo}
                 feedback={errors.logo}
@@ -161,7 +161,7 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
               <CFormLabel>Department Logo Alt Text</CFormLabel>
               <CFormInput
                 onChange={handleOnChange}
-                name="departmentaltlogo"
+                name="altlogo"
                 value={department.altlogo}
                 invalid={!!errors.altlogo}
                 feedback={errors.altlogo}

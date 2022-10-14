@@ -115,7 +115,6 @@ const StudentForm = ({ onSubmit, initialValue }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(form)
     onSubmit(form)
   }
 
