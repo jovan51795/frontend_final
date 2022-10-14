@@ -18,7 +18,7 @@ import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import Joi from 'joi'
 import { useDispatch, useSelector } from 'react-redux'
-import { adminLogin, studentLogin } from 'src/redux/actions/adminAuthActions'
+import { adminLogin, studentLogin, professorLogin } from 'src/redux/actions/adminAuthActions'
 
 const Login = () => {
   const param = useParams()
@@ -73,6 +73,7 @@ const Login = () => {
     } else if (param.type === 'admin') {
       dispatch(adminLogin(loginForm))
     } else if (param.type === 'faculty') {
+      dispatch(professorLogin(loginForm))
     } else if (param.type === 'parent') {
     }
   }
@@ -117,6 +118,7 @@ const Login = () => {
                         onChange={handleOnChange}
                         invalid={!!errors.password}
                         feedback={errors.password}
+                        autoComplete="true"
                       />
                     </CInputGroup>
                     <CRow>

@@ -19,7 +19,6 @@ import React, { useState } from 'react'
 import camelCaseToWords from '../../services/lodashService'
 
 const ProfessorForm = ({ onSubmit, initialValue }) => {
-  console.log(initialValue)
   const [form, setFrom] = useState(
     initialValue || {
       professorNo: '',

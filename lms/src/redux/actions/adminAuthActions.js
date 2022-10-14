@@ -66,3 +66,26 @@ export const studentLogin = (data) => {
     }
   }
 }
+
+export const professorLogin = (data) => {
+  console.log(data, 'the data')
+  return async function (dispatch) {
+    try {
+      await http.post('/professor/login', data).then((res) => {
+        if (res.data && res.data.status === 1) {
+          localStorage.setItem('lms', JSON.stringify(res.data))
+          dispatch({
+            type: variables.ADMINLOGIN,
+            payload: res.data,
+          })
+        } else {
+          toast.error(res.data.message)
+        }
+      })
+    } catch (error) {
+      if (error.response.data.statusCode === 404) {
+        alert('unexpected error occurred')
+      }
+    }
+  }
+}
