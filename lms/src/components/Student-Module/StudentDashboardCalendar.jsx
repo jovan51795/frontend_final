@@ -9,7 +9,6 @@ import {
   Inject,
   EventSettingsModel,
 } from '@syncfusion/ej2-react-schedule'
-import Colors from 'src/views/theme/colors/Colors'
 
 const StudentDashboardCalendar = ({ schedules }) => {
   // const EventSettingsModel = {
