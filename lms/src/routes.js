@@ -96,6 +96,9 @@ const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsP
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
+//professor imports
+const AddProfessor = React.lazy(() => import('./views/professor/AddProfessor'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -178,6 +181,9 @@ const routes = [
   { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
   { path: '/faculty/grades-monitoring', name: 'Grades', element: GradingSheet },
   { path: '/faculty/grades-monitoring/id', name: 'Class Card', element: ClassCard },
+
+  //professor
+  { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
