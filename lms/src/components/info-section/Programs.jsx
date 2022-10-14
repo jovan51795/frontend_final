@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Container,
   Section,
@@ -14,9 +14,32 @@ import {
   FeatureTextWrapper,
 } from 'src/styles/Programs.style'
 
-import { programsData } from './ProgramsData'
+// import { programsData } from './ProgramsData'
+import { getAll } from '../../services/departmentService'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Programs = () => {
+  const dispatch = useDispatch()
+  const [departments, setDepartments] = useState([])
+
+  useEffect(() => {
+    getAllDepatment()
+  }, [])
+
+  const getAllDepatment = () => {
+    getAll().then((res) => {
+      if (res.data && res.data.status === 1) {
+        setDepartments(res.data.object)
+      }
+    })
+  }
+
+  useSelector((state) => {
+    if (state.department.status === 1) {
+      getAllDepatment()
+    }
+  })
+
   const initial = {
     y: 40,
     opacity: 0,
@@ -36,20 +59,20 @@ const Programs = () => {
           </FeatureSubtitle>
         </FeatureTextWrapper>
         <FeatureWrapper>
-          {programsData.map((el, index) => (
+          {departments.map((el, index) => (
             <FeatureColumn
               initial={initial}
               animate={animate}
               transition={{ duration: 0.5 + index * 0.1 }}
-              key={index}
+              key={el.departmentId}
             >
               <FeatureImageWrapper>
-                <FeatureImg src={el.img} alt={el.alt} />
+                <FeatureImg src={el.logo} alt={el.altlogo} />
               </FeatureImageWrapper>
               <FeatureLink to={el.link}>
-                <FeatureName>{el.name}</FeatureName>
+                <FeatureName>{el.departmentName}</FeatureName>
               </FeatureLink>
-              <FeatureText>{el.description}</FeatureText>
+              {/* <FeatureText>{el.description}</FeatureText> */}
             </FeatureColumn>
           ))}
         </FeatureWrapper>

@@ -65,7 +65,7 @@ const StudentsList = () => {
                       <CTableDataCell>{student.academicYear}</CTableDataCell>
                       <CTableDataCell>{student.sem}</CTableDataCell>
                       <CTableDataCell>
-                        {student.status === 'regulay' ? (
+                        {student.status === 'regular' ? (
                           <span className="badge bg-info">Regular</span>
                         ) : (
                           <mark className="badge bg-warning">Irregular</mark>
