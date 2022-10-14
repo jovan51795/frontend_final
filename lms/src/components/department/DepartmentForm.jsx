@@ -21,18 +21,27 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
   const [department, setDepartment] = useState(
     initialValue || {
       departmentName: '',
+      logo: '',
+      altlogo: '',
+      link: '',
       course: [],
     },
   )
 
   const [errors, setErrors] = useState({
     departmentName: '',
+    logo: '',
+    altlogo: '',
+    link: '',
     course: [{ courseTitle: '', courseCode: '' }],
   })
 
   const schema = Joi.object({
     departmentId: Joi.number().allow(),
     departmentName: Joi.string().required(),
+    logo: Joi.string().allow,
+    altlogo: Joi.string().allow,
+    link: Joi.string().allow,
     course: Joi.array().items(
       Joi.object({
         student: Joi.array().allow(),
@@ -132,6 +141,30 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
                 value={department.departmentName}
                 invalid={!!errors.departmentName}
                 feedback={errors.departmentName}
+              />
+            </CCol>
+          </CRow>
+          <CRow>
+            <CCol>
+              <CFormLabel>Department Logo</CFormLabel>
+              <CFormInput
+                onChange={handleOnChange}
+                name="departmentlogo"
+                value={department.logo}
+                invalid={!!errors.logo}
+                feedback={errors.logo}
+              />
+            </CCol>
+          </CRow>
+          <CRow>
+            <CCol>
+              <CFormLabel>Department Logo Alt Text</CFormLabel>
+              <CFormInput
+                onChange={handleOnChange}
+                name="departmentaltlogo"
+                value={department.altlogo}
+                invalid={!!errors.altlogo}
+                feedback={errors.altlogo}
               />
             </CCol>
           </CRow>

@@ -95,4 +95,105 @@ export const _navStudent = [
   },
 ]
 
+export const _navFaculty = [
+  {
+    component: CNavTitle,
+    name: 'FACULTY ACCESS',
+  },
+  {
+    component: CNavItem,
+    name: 'Dashboard',
+    to: '/faculty/dashboard',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+      text: 'NEW',
+    },
+  },
+  {
+    component: CNavItem,
+    name: 'Profile',
+    to: '/faculty/profile',
+    icon: null,
+  },
+  {
+    component: CNavGroup,
+    name: 'Students',
+    to: '',
+    icon: null,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Student List',
+        to: 'faculty/students/list',
+      },
+      {
+        component: CNavItem,
+        name: 'Attendance Monitoring',
+        to: '/faculty/students/attendance-monitoring',
+      },
+      {
+        component: CNavItem,
+        name: 'Grades Monitoring',
+        to: '/faculty/students/grades-monitoring',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Course Load',
+    to: '',
+    icon: null,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Load List',
+        to: '/subjects',
+      },
+      {
+        component: CNavItem,
+        name: 'Class Schedule',
+        to: '/subject/add',
+      },
+    ],
+  },
+]
+
+export const _navParent = [
+  {
+    component: CNavTitle,
+    name: 'PARENT',
+  },
+  {
+    component: CNavItem,
+    name: 'Dashboard',
+    to: '/parent/dashboard',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Profile',
+    to: '/student/profile',
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavGroup,
+    name: 'My Course',
+    to: '',
+    icon: <CIcon icon={cilBook} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'My Subjects',
+        to: '/student/allsubjects',
+      },
+      {
+        component: CNavItem,
+        name: 'Enroll Subjects',
+        to: '/student/enroll',
+      },
+    ],
+  },
+]
+
 export default _nav

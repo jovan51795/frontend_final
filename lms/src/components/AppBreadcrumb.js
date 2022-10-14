@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import routes from '../routes'
+import '../scss/_header.scss'
 
 import { CBreadcrumb, CBreadcrumbItem } from '@coreui/react'
 
