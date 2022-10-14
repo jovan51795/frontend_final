@@ -96,6 +96,12 @@ const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsP
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
+//professor imports
+const AddProfessor = React.lazy(() => import('./views/professor/AddProfessor'))
+const ProfessorList = React.lazy(() => import('./views/professor/ProfessorList'))
+const EditProfessor = React.lazy(() => import('./views/professor/EditProfessor'))
+const ProfessorDetails = React.lazy(() => import('./views/professor/ProfessorDetails'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -178,6 +184,12 @@ const routes = [
   { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
   { path: '/faculty/grades-monitoring', name: 'Grades', element: GradingSheet },
   { path: '/faculty/grades-monitoring/id', name: 'Class Card', element: ClassCard },
+
+  //professor
+  { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
+  { path: '/professors', name: 'Professors', element: ProfessorList },
+  { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
+  { path: '/professor/edit/:id', name: 'Professors', element: EditProfessor },
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },

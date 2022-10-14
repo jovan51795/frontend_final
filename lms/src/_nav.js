@@ -22,6 +22,24 @@ export const _nav = [
   },
   {
     component: CNavGroup,
+    name: 'Professor',
+    to: '',
+    icon: <CIcon icon={cilSchool} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Add Professor',
+        to: '/professor/add',
+      },
+      {
+        component: CNavItem,
+        name: 'Professors',
+        to: '/professors',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
     name: 'Student',
     to: '',
     icon: <CIcon icon={cilSchool} customClassName="nav-icon" />,
