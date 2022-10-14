@@ -98,6 +98,9 @@ const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
 //professor imports
 const AddProfessor = React.lazy(() => import('./views/professor/AddProfessor'))
+const ProfessorList = React.lazy(() => import('./views/professor/ProfessorList'))
+const EditProfessor = React.lazy(() => import('./views/professor/EditProfessor'))
+const ProfessorDetails = React.lazy(() => import('./views/professor/ProfessorDetails'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -184,6 +187,9 @@ const routes = [
 
   //professor
   { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
+  { path: '/professors', name: 'Professors', element: ProfessorList },
+  { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
+  { path: '/professor/edit/:id', name: 'Professors', element: EditProfessor },
 
   //Student Module
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },

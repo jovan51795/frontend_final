@@ -18,15 +18,18 @@ import Joi from 'joi'
 import React, { useState } from 'react'
 import camelCaseToWords from '../../services/lodashService'
 
-const ProfessorForm = ({ onSubmit }) => {
-  const [form, setFrom] = useState({
-    professorNo: '',
-    professorName: '',
-    work: '',
-    gender: '',
-    status: '',
-    birthdate: '',
-  })
+const ProfessorForm = ({ onSubmit, initialValue }) => {
+  console.log(initialValue)
+  const [form, setFrom] = useState(
+    initialValue || {
+      professorNo: '',
+      professorName: '',
+      work: '',
+      gender: '',
+      status: 'Regular',
+      birthdate: '',
+    },
+  )
 
   const [errors, setErrors] = useState({})
 
