@@ -98,7 +98,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
     if (type === 'dep') {
       const department = { ...data }
       delete department.course
-      setForm({ ...form, [e.currentTarget.name]: department })
+      return setForm({ ...form, [e.currentTarget.name]: department })
     }
 
     setForm({ ...form, [e.currentTarget.name]: data })
@@ -110,12 +110,23 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       form.subject.splice(index, 1)
       return setForm(form)
     }
+    const subject = { ...data }
+    delete subject.course
+    delete subject.student
     return setForm({ ...form, subject: [...form.subject, data] })
   }
 
   const handleSubmit = (e) => {
+    const data = { ...form }
+    if (!data.department.departmentId) {
+      delete data.department
+    }
+    if (!form.course.courseId) {
+      delete data.course
+    }
     e.preventDefault()
-    onSubmit(form)
+    console.log(data)
+    onSubmit(data)
   }
 
   const handleCourseCheck = (data) => {
