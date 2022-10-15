@@ -79,13 +79,13 @@ export const FooterLinkTitle = styled.h1`
 `
 
 export const FooterLink = styled(Link)`
-  color: #dcdcdc;
+  color: #dcdcdc !important;
   margin-bottom: 0.5rem;
   font-size: 14px;
   text-decoration: none;
 
   &:hover {
-    color: #1f75fe;
+    color: #2c9971 !important;
     transition: 0.3s ease-out;
   }
 `
@@ -128,6 +128,6 @@ export const SocialIcons = styled.div`
   width: 240px;
 `
 export const SocialIconLink = styled.a`
-  color: #fff;
+  color: #fff !important;
   font-size: 24px;
 `

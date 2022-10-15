@@ -6,7 +6,7 @@ export const Btn = styled(LinkRouter)`
   background: ${({ primary }) => (primary ? '#2C8263' : '#022135')};
   white-space: nowrap;
   padding: ${({ big }) => (big ? '12px 20px' : '5px 10px')};
-  color: ${({ dark }) => (dark ? '#022135' : '#fff')};
+  color: ${({ dark }) => (dark ? '#022135 !important' : '#fff !important')};
   font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
   outline: none;
   text-decoration: none;

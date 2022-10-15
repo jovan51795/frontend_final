@@ -58,3 +58,5 @@ export const deleteProfessor = (id) => {
     })
   }
 }
+
+export const studentsListByProf = () => {}

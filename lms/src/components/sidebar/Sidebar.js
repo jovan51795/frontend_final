@@ -17,14 +17,58 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <CDropdown>
+          {/* <CDropdown>
             <CDropdownToggle color="secondary">About ABC</CDropdownToggle>
             <CDropdownMenu>
               <CDropdownItem href="#">Action</CDropdownItem>
               <CDropdownItem href="#">Another action</CDropdownItem>
               <CDropdownItem href="#">Something else here</CDropdownItem>
             </CDropdownMenu>
-          </CDropdown>
+          </CDropdown> */}
+          <ul className="nav flex-column">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <div className="dropdown-menu">
+                <a className="dropdown-item" href="#">
+                  Action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Another action
+                </a>
+                <a className="dropdown-item" href="#">
+                  Something else here
+                </a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">
+                  Separated link
+                </a>
+              </div>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Link
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                Link
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link disabled" href="#">
+                Disabled
+              </a>
+            </li>
+          </ul>
 
           {/* <SidebarLink>
               <SideDropDownContainer2>

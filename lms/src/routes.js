@@ -52,6 +52,7 @@ const EditProfessor = React.lazy(() => import('./views/professor/EditProfessor')
 const ProfessorDetails = React.lazy(() => import('./views/professor/ProfessorDetails'))
 
 const routes = [
+  //LANDING PAGE
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
 
@@ -68,7 +69,8 @@ const routes = [
 
   { path: '/campus-life', name: 'Campus Life', element: CampusLife },
 
-  { path: '/students', name: 'Students', element: StudentList },
+  //ADMIN MODULE
+  { path: '/students', name: 'ABC Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
   { path: '/student/details/:id', name: 'Student Details', element: StudentDetails },
   { path: '/student/edit/:id', name: 'Student details', element: EditStudent },
@@ -82,7 +84,13 @@ const routes = [
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
   { path: '/department/edit/:id', name: 'Edit Department', element: EditDepartment },
 
-  //Faculty
+  //professor
+  { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
+  { path: '/professors', name: 'Professors', element: ProfessorList },
+  { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
+  { path: '/professor/edit/:id', name: 'Professors', element: EditProfessor },
+
+  //FACULTY MODULE
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },
   { path: '/faculty/profile', name: 'Profile', element: FacultyProfile },
   { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
@@ -90,13 +98,7 @@ const routes = [
   { path: '/faculty/grades-monitoring', name: 'Grades', element: GradingSheet },
   { path: '/faculty/grades-monitoring/id', name: 'Class Card', element: ClassCard },
 
-  //professor
-  { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
-  { path: '/professors', name: 'Professors', element: ProfessorList },
-  { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
-  { path: '/professor/edit/:id', name: 'Professors', element: EditProfessor },
-
-  //Student Module
+  //STUDENT MODULE
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
   { path: '/student/profile', name: 'Student Profile', element: StudentProfile },
   { path: '/student/subjects', name: 'My Subjects', element: StudentSubject },

@@ -3,11 +3,12 @@ import FacultyHeader from 'src/components/header/FacultyHeader'
 import FacultySidebar from 'src/components/sidebar/FacultySidebar'
 import { AppFooter } from 'src/components'
 import FacultyDashboard from 'src/views/faculty/FacultyDashboard'
+import Header from 'src/components/header/Header'
 
 const FacultyModule = () => {
   return (
     <>
-      <div>
+      {/* <div>
         <FacultySidebar />
         <div className="wrapper d-flex flex-column min-vh-100 bg-light">
           <FacultyHeader />
@@ -16,7 +17,8 @@ const FacultyModule = () => {
           </div>
           <AppFooter />
         </div>
-      </div>
+      </div> */}
+      <Header />
     </>
   )
 }
