@@ -267,7 +267,11 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                     {departments.map((dep) => (
                       <CCol key={dep.departmentId} sm={6} lg={6} className="mb-2">
                         <CFormCheck
-                          checked={form.department.departmentId === dep.departmentId ? true : false}
+                          checked={
+                            form.department && form.department.departmentId === dep.departmentId
+                              ? true
+                              : false
+                          }
                           type="radio"
                           value={dep}
                           name="department"
@@ -278,7 +282,11 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                           <CRow key={crs.courseId} className="ms-2">
                             <CCol>
                               <CFormCheck
-                                checked={form.course.courseId === crs.courseId ? true : false}
+                                checked={
+                                  form.course && form.course.courseId === crs.courseId
+                                    ? true
+                                    : false
+                                }
                                 value={crs}
                                 name="course"
                                 type="radio"
