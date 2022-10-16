@@ -9,8 +9,8 @@ import PassingLineChart from '../charts/PassingLineChart'
 const FacultyDashboard = () => {
   return (
     <div>
-      <DashboardProfile />
-      <hr />
+      <div className="comptitle">My Dashboard</div>
+      <div>Welcome John Smith</div>
       <div className="row no-gutters mt-4">
         <div className=" col-md-6 col-lg-6 p-2">
           <PassingBarChart />

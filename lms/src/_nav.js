@@ -3,7 +3,7 @@ import CIcon from '@coreui/icons-react'
 import { cilBook, cilSchool, cilSpeedometer, cilInstitution, cilUser } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
-export const _nav = [
+export const _navAdmin = [
   {
     component: CNavItem,
     name: 'Dashboard',
@@ -218,5 +218,3 @@ export const _navParent = [
     ],
   },
 ]
-
-export default _nav

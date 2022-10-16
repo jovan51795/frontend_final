@@ -13,7 +13,7 @@ import logoSmall from '../assets/images/logo.png'
 import { getUserInfo } from '../services/userInfo'
 
 // sidebar nav config
-import { _nav, _navFaculty, _navStudent, _navParent } from '../_nav'
+import { _navFaculty, _navStudent, _navParent, _navAdmin } from 'src/_nav'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ const AppSidebar = () => {
     if (userInFo && userInFo.object.type === 'student') {
       setnavigation(_navStudent)
     } else if (userInFo && userInFo.object.type === 'Admin') {
-      setnavigation(_nav)
+      setnavigation(_navAdmin)
     }
     // } else if (userInFo && userInFo.object.type === 'faculty') {
     //   setnavigation(_navFaculty)
