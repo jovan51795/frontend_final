@@ -1,22 +1,5 @@
 import React from 'react'
-import {
-  CAvatar,
-  CButton,
-  CButtonGroup,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-} from '@coreui/react'
+import { CCard, CCardBody, CCardHeader } from '@coreui/react'
 import StudentDashboardWidgetsDropdown from 'src/components/Student-Module/StudentDashboardWidgets'
 import StudentDashboardCalendar from 'src/components/Student-Module/StudentDashboardCalendar'
 import StudentNews from 'src/components/Student-Module/StudentNews'
@@ -58,7 +41,7 @@ const StudentDashboard = () => {
         <CCardHeader>
           <strong>ABCUniversity News</strong>
         </CCardHeader>
-        <CCardBody>
+        <CCardBody style={{ height: '500px', width: 'auto', overflow: 'scroll auto' }}>
           <StudentNews />
         </CCardBody>
       </CCard>
@@ -67,7 +50,7 @@ const StudentDashboard = () => {
         <CCardHeader>
           <strong>My Schedule</strong>
         </CCardHeader>
-        <CCardBody>
+        <CCardBody style={{ height: '500px', width: 'auto', overflow: 'scroll auto' }}>
           <StudentDashboardCalendar schedules={studentSchedules} />
         </CCardBody>
       </CCard>

@@ -1,9 +1,24 @@
 import { CCard, CCardBody, CRow, CCol, CImage } from '@coreui/react'
 import React from 'react'
-import { studentdata } from './studentdata'
 
-const StudentProfileForm = () => {
-  const student = studentdata[1]
+const StudentProfileForm = ({ studentInfo }) => {
+  const date = new Date(studentInfo.birthDate)
+  const month = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ][date.getMonth()]
+  const birthDate = month + ' ' + date.getDate() + ', ' + date.getFullYear()
+  console.log(studentInfo)
   return (
     <CRow>
       <CCol xs={12} sm={6} lg={4}>
@@ -17,12 +32,10 @@ const StudentProfileForm = () => {
             />
             <div>
               <h3>
-                {student.firstName} {student.lastName}
+                {studentInfo.firstName} {studentInfo.lastName}
               </h3>
-              <p className="mb-1">BSIT</p>
-              <p className="text-muted font-size-sm">College of Computer Studies</p>
-              {/* <button className="btn btn-primary">Follow</button>
-              <button className="btn btn-outline-primary">Message</button> */}
+              <p className="mb-1">{}</p>
+              <p className="text-muted font-size-sm">{studentInfo.department}/</p>
             </div>
           </CCardBody>
         </CCard>
@@ -32,10 +45,10 @@ const StudentProfileForm = () => {
           <CCardBody>
             <CRow>
               <CCol sm={3}>
-                <h6 className="mb-0">Username:</h6>
+                <h6 className="mb-0">Student Number:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                {student.username}
+                {studentInfo.studentNo}
               </CCol>
             </CRow>
             <hr />
@@ -44,7 +57,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">First Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                {student.firstName}
+                {studentInfo.firstName}
               </CCol>
             </CRow>
             <hr />
@@ -53,7 +66,7 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Last Name:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                {student.lastName}
+                {studentInfo.lastName}
               </CCol>
             </CRow>
             <hr />
@@ -62,7 +75,16 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Date of Birth:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                {student.birthdate}
+                {birthDate}
+              </CCol>
+            </CRow>{' '}
+            <hr />
+            <CRow>
+              <CCol sm={3}>
+                <h6 className="mb-0">Mobile Number:</h6>
+              </CCol>
+              <CCol sm={9} className="text-secondary">
+                {studentInfo.mobileNumber}
               </CCol>
             </CRow>
             <hr />
@@ -71,7 +93,25 @@ const StudentProfileForm = () => {
                 <h6 className="mb-0">Address:</h6>
               </CCol>
               <CCol sm={9} className="text-secondary">
-                {student.address}
+                {studentInfo.address}
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={3}>
+                <h6 className="mb-0">Contact Person:</h6>
+              </CCol>
+              <CCol sm={9} className="text-secondary">
+                {studentInfo.emergencyContactPerson}
+              </CCol>
+            </CRow>{' '}
+            <hr />
+            <CRow>
+              <CCol sm={3}>
+                <h6 className="mb-0">Contact Number:</h6>
+              </CCol>
+              <CCol sm={9} className="text-secondary">
+                {studentInfo.emergencyContactNumber}
               </CCol>
             </CRow>
           </CCardBody>
