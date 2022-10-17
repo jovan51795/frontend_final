@@ -74,6 +74,10 @@ const StudentForm = ({ onSubmit, initialValue }) => {
     program: Joi.allow({}).optional(),
     grades: Joi.allow(),
     type: Joi.allow(),
+    address: Joi.allow(),
+    mobileNumber: Joi.allow(),
+    emergencyContactPerson: Joi.allow(),
+    emergencyContactNumber: Joi.allow(),
   })
 
   const handleChange = (e) => {
@@ -143,6 +147,8 @@ const StudentForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(form)
+    console.log(result)
+    console.log(form, 'the form')
     return !!result.error
   }
   return (

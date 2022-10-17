@@ -53,11 +53,11 @@ const StudentDetails = () => {
             <CRow>
               <CCol md={6} xs={12} className="mb-3">
                 <h6>Department</h6>
-                {student.department.departmentName}
+                {student.department ? student.department.departmentName : 'Empty'}
               </CCol>
               <CCol md={6} xs={12} className="mb-3">
                 <h6>Course</h6>
-                {student.course.courseTitle}
+                {student.course ? student.course.courseTitle : 'Empty'}
               </CCol>
               <CCol md={6} xs={12} className="mb-3">
                 <h6>Academic Status</h6>
