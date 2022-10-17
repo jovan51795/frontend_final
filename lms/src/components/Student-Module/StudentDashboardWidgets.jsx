@@ -24,7 +24,7 @@ const StudentDashboardWidgets = () => {
           color="primary"
           icon={<CIcon icon={cilSchool} height={24} />}
           title="Total Units Earned"
-          value=" Units"
+          value="0 Units"
         />
       </CCol>
       <CCol xs={12} sm={6} lg={4}>
