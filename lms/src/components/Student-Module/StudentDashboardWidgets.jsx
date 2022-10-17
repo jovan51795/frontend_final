@@ -1,18 +1,8 @@
 import React from 'react'
 
 import { CRow, CCol, CWidgetStatsF } from '@coreui/react'
-import { getStyle } from '@coreui/utils'
-import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
-import {
-  cilArrowBottom,
-  cilArrowTop,
-  cilBadge,
-  cilBook,
-  cilOptions,
-  cilSchool,
-} from '@coreui/icons'
-import { cilChartPie } from '@coreui/icons'
+import { cilBadge, cilBook, cilSchool } from '@coreui/icons'
 
 const StudentDashboardWidgets = () => {
   return (

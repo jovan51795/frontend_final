@@ -7,7 +7,6 @@ import {
   Month,
   Agenda,
   Inject,
-  EventSettingsModel,
 } from '@syncfusion/ej2-react-schedule'
 
 const StudentDashboardCalendar = ({ schedules }) => {
