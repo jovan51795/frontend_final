@@ -99,11 +99,11 @@ const routes = [
   { path: '/faculty/grades-monitoring/id', name: 'Class Card', element: ClassCard },
 
   //STUDENT MODULE
-  { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
-  { path: '/student/profile', name: 'Student Profile', element: StudentProfile },
-  { path: '/student/subjects', name: 'My Subjects', element: StudentSubject },
-  { path: '/student/grades', name: 'Grades', element: StudentGrades },
-  { path: '/student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
+  { path: '/:student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
+  { path: '/:student/profile', name: 'Student Profile', element: StudentProfile },
+  { path: '/:student/subjects', name: 'My Subjects', element: StudentSubject },
+  { path: '/:student/grades', name: 'Grades', element: StudentGrades },
+  { path: '/:student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
 ]
 
 export default routes

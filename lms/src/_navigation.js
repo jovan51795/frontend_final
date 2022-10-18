@@ -1,11 +1,14 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilFolderOpen, cilSpreadsheet, cilSpeedometer } from '@coreui/icons'
+import { cilFolderOpen, cilSpreadsheet, cilSpeedometer, cilBook } from '@coreui/icons'
 import { FaCalendarAlt, FaUserTie, FaUser, FaGraduationCap } from 'react-icons/fa'
 import { RiAdminFill, RiUserSettingsFill } from 'react-icons/ri'
 import { ImLibrary, ImBooks } from 'react-icons/im'
 import { MdCalendarViewMonth } from 'react-icons/md'
 import { GiDiploma } from 'react-icons/gi'
+import { getUserInfo } from './services/userInfo'
+
+const userInFo = getUserInfo().object
 
 export const _navAdmin = [
   {
@@ -82,17 +85,17 @@ export const _navStudent = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: '',
+    link: `${userInFo.studentNo}/dashboard`,
   },
   {
     label: 'My Profile',
     icon: <FaUser className="nav-icon" />,
-    link: '',
+    link: `${userInFo.studentNo}/profile`,
   },
   {
-    label: 'My Class Schedule',
-    icon: <FaCalendarAlt className="nav-icon" />,
-    link: '',
+    label: 'My Subjects',
+    icon: <CIcon icon={cilBook} customClassName="nav-icon" />,
+    link: `${userInFo.studentNo}/subjects`,
   },
   {
     label: 'My Attendance',

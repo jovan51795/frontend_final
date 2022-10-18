@@ -1,18 +1,8 @@
 import React from 'react'
 
 import { CRow, CCol, CWidgetStatsF } from '@coreui/react'
-import { getStyle } from '@coreui/utils'
-import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
-import {
-  cilArrowBottom,
-  cilArrowTop,
-  cilBadge,
-  cilBook,
-  cilOptions,
-  cilSchool,
-} from '@coreui/icons'
-import { cilChartPie } from '@coreui/icons'
+import { cilBadge, cilBook, cilSchool } from '@coreui/icons'
 
 const StudentDashboardWidgets = () => {
   return (
@@ -24,7 +14,7 @@ const StudentDashboardWidgets = () => {
           color="primary"
           icon={<CIcon icon={cilSchool} height={24} />}
           title="Total Units Earned"
-          value="60 Units"
+          value="0 Units"
         />
       </CCol>
       <CCol xs={12} sm={6} lg={4}>
@@ -33,7 +23,7 @@ const StudentDashboardWidgets = () => {
           color="warning"
           icon={<CIcon icon={cilBook} height={24} />}
           title="Total Subjects Completed"
-          value="20 Subjects"
+          value="0 Subjects"
         />
       </CCol>
       <CCol xs={12} sm={6} lg={4}>
@@ -42,7 +32,7 @@ const StudentDashboardWidgets = () => {
           color="success"
           icon={<CIcon icon={cilBadge} height={24} />}
           title="Current GWA"
-          value="2.0"
+          value="0.0"
         />
       </CCol>
     </CRow>

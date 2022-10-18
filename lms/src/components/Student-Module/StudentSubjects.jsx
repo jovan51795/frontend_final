@@ -1,5 +1,3 @@
-import { cilTrash } from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
 import {
   CCard,
   CCardBody,
@@ -13,8 +11,11 @@ import {
   CButton,
 } from '@coreui/react'
 import React from 'react'
+import { getUserInfo } from 'src/services/userInfo'
 
 const StudentSubjects = () => {
+  const subjects = getUserInfo().object.subject
+  console.log(getUserInfo().object)
   return (
     <div>
       <CCard className="mb-4">
@@ -27,28 +28,25 @@ const StudentSubjects = () => {
               <CTableRow>
                 <CTableHeaderCell scope="col">Subject Code</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Title</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Professor</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Units</CTableHeaderCell>
-                <CTableHeaderCell scope="col" style={{ textAlign: 'center' }}>
-                  Actions
-                </CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
+              {subjects.map((subject) => (
+                <CTableRow key={subject.subject_id}>
+                  <CTableDataCell>MATH123</CTableDataCell>
+                  <CTableDataCell>Basic Calculus</CTableDataCell>
+                  <CTableDataCell>Teacher1</CTableDataCell>
+                  <CTableDataCell>5</CTableDataCell>
+                </CTableRow>
+              ))}
+
               <CTableRow>
-                <CTableDataCell>MATH123</CTableDataCell>
-                <CTableDataCell>Basic Calculus</CTableDataCell>
-                <CTableDataCell>5</CTableDataCell>
-                <CTableDataCell style={{ textAlign: 'center' }}>
-                  <CButton color="danger" size="sm">
-                    <CIcon icon={cilTrash} className="text-light" size="xs" color="white" />
-                  </CButton>
-                </CTableDataCell>
-              </CTableRow>
-              <CTableRow>
-                <CTableDataCell colSpan={2} style={{ textAlign: 'right' }}>
+                <CTableDataCell colSpan={3} style={{ textAlign: 'right' }}>
                   <b>Total Units:</b>
                 </CTableDataCell>
-                <CTableDataCell colSpan={2}>Total</CTableDataCell>
+                <CTableDataCell>Total</CTableDataCell>
               </CTableRow>
             </CTableBody>
           </CTable>
