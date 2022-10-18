@@ -5,6 +5,7 @@ import {
   ImageWrapper,
   CarouselImage,
   CardButton,
+  Link,
 } from 'src/styles/Carousel.styles'
 import { Row, Heading, Section, TextWrapper } from 'src/styles/Global.styles'
 import { data, sliderSettings } from './NewsCarouselData'
@@ -45,7 +46,9 @@ const NewsCarousel = () => {
             <TextWrapper size="0.9rem" margin="0.7rem" color="#4f4f4f">
               {el.description}
             </TextWrapper>
-            <CardButton>Learn More</CardButton>
+            <CardButton>
+              <Link to="/latest-news">Learn More</Link>
+            </CardButton>
           </ImageWrapper>
         ))}
       </ReviewSlider>
