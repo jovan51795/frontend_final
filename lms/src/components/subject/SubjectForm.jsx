@@ -107,7 +107,13 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
                         {dep.course.map((course) => (
                           <CFormCheck
                             name="course"
-                            checked={subjectForm.course.courseId === course.courseId ? true : false}
+                            checked={
+                              subjectForm.course &&
+                              course &&
+                              subjectForm.course.courseId === course.courseId
+                                ? true
+                                : false
+                            }
                             label={course.courseTitle}
                             key={course.courseId}
                             onChange={(e) => handleChangeCourse(e, course)}

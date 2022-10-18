@@ -147,8 +147,6 @@ const StudentForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(form)
-    console.log(result)
-    console.log(form, 'the form')
     return !!result.error
   }
   return (
