@@ -74,6 +74,10 @@ const StudentForm = ({ onSubmit, initialValue }) => {
     program: Joi.allow({}).optional(),
     grades: Joi.allow(),
     type: Joi.allow(),
+    address: Joi.allow(),
+    mobileNumber: Joi.allow(),
+    emergencyContactPerson: Joi.allow(),
+    emergencyContactNumber: Joi.allow(),
   })
 
   const handleChange = (e) => {

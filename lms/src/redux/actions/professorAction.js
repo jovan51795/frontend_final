@@ -24,7 +24,7 @@ export const professorDetails = (id) => {
       if (res.data) {
         dispatch({
           type: variables.PROFESSORDETAILS,
-          payload: res.data,
+          payload: res.data.object,
         })
       }
     })
