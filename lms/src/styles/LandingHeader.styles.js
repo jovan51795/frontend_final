@@ -29,8 +29,8 @@ export const NavbarContainer = styled.div`
 `
 
 export const NavLogo = styled.img`
-  width: 175px;
-  height: 55px;
+  width: 160px;
+  height: 60px;
   justify-self: flex-start;
   display: flex;
   align-items: center;
@@ -42,7 +42,7 @@ export const NavLogo = styled.img`
 export const MobileIcon = styled.div`
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 960px) {
     display: block;
     position: absolute;
     top: -20px;
@@ -50,7 +50,7 @@ export const MobileIcon = styled.div`
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color: #0d181b;
+    color: #022135;
   }
 `
 
@@ -70,6 +70,16 @@ export const NavMenu = styled.ul`
   }
 `
 
+export const NavMenuActive = styled.ul`
+  @media screen and (max-width: 960px) {
+    background: #242222;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+`
+
 export const NavItem = styled.li`
   height: 45px;
   float: left;
@@ -80,19 +90,42 @@ export const NavItem = styled.li`
   @media screen and (max-width: 1250px) {
     width: 93px;
   }
+
+  @media screen and (max-width: 960px) {
+    width: 350px;
+    margin-top: 0;
+    margin-top: 30px;
+
+    &:hover {
+      margin-top: 10px;
+    }
+  }
 `
 
 export const NavLinks = styled(LinkScroll)`
-  color: #022135;
+  color: #003169 !important;
   display: flex;
-  // align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
   height: 100%;
   cursor: pointer;
 
   &.active {
     border-bottom: 3px solid #022135;
+  }
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: #2c8263 !important;
+  }
+
+  @media screen and (max-width: 960px) {
+    padding-left: 30px;
+    color: white !important;
+
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      color: #2c8263 !important;
+    }
   }
 `
 
@@ -144,6 +177,10 @@ export const DrpdownLink = styled(LinkRouter)`
   // &:hover {
   //   background-color: #f1f1f1;
   }
+
+  @media screen and (max-width: 960px) {
+    font-size: 25px;
+  }
 `
 
 export const DropDownContainer = styled('div')`
@@ -179,6 +216,11 @@ export const DropDownHeader = styled('div')`
 export const DropDownListContainer = styled('div')`
   width: 165px;
   margin-left: 32px;
+
+  @media screen and (max-width: 960px) {
+    margin-left: 0px;
+    width: 300px;
+  }
 `
 
 export const DropDownListContainer2 = styled('div')`
@@ -220,8 +262,8 @@ export const SCTAButton = styled.button`
   margin-top: 10px;
   margin-left: 30px;
   padding: 5px 10px;
+
   border-radius: ${v.borderRadius};
-  display: none;
 
   &:hover {
     transition: all 0.2s ease-in-out;
@@ -233,12 +275,22 @@ export const SCTAButton = styled.button`
     display: block;
   }
 
-  @media ${b.md} {
+  @media screen and (max-width: 960px) {
+    margin-left: 0px;
+  }
+
+  @media screen and (max-width: 768px) {
     display: initial;
   }
 `
 
 export const Link = styled(LinkRouter)`
+  color: #003169 !important;
   text-decoration: none;
-  color: #022135;
+`
+
+export const PublicLink = styled(LinkRouter)`
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500;
 `

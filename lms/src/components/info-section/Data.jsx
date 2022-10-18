@@ -21,7 +21,7 @@ export const homeData1 = {
 
 export const homeData2 = {
   id: 'apply',
-  link: '/admission/enrollment-procedure',
+  link: '/admission/admission-procedures',
   lightBg: true,
   lightText: true,
   lightTextDesc: true,

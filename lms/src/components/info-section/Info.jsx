@@ -12,7 +12,6 @@ import {
   Column2,
   ImgWrap,
   Img,
-  Link,
 } from 'src/styles/Info.styles'
 import { Button } from 'src/styles/Button.styles'
 import PropTypes from 'prop-types'
@@ -48,20 +47,19 @@ const Info = ({
                 </Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-                  <Link to={link}>
-                    <Button
-                      smooth={true}
-                      duration={500}
-                      spy={true}
-                      exact="true"
-                      offset={-60}
-                      primary={primary ? 1 : 0}
-                      dark={dark ? 1 : 0}
-                      dark2={dark2 ? 1 : 0}
-                    >
-                      {buttonLabel}
-                    </Button>
-                  </Link>
+                  <Button
+                    to={link}
+                    smooth={true}
+                    duration={500}
+                    spy={true}
+                    exact="true"
+                    offset={-60}
+                    primary={primary ? 1 : 0}
+                    dark={dark ? 1 : 0}
+                    dark2={dark2 ? 1 : 0}
+                  >
+                    {buttonLabel}
+                  </Button>
                 </BtnWrap>
               </TextWrapper>
             </Column1>

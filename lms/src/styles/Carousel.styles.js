@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Row } from './Global.styles'
 import Slider from 'react-slick'
+import { Link as LinkRouter } from 'react-router-dom'
 
 export const CarouselImage = styled.img`
   width: 100%;
@@ -79,4 +80,8 @@ export const CardButton = styled.button`
     background-color: #112f4a;
     transition: background-color 0.2s ease-in;
   }
+`
+export const Link = styled(LinkRouter)`
+  color: white !important;
+  text-decoration: none;
 `
