@@ -1,0 +1,24 @@
+.no-border {
+  --cui-card-border-color: none !important;
+}
+
+.login-title {
+  color: #003169;
+}
+
+.login-btn {
+  --cui-btn-color: white;
+  --cui-btn-bg: #003169;
+  --cui-btn-hover-bg: #076eb0;
+  --cui-btn-hover-border-color: #003169;
+  --cui-btn-hover-color: white;
+  --cui-btn-active-bg: #003169;
+  --cui-btn-active-border-color: #003169;
+  --cui-btn-disabled-bg: #076eb0 !important;
+  --cui-btn-disabled-border-color: #003169;
+}
+
+.login-flex {
+  display: flex;
+  justify-content: center;
+}

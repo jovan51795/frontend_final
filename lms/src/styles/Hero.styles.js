@@ -9,7 +9,7 @@ export const HeroContainer = styled.div`
   padding: 0 30px;
   height: 650px;
   position: relative;
-  z-index: 1;
+  // z-index: 1;
 `
 
 export const HeroBg = styled.div`
@@ -32,7 +32,7 @@ export const VideoBg = styled.video`
 `
 
 export const HeroContent = styled.div`
-  z-index: 3;
+  // z-index: 3;
   max-width: 1200px;
   position: absolute;
   padding: 8px 24px;
