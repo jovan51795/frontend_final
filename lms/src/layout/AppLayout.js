@@ -64,7 +64,7 @@ const AppLayout = () => {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
-                <MdOutlineMenu style={{ color: 'white' }} />
+                <MdOutlineMenu style={{ color: '#022135' }} />
               </button>
               <div className="collapse navbar-collapse" id="navbarText">
                 <div className="navbar-nav me-auto mb-2 mb-lg-0"></div>
