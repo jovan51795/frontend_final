@@ -57,22 +57,22 @@ export const _navFaculty = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: `${userInFo.type}/dashboard`,
+    link: `${userInFo && userInFo.type}/dashboard`,
   },
   {
     label: 'My Profile',
     icon: <FaUserTie className="nav-icon" />,
-    link: `${userInFo.type}/profile`,
+    link: `${userInFo && userInFo.type}/profile`,
   },
   {
     label: 'My Class Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
-    link: `${userInFo.type}/class-schedule`,
+    link: `${userInFo && userInFo.type}/class-schedule`,
   },
   {
     label: 'My Attendance Monitoring',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
-    link: `${userInFo.type}/attendance-monitoring`,
+    link: `${userInFo && userInFo.type}/attendance-monitoring`,
   },
   {
     label: 'Student Evaluation',
