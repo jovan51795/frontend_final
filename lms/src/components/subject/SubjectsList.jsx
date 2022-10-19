@@ -4,8 +4,6 @@ import {
   CCard,
   CCardBody,
   CCardHeader,
-  CCardText,
-  CCardTitle,
   CCol,
   CRow,
   CTable,

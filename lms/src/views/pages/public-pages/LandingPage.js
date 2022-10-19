@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import LandingHeader from 'src/components/header/LandingHeader'
 import Hero from 'src/components/hero/LandingHero'
 import Info from 'src/components/info-section/Info'
@@ -17,11 +17,6 @@ const Landing = styled.div`
   font-family: 'Encode Sans Expanded', sans-serif;
 `
 const LandingPage = () => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggle = () => {
-    setIsOpen(!isOpen)
-  }
   return (
     <>
       <Landing>

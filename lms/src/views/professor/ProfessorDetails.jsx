@@ -1,4 +1,4 @@
-import { CCard, CCardHeader, CCardTitle, CCol, CFormLabel, CRow } from '@coreui/react'
+import { CCard, CCardHeader, CCardTitle, CCol, CRow } from '@coreui/react'
 import { CCardBody } from '@coreui/react-pro'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ const ProfessorDetails = () => {
 
   useEffect(() => {
     dispath(professorDetails(+param.id))
-  }, [param])
+  }, [param, dispath])
   return (
     <CCard>
       <CCardHeader>
