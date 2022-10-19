@@ -6,14 +6,10 @@ import {
   CCol,
   CContainer,
   CForm,
-  CFormFeedback,
   CFormInput,
   CInputGroup,
-  CInputGroupText,
   CRow,
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
 
 import { useDispatch, useSelector } from 'react-redux'
 import Joi from 'joi'
