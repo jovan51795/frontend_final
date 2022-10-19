@@ -19,7 +19,7 @@ export const _navAdmin = [
   {
     label: 'My Profile',
     icon: <RiAdminFill className="nav-icon" />,
-    link: '',
+    link: '/admin/profile',
   },
   {
     label: 'Student Module',
