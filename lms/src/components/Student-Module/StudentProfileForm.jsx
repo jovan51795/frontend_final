@@ -18,7 +18,7 @@ const StudentProfileForm = ({ studentInfo }) => {
     'December',
   ][date.getMonth()]
   const birthDate = month + ' ' + date.getDate() + ', ' + date.getFullYear()
-  console.log(studentInfo)
+
   return (
     <CRow>
       <CCol xs={12} sm={6} lg={4}>
@@ -34,8 +34,8 @@ const StudentProfileForm = ({ studentInfo }) => {
               <h3>
                 {studentInfo.firstName} {studentInfo.lastName}
               </h3>
-              <p className="mb-1">{}</p>
-              <p className="text-muted font-size-sm">{studentInfo.department}/</p>
+              <p className="mb-1">{studentInfo.course.courseTitle}</p>
+              <p className="text-muted font-size-sm">{studentInfo.department.departmentName}/</p>
             </div>
           </CCardBody>
         </CCard>

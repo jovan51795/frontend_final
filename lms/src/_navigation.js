@@ -85,17 +85,17 @@ export const _navStudent = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: `${userInFo.type}/dashboard`,
+    link: '/student/dashboard',
   },
   {
     label: 'My Profile',
     icon: <FaUser className="nav-icon" />,
-    link: `${userInFo.type}/profile`,
+    link: '/student/profile',
   },
   {
     label: 'My Subjects',
     icon: <CIcon icon={cilBook} customClassName="nav-icon" />,
-    link: `${userInFo.type}/subjects`,
+    link: '/student/subjects',
   },
   {
     label: 'My Attendance',
@@ -105,7 +105,7 @@ export const _navStudent = [
   {
     label: 'My Grades',
     icon: <MdCalendarViewMonth className="nav-icon" />,
-    link: `${userInFo.type}/grades`,
+    link: '/student/grades',
   },
   {
     label: 'Course Evaluation',
