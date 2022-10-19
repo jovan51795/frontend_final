@@ -22,11 +22,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { adminLogin, studentLogin, professorLogin } from 'src/redux/actions/adminAuthActions'
 import Header from 'src/components/header/Header'
 import { AppFooter } from 'src/components'
+import { getUserInfo } from 'src/services/userInfo'
 
 const Login = () => {
   const param = useParams()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const userInFo = getUserInfo()
 
   useSelector((state) => {
     if (state.adminAuth && state.adminAuth.status === 1) {

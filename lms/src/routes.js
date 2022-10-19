@@ -29,7 +29,7 @@ const FacultyDashboard = React.lazy(() => import('./views/faculty/FacultyDashboa
 const FacultyProfile = React.lazy(() => import('./views/faculty/FacultyProfile'))
 const AttendanceSheet = React.lazy(() => import('./views/faculty/AttendanceSheet'))
 const GradingSheet = React.lazy(() => import('./views/faculty/GradingSheet'))
-const EditProfileForm = React.lazy(() => import('src/components/faculty/EditProfileForm'))
+const EditFacultyProfile = React.lazy(() => import('./views/faculty/EditFacultyProfile'))
 const FacultySchedule = React.lazy(() => import('./views/faculty/FacultySchedule'))
 const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
@@ -86,16 +86,16 @@ export const routes = [
   //FACULTY MODULE
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },
   { path: '/faculty/profile', name: 'Profile', element: FacultyProfile },
-  { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditProfileForm },
+  { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
   { path: '/faculty/class-schedule', name: 'Class Schedule', element: FacultySchedule },
   { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
   { path: '/faculty/students-grades', name: 'Grades', element: GradingSheet },
   { path: '/faculty/students-grades/id', name: 'Class Card', element: ClassCard },
 
   //STUDENT MODULE
-  { path: '/:student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
-  { path: '/:student/profile', name: 'Student Profile', element: StudentProfile },
-  { path: '/:student/subjects', name: 'My Subjects', element: StudentSubject },
-  { path: '/:student/grades', name: 'Grades', element: StudentGrades },
-  { path: '/:student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
+  { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
+  { path: '/student/profile', name: 'Student Profile', element: StudentProfile },
+  { path: '/student/subjects', name: 'My Subjects', element: StudentSubject },
+  { path: '/student/grades', name: 'Grades', element: StudentGrades },
+  { path: '/student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
 ]
