@@ -11,16 +11,12 @@ import {
   CButton,
 } from '@coreui/react'
 import React from 'react'
-import { getUserInfo } from 'src/services/userInfo'
 
-const StudentSubjects = () => {
-  const subjects = getUserInfo().object.subject
+const StudentSubjects = ({ subjects }) => {
   let totalUnits = 0
   subjects.forEach((subject) => {
     totalUnits += subject.units
   })
-
-  console.log(getUserInfo().object)
   return (
     <div>
       <CCard className="mb-4">
