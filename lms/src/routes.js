@@ -1,24 +1,14 @@
 import React from 'react'
 
+//ADMIN MODULE
+
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
-//Admin Module
+//Students
+
 const StudentList = React.lazy(() => import('./views/students/StudentList'))
 const AddStudent = React.lazy(() => import('./views/students/AddStudent'))
 const EditDepartment = React.lazy(() => import('./views/department/EditDepartment'))
-
-//LANDING HEADER ROUTES
-//About
-const About = React.lazy(() => import('./views/about/About'))
-const ContactInfo = React.lazy(() => import('./views/about/ContactInfo'))
-//Admission
-const AdminProcedure = React.lazy(() => import('./views/admission/AdminProcedure'))
-const EnrollmentProcedure = React.lazy(() => import('./views/admission/EnrollmentProcedure'))
-const EstTuition = React.lazy(() => import('./views/admission/EstTuition'))
-//Campus Life
-const CampusLife = React.lazy(() => import('./views/campus-life/CampusLife'))
-
-//Students
 
 const SubjectList = React.lazy(() => import('./views/subject/SubjectList'))
 const AddSubject = React.lazy(() => import('./views/subject/AddSubject'))
@@ -28,15 +18,22 @@ const EditSubject = React.lazy(() => import('./views/subject/EditSubject'))
 const Departments = React.lazy(() => import('./views/department/Department'))
 const AddDepartment = React.lazy(() => import('./views/department/AddDepartment'))
 
-//Faculty
+//professor imports
+const AddProfessor = React.lazy(() => import('./views/professor/AddProfessor'))
+const ProfessorList = React.lazy(() => import('./views/professor/ProfessorList'))
+const EditProfessor = React.lazy(() => import('./views/professor/EditProfessor'))
+const ProfessorDetails = React.lazy(() => import('./views/professor/ProfessorDetails'))
+
+//FACULTY MODULE
 const FacultyDashboard = React.lazy(() => import('./views/faculty/FacultyDashboard'))
 const FacultyProfile = React.lazy(() => import('./views/faculty/FacultyProfile'))
 const AttendanceSheet = React.lazy(() => import('./views/faculty/AttendanceSheet'))
 const GradingSheet = React.lazy(() => import('./views/faculty/GradingSheet'))
-const EditFacultyProfile = React.lazy(() => import('src/components/faculty/EditFacultyProfile'))
+const EditProfileForm = React.lazy(() => import('src/components/faculty/EditProfileForm'))
+const FacultySchedule = React.lazy(() => import('./views/faculty/FacultySchedule'))
 const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
-//Student Module
+//STUDENT MODULE
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
 const StudentProfile = React.lazy(() => import('./views/students/StudentProfile'))
 const StudentSubject = React.lazy(() => import('./views/students/StudentSubjectsPage'))
@@ -44,12 +41,6 @@ const StudentGrades = React.lazy(() => import('./views/students/StudentGradesPag
 const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsPage'))
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
-
-//professor imports
-const AddProfessor = React.lazy(() => import('./views/professor/AddProfessor'))
-const ProfessorList = React.lazy(() => import('./views/professor/ProfessorList'))
-const EditProfessor = React.lazy(() => import('./views/professor/EditProfessor'))
-const ProfessorDetails = React.lazy(() => import('./views/professor/ProfessorDetails'))
 
 //professor-subjects
 const ProfessorSubjectList = React.lazy(() =>
@@ -59,25 +50,12 @@ const SubjectSchedule = React.lazy(() =>
   import('./views/professor/professor-subject/SubjectSchedule'),
 )
 
-const routes = [
+export const routes = [
   //LANDING PAGE
   { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', element: Dashboard },
-
-  { path: '/about/vision-mission-core-values-strategic-goals', name: 'About ABC', element: About },
-  { path: '/about/contact-us', name: 'Contact Info', element: ContactInfo },
-
-  { path: '/admission/admission-procedures', name: 'Admission Procedure', element: AdminProcedure },
-  {
-    path: '/admission/enrollment-procedure',
-    name: 'Enrollment Procedure',
-    element: EnrollmentProcedure,
-  },
-  { path: '/admission/estimated-tuition-fees', name: 'Estimated Tuition', element: EstTuition },
-
-  { path: '/campus-life', name: 'Campus Life', element: CampusLife },
 
   //ADMIN MODULE
+  { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/students', name: 'ABC Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
   { path: '/student/details/:id', name: 'Student Details', element: StudentDetails },
@@ -92,7 +70,6 @@ const routes = [
   { path: '/department/add', name: 'Add Department', element: AddDepartment },
   { path: '/department/edit/:id', name: 'Edit Department', element: EditDepartment },
 
-  //professor
   { path: '/professor/add', name: 'Add Professor', element: AddProfessor },
   { path: '/professors', name: 'Professors', element: ProfessorList },
   { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
@@ -109,10 +86,11 @@ const routes = [
   //FACULTY MODULE
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },
   { path: '/faculty/profile', name: 'Profile', element: FacultyProfile },
-  { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
+  { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditProfileForm },
+  { path: '/faculty/class-schedule', name: 'Class Schedule', element: FacultySchedule },
   { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
-  { path: '/faculty/grades-monitoring', name: 'Grades', element: GradingSheet },
-  { path: '/faculty/grades-monitoring/id', name: 'Class Card', element: ClassCard },
+  { path: '/faculty/students-grades', name: 'Grades', element: GradingSheet },
+  { path: '/faculty/students-grades/id', name: 'Class Card', element: ClassCard },
 
   //STUDENT MODULE
   { path: '/:student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
@@ -121,5 +99,3 @@ const routes = [
   { path: '/:student/grades', name: 'Grades', element: StudentGrades },
   { path: '/:student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
 ]
-
-export default routes

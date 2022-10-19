@@ -26,7 +26,7 @@ const Sidebar2 = ({ onLogout }) => {
       setnavigation(_navAdmin)
     } else if (userInFo && userInFo.object.type === 'faculty') {
       setWork(userInFo.object.work)
-      setNumber(`Faculty No.: ${userInFo.object.facultyNo}`)
+      setNumber(`Faculty No.: ${userInFo.object.professorNo}`)
       setnavigation(_navFaculty)
     } else if (userInFo && userInFo.object.type === 'parent') {
       setWork('Parent')
@@ -45,6 +45,7 @@ const Sidebar2 = ({ onLogout }) => {
     onLogout()
     showToastMessage()
   }
+
   return (
     <div className="card-body text-center">
       <img src={noimage} alt="avatar" className="img-fluid" style={{ width: '150px' }} />

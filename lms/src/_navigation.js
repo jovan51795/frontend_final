@@ -57,27 +57,27 @@ export const _navFaculty = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: '',
+    link: '/faculty/dashboard',
   },
   {
     label: 'My Profile',
     icon: <FaUserTie className="nav-icon" />,
-    link: '',
+    link: '/faculty/profile',
   },
   {
     label: 'My Class Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
-    link: '',
+    link: '/faculty/class-schedule',
   },
   {
-    label: 'My Attendance Monitoringe',
+    label: 'My Attendance Monitoring',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
-    link: '',
+    link: '/faculty/attendance-monitoring',
   },
   {
     label: 'Student Evaluation',
     icon: <CIcon icon={cilFolderOpen} customClassName="nav-icon" />,
-    link: '',
+    link: '/faculty/students-grades',
   },
 ]
 
@@ -85,17 +85,17 @@ export const _navStudent = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: `${userInFo.studentNo}/dashboard`,
+    link: `${userInFo.type}/dashboard`,
   },
   {
     label: 'My Profile',
     icon: <FaUser className="nav-icon" />,
-    link: `${userInFo.studentNo}/profile`,
+    link: `${userInFo.type}/profile`,
   },
   {
     label: 'My Subjects',
     icon: <CIcon icon={cilBook} customClassName="nav-icon" />,
-    link: `${userInFo.studentNo}/subjects`,
+    link: `${userInFo.type}/subjects`,
   },
   {
     label: 'My Attendance',
@@ -105,7 +105,7 @@ export const _navStudent = [
   {
     label: 'My Grades',
     icon: <MdCalendarViewMonth className="nav-icon" />,
-    link: '',
+    link: `${userInFo.type}/grades`,
   },
   {
     label: 'Course Evaluation',

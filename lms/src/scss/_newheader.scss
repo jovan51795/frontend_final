@@ -10,7 +10,12 @@ div {
 }
 
 a {
-  color: #018a58;
+  // color: #018a58;
+  color: white;
+
+  &:hover {
+    color: #018a58;
+  }
 }
 
 .container {
@@ -39,6 +44,24 @@ a {
   max-height: 340px;
   padding-right: 20px;
   position: relative;
+  // align-items: center;
+}
+
+.logo-center {
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  background: url('../assets/images/students2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 960px) {
+  .date {
+    text-align: center;
+  }
 }
 
 .header-group .header .header-logo {
@@ -51,8 +74,28 @@ a {
 }
 
 .header-logo img {
-  max-height: 85px;
-  width: auto;
+  width: 100%;
+}
+
+.public img {
+  width: 100%;
+  z-index: -2;
+}
+
+.whitish {
+  background: #022135 !important;
+  padding: 0;
+  height: 60px;
+  margin-left: 0;
+  width: 100%;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.head {
+  font-weight: 500;
+  margin-top: -60px !important;
+  z-index: 999;
 }
 
 .navbar-header {
@@ -110,4 +153,9 @@ a {
 
 .maincolor {
   color: #022135 !important;
+}
+
+.divider {
+  background-color: gray;
+  height: 7px;
 }

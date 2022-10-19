@@ -1,109 +1,89 @@
 import React from 'react'
 import 'src/scss/facultyprofile.scss'
 import { Btn } from 'src/styles/Btn.styles.'
+import { getUserInfo } from 'src/services/userInfo'
 
 const FacultyProfile = () => {
+  const user = getUserInfo()
+  const fullname = `${user.object.firstName} ${user.object.lastName}`
+
   return (
-    <div className="container rounded bg-white mt-5 mb-5">
+    // <div className="col-lg-8">
+    <div className="container">
       <div className="row">
-        <div className="col-md-3 border-right">
-          <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img
-              className="rounded-circle mt-5"
-              width="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-            />
-            <span className="font-weight-bold">Professor Id: 1234567</span>
-            <span className="font-weight-bold">Edogaru</span>
-            <span className="text-black-50">edogaru@mail.com.my</span>
-            <span> </span>
-          </div>
-        </div>
-        <div className="col-md-5 border-right">
-          <div className="p-3 py-5">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <h4 className="text-right">Profile Settings</h4>
+        <div className="col-md-12 comp-title">MY PROFILE</div>
+      </div>
+      <div className="card profile-card m-4">
+        <div className="card-body">
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">FULL NAME</p>
             </div>
-            <div className="row mt-2">
-              <div className="col-md-4">
-                <label className="labels">First Name</label>
-                <div className="profileinfo">Ed</div>
-              </div>
-              <div className="col-md-4">
-                <label className="labels">Middle Name</label>
-                <div className="profileinfo">Any</div>
-              </div>
-              <div className="col-md-4">
-                <label className="labels">Last Name</label>
-                <div className="profileinfo">Ogaru</div>
-              </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col-md-12">
-                <label className="labels">Gender</label>
-                <div className="profileinfo">Male</div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <label className="labels">Status</label>
-                <div className="profileinfo">Its Complicated</div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <label className="labels">Mobile Number</label>
-                <div className="profileinfo">+63 935 7666 016</div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <label className="labels">Email ID</label>
-                <div className="profileinfo">edogaru@mail.com.my</div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <label className="labels">Education</label>
-                <div className="profileinfo">BS Computer Engineering</div>
-                <br />
-              </div>
-              <div className="col-md-12">
-                <label className="labels">Address</label>
-                <div className="profileinfo">Address</div>
-              </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col-md-6">
-                <label className="labels">Country</label>
-                <div className="profileinfo">Philippines</div>
-              </div>
-              <div className="col-md-6">
-                <label className="labels">State/Region</label>
-                <div className="profileinfo">Metro Manila</div>
-              </div>
-            </div>
-            <div className="mt-5 text-center">
-              <Btn big="true">Edit Profile</Btn>
+            <div className="col-sm-8">
+              <p className="mb-0">{fullname}</p>
             </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="p-3 py-5">
-            <div className="d-flex justify-content-between align-items-center experience">
-              <span>Edit Experience</span>
-              <span className="border px-3 p-1 add-experience">
-                <i className="fa fa-plus"></i>&nbsp;Experience
-              </span>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">GENDER</p>
             </div>
-            <br />
-            <div className="col-md-12">
-              <label className="labels">Experience in Teaching</label>
-              <div className="profileinfo">None</div>
-            </div>{' '}
-            <br />
-            <div className="col-md-12">
-              <label className="labels">Additional Details</label>
-              <div className="profileinfo">None</div>
+            <div className="col-sm-8">
+              <p className="mb-0">{user.object.gender}</p>
             </div>
           </div>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">BIRTHDATE</p>
+            </div>
+            <div className="col-sm-8">
+              <p className="mb-0">{user.object.birthdate}</p>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">POSITION</p>
+            </div>
+            <div className="col-sm-8">
+              <p className="mb-0">{user.object.work}</p>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">STATUS</p>
+            </div>
+            <div className="col-sm-8">
+              <p className="mb-0">{user.object.status}</p>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">MOBILE</p>
+            </div>
+            <div className="col-sm-8">
+              <p className="mb-0">(098) 765-4321</p>
+            </div>
+          </div>
+          <hr />
+          <div className="row">
+            <div className="col-sm-4">
+              <p className="mb-0 fw-bold txt-color">ADDRESS</p>
+            </div>
+            <div className="col-sm-8">
+              <p className="mb-0">Bay Area, San Francisco, CA</p>
+            </div>
+          </div>
+          <div className="row"></div>
         </div>
+      </div>
+      <div className="col-md-12 my-0 prof-edit">
+        <Btn big="true" to="/faculty/profile/edit" className="btn-edit">
+          EDIT PROFILE
+        </Btn>
       </div>
     </div>
   )

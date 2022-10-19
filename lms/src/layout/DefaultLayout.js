@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Header from 'src/components/header/Header'
+import AppLayout from 'src/layout/AppLayout'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
 import { getUserInfo } from '../services/userInfo'
 
@@ -18,7 +18,7 @@ const DefaultLayout = () => {
     <div>
       {/* <AppSidebar /> */}
       <div className="wrapper d-flex flex-column min-vh-100 bg-light">
-        <Header />
+        <AppLayout />
         {/* <div className="body flex-grow-1 px-3">
           <AppContent />
         </div> */}
