@@ -12,6 +12,7 @@ const StudentGradesPage = () => {
   useEffect(() => {
     getGrades(userInfo.student_id)
   }, [])
+
   const getGrades = (id) => {
     studentGradesService.getGradesbyId(id).then((res) => {
       if (res && res.data) {
@@ -19,6 +20,7 @@ const StudentGradesPage = () => {
       }
     })
   }
+  console.log(grades)
   return (
     <div>
       <StudentGrades grades={grades} userInfo={userInfo} />
