@@ -98,6 +98,11 @@ export const _navStudent = [
     link: '/student/subjects',
   },
   {
+    label: 'My Schedule',
+    icon: <FaCalendarAlt className="nav-icon" />,
+    link: '/student/schedule',
+  },
+  {
     label: 'My Attendance',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
     link: '',

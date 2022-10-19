@@ -5,11 +5,19 @@ import { getUserInfo } from 'src/services/userInfo'
 const StudentSubjectsPage = () => {
   const subjects = getUserInfo().object.subject
 
-  return (
-    <div>
-      <StudentSubjects subjects={subjects} />
-    </div>
-  )
+  if (subjects) {
+    return (
+      <div>
+        <StudentSubjects subjects={subjects} />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>No Subjects Yet</h1>
+      </div>
+    )
+  }
 }
 
 export default StudentSubjectsPage

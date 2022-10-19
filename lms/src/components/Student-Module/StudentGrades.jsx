@@ -19,6 +19,7 @@ const StudentGrades = ({ grades, userInfo }) => {
     totalProduct += grade[2] * grade[3]
   })
   const ave = totalProduct / totalUnits
+
   return (
     <div>
       <CCard className="mb-4">
