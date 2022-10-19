@@ -3,6 +3,7 @@ import React from 'react'
 //ADMIN MODULE
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+const AdminProfile = React.lazy(() => import('./views/admin/AdminProfile'))
 
 //Students
 
@@ -56,6 +57,7 @@ export const routes = [
 
   //ADMIN MODULE
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+  { path: '/admin/profile', name: 'Profile', element: AdminProfile },
   { path: '/students', name: 'ABC Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
   { path: '/student/details/:id', name: 'Student Details', element: StudentDetails },
