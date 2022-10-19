@@ -8,6 +8,11 @@ import { Provider } from 'react-redux'
 import store from './store'
 import 'react-toastify/dist/ReactToastify.css'
 import { HashRouter } from 'react-router-dom'
+import { registerLicense } from '@syncfusion/ej2-base'
+
+registerLicense(
+  'ORg4AjUWIQA/Gnt2VVhjQlFaclhJXGJWf1tpR2NbfU50flBDallSVAciSV9jS3xSdkRqWXpednFUTmRYUA==',
+)
 
 createRoot(document.getElementById('root')).render(
   <HashRouter>
