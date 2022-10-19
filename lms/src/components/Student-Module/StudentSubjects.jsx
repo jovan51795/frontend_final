@@ -11,11 +11,12 @@ import {
   CButton,
 } from '@coreui/react'
 import React from 'react'
-import { getUserInfo } from 'src/services/userInfo'
 
-const StudentSubjects = () => {
-  const subjects = getUserInfo().object.subject
-  console.log(getUserInfo().object)
+const StudentSubjects = ({ subjects }) => {
+  let totalUnits = 0
+  subjects.forEach((subject) => {
+    totalUnits += subject.units
+  })
   return (
     <div>
       <CCard className="mb-4">
@@ -35,10 +36,12 @@ const StudentSubjects = () => {
             <CTableBody>
               {subjects.map((subject) => (
                 <CTableRow key={subject.subject_id}>
-                  <CTableDataCell>MATH123</CTableDataCell>
-                  <CTableDataCell>Basic Calculus</CTableDataCell>
-                  <CTableDataCell>Teacher1</CTableDataCell>
-                  <CTableDataCell>5</CTableDataCell>
+                  <CTableDataCell>{subject.subjectCode}</CTableDataCell>
+                  <CTableDataCell>{subject.subjectTitle}</CTableDataCell>
+                  <CTableDataCell>
+                    {subject.professor.firstName} {subject.professor.lastName}
+                  </CTableDataCell>
+                  <CTableDataCell>{subject.units}</CTableDataCell>
                 </CTableRow>
               ))}
 
@@ -46,13 +49,10 @@ const StudentSubjects = () => {
                 <CTableDataCell colSpan={3} style={{ textAlign: 'right' }}>
                   <b>Total Units:</b>
                 </CTableDataCell>
-                <CTableDataCell>Total</CTableDataCell>
+                <CTableDataCell>{totalUnits}</CTableDataCell>
               </CTableRow>
             </CTableBody>
           </CTable>
-          <CButton color="success" size="sm">
-            <span className="text-light">Add Subject</span>
-          </CButton>
         </CCardBody>
       </CCard>
     </div>

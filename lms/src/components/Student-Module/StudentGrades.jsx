@@ -11,12 +11,21 @@ import {
 } from '@coreui/react'
 import React from 'react'
 
-const StudentGrades = () => {
+const StudentGrades = ({ grades, userInfo }) => {
+  let totalUnits = 0
+  let totalProduct = 0
+  grades.forEach((grade) => {
+    totalUnits += grade[2]
+    totalProduct += grade[2] * grade[3]
+  })
+  const ave = totalProduct / totalUnits
   return (
     <div>
       <CCard className="mb-4">
         <CCardHeader>
-          <strong>1SY2022</strong>
+          <strong>
+            {userInfo.sem} {userInfo.academicYear}
+          </strong>
         </CCardHeader>
         <CCardBody>
           <CTable hover align="middle">
@@ -26,20 +35,24 @@ const StudentGrades = () => {
                 <CTableHeaderCell scope="col">Title</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Units</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Grades</CTableHeaderCell>
+                <CTableHeaderCell scope="col">Status</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
-              <CTableRow>
-                <CTableDataCell>Math123</CTableDataCell>
-                <CTableDataCell>Basic Calculus</CTableDataCell>
-                <CTableDataCell>Units</CTableDataCell>
-                <CTableDataCell>2.0</CTableDataCell>
-              </CTableRow>
+              {grades.map((grade) => (
+                <CTableRow key={grade[1]}>
+                  <CTableDataCell>{grade[1]}</CTableDataCell>
+                  <CTableDataCell>{grade[0]}</CTableDataCell>
+                  <CTableDataCell>{grade[2]}</CTableDataCell>
+                  <CTableDataCell>{grade[3]}</CTableDataCell>
+                  <CTableDataCell>{grade[5]}</CTableDataCell>
+                </CTableRow>
+              ))}
               <CTableRow>
                 <CTableDataCell colSpan={3} style={{ textAlign: 'right' }}>
                   <b>Average:</b>
                 </CTableDataCell>
-                <CTableDataCell>Ave.</CTableDataCell>
+                <CTableDataCell colSpan={2}>{ave}</CTableDataCell>
               </CTableRow>
             </CTableBody>
           </CTable>
