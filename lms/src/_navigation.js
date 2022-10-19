@@ -4,7 +4,7 @@ import { cilFolderOpen, cilSpreadsheet, cilSpeedometer, cilBook } from '@coreui/
 import { FaCalendarAlt, FaUserTie, FaUser, FaGraduationCap } from 'react-icons/fa'
 import { RiAdminFill, RiUserSettingsFill } from 'react-icons/ri'
 import { ImLibrary, ImBooks } from 'react-icons/im'
-import { MdCalendarViewMonth } from 'react-icons/md'
+import { MdCalendarViewMonth, MdOutlineClass } from 'react-icons/md'
 import { GiDiploma } from 'react-icons/gi'
 import { getUserInfo } from './services/userInfo'
 
@@ -65,7 +65,12 @@ export const _navFaculty = [
     link: `${userInFo && userInFo.type}/profile`,
   },
   {
-    label: 'My Class Schedule',
+    label: 'My Classes',
+    icon: <MdOutlineClass className="nav-icon" />,
+    link: `${userInFo.type}/classes`,
+  },
+  {
+    label: 'My Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
     link: `${userInFo && userInFo.type}/class-schedule`,
   },

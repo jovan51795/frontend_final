@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { getUserInfo } from 'src/services/userInfo'
-import ProfClassSched from 'src/components/faculty/ProfClassSched'
-
 import { getSubjectByProfessor } from 'src/services/professorService'
+import FacultyClassesTable from 'src/components/faculty/FacultyClassesTable'
 
-const FacultySchedule = () => {
+const FacultySubjects = () => {
   const param = useParams()
   const userInfo = getUserInfo().object
   const [profsubject, setProfSubject] = useState()
-  console.log(userInfo)
 
   useEffect(() => {
     getSubjectByProfessor(+userInfo.professor_id).then((res) => {
@@ -22,16 +20,15 @@ const FacultySchedule = () => {
     })
   }, [param])
 
-  console.log(profsubject)
-  // if (profsubject) {
-  return (
-    <div>
-      <div>
-        <ProfClassSched />
-      </div>
-    </div>
-  )
-  // }
+  if (profsubject) {
+    return (
+      <>
+        <div>
+          <FacultyClassesTable profsubject={profsubject} />
+        </div>
+      </>
+    )
+  }
 }
 
-export default FacultySchedule
+export default FacultySubjects

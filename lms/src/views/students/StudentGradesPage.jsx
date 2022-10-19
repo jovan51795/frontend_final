@@ -11,6 +11,7 @@ const StudentGradesPage = () => {
   useEffect(() => {
     getGrades(userInfo.student_id)
   }, [])
+
   const getGrades = (id) => {
     studentGradesService.getGradesbyId(id).then((res) => {
       if (res && res.data) {
@@ -18,6 +19,7 @@ const StudentGradesPage = () => {
       }
     })
   }
+
   if (grades.length !== 0) {
     return (
       <div>
@@ -31,6 +33,7 @@ const StudentGradesPage = () => {
       </div>
     )
   }
+
 }
 
 export default StudentGradesPage
