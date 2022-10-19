@@ -147,25 +147,14 @@ const StudentForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(form)
-    return !!result.error
+    return false
   }
   return (
     <CForm onSubmit={handleSubmit}>
       <CCard>
         <CCardBody>
           <CRow className="mb-3">
-            <CCol lg={6}>
-              <CFormLabel>Student Number</CFormLabel>
-              <CFormInput
-                name="studentNo"
-                value={form.studentNo}
-                onChange={handleChange}
-                placeholder="Student number"
-                invalid={!!errors.studentNo}
-                feedback={errors.studentNo}
-              />
-            </CCol>
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>First Name</CFormLabel>
               <CFormInput
                 name="firstName"
@@ -176,10 +165,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 feedback={errors.firstName}
               />
             </CCol>
-          </CRow>
-
-          <CRow className="mb-3">
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Middle Name</CFormLabel>
               <CFormInput
                 name="middleName"
@@ -190,7 +176,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 feedback={errors.middleName}
               />
             </CCol>
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Last Name</CFormLabel>
               <CFormInput
                 name="lastName"
@@ -201,10 +187,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 feedback={errors.lastName}
               />
             </CCol>
-          </CRow>
-
-          <CRow className="mb-3">
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Academic Year</CFormLabel>
               <CFormInput
                 name="academicYear"
@@ -215,7 +198,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 feedback={errors.academicYear}
               />
             </CCol>
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Sem</CFormLabel>
               <CFormSelect
                 name="sem"
@@ -231,9 +214,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 <option value="2nd Sem">2nd Sem</option>
               </CFormSelect>
             </CCol>
-          </CRow>
-          <CRow className="mb-4">
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Status</CFormLabel>
               <CFormSelect
                 name="status"
@@ -246,7 +227,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 <option value="irregular">Irregular</option>
               </CFormSelect>
             </CCol>
-            <CCol lg={6}>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Birth Date</CFormLabel>
               <CFormInput
                 name="birthDate"

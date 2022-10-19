@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react'
 const StudentGradesPage = () => {
   const [grades, setGrades] = useState([])
   const userInfo = getUserInfo().object
-  // console.log(userInfo)
 
   useEffect(() => {
     getGrades(userInfo.student_id)
@@ -20,12 +19,21 @@ const StudentGradesPage = () => {
       }
     })
   }
-  console.log(grades)
-  return (
-    <div>
-      <StudentGrades grades={grades} userInfo={userInfo} />
-    </div>
-  )
+
+  if (grades.length !== 0) {
+    return (
+      <div>
+        <StudentGrades grades={grades} userInfo={userInfo} />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>No Grades Yet</h1>
+      </div>
+    )
+  }
+
 }
 
 export default StudentGradesPage
