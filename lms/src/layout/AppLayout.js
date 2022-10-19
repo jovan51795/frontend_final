@@ -9,6 +9,7 @@ import SidebarGrid from '../components/sidebar/SidebarGrid'
 import AppContent from '../components/AppContent'
 import { getUserInfo } from '../services/userInfo'
 import * as authService from 'src/services/auth'
+import { Link } from 'react-router-dom'
 
 const AppLayout = () => {
   const date = new Date()
@@ -73,21 +74,19 @@ const AppLayout = () => {
                 <span className="navbar-text text-white">&nbsp;&nbsp;CONTACT US&nbsp;&nbsp;</span>
               </div>
             </div>
-          </nav>{' '}
+          </nav>
           {/* End of Top Header */}
-        </div>{' '}
+        </div>
         {/* End of Grid for Top Header */}
       </div>
       <div className="container">
-        {' '}
         {/*Start of Container */}
         <div className="row">
-          {' '}
           {/*Start of Main Header*/}
           <div className="col-md-6 py-3 header-logo">
-            <a href="/">
+            <Link to="/">
               <img src={ABClogo} alt="ABC Logo" />
-            </a>
+            </Link>
           </div>
           <div className="col-md-3"></div>
           <div className="col-md-3 navbar-right pt-5">
@@ -104,22 +103,21 @@ const AppLayout = () => {
               </span>
             </form>
           </div>
-        </div>{' '}
+        </div>
         {/*End of Main Header*/}
         <div className="row">
           <div className="col-md-12 py-2 pb-5">
             <AppBreadcrumb />
           </div>
-        </div>{' '}
+        </div>
         {/*End of BreadCrumb*/}
         <div className="row">
-          {' '}
           {/*Start of Sidebar*/}
           <div className="col-md-3">
             <SidebarGrid onLogout={handleLogout} />
           </div>
           <div className="col-md-9 px-0">
-            <div className="title">WELCOME {type.toUpperCase()} </div>
+            <div className="title">WELCOME {userInFo && type.toUpperCase()} </div>
             <hr style={{ border: '0.75px solid black' }} />
             <div className="row mx-0">
               <div className="col-md-12">
@@ -127,7 +125,7 @@ const AppLayout = () => {
               </div>
             </div>
           </div>
-        </div>{' '}
+        </div>
         {/*Start of Sidebar*/}
       </div>
     </>
