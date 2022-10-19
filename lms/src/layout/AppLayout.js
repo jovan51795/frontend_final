@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'src/scss/_newheader.scss'
 import { FaSearch } from 'react-icons/fa'
 import { MdOutlineMenu } from 'react-icons/md'
@@ -9,13 +9,13 @@ import SidebarGrid from '../components/sidebar/SidebarGrid'
 import AppContent from '../components/AppContent'
 import { getUserInfo } from '../services/userInfo'
 import * as authService from 'src/services/auth'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AppLayout = () => {
   const date = new Date()
   const today = date.getDay()
   const userInFo = getUserInfo()
-  const type = userInFo.object.type
+  const usertype = userInFo ? userInFo.object.type : false
   const [setAccessToken] = useState(authService.getAccessToken())
 
   const handleLogout = () => {
@@ -23,6 +23,13 @@ const AppLayout = () => {
     setAccessToken(null)
     alert('Goodbye for now!')
   }
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!userInFo || userInFo.status === 0) {
+      navigate('/')
+    }
+    console.log('called')
+  })
 
   return (
     <>
@@ -31,9 +38,9 @@ const AppLayout = () => {
           {/* Start of Top Header */}
           <nav className="navbar navbar-expand-lg top-bar">
             <div className="container-fluid">
-              <a className="navbar-brand top-bar" href="#">
+              <Link className="navbar-brand top-bar">
                 <img src={logo} height="15" alt="ABC Logo" loading="lazy" />
-              </a>
+              </Link>
               <div>
                 Today is{' '}
                 {(() => {
@@ -117,7 +124,7 @@ const AppLayout = () => {
             <SidebarGrid onLogout={handleLogout} />
           </div>
           <div className="col-md-9 px-0">
-            <div className="title">WELCOME {userInFo && type.toUpperCase()} </div>
+            <div className="title">WELCOME {usertype && usertype.toUpperCase()} </div>
             <hr style={{ border: '0.75px solid black' }} />
             <div className="row mx-0">
               <div className="col-md-12">
