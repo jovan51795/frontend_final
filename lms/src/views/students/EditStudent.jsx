@@ -15,7 +15,7 @@ const EditStudent = () => {
         setstudent({ ...res.data.object })
       }
     })
-  }, [])
+  }, [param])
 
   const handleSubmit = (data) => {
     dispatch(updateStudentById(data))

@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { CRow, CCol, CWidgetStatsF } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
 import { cilBadge, cilBook, cilSchool } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
 
 const StudentDashboardWidgets = () => {
   return (

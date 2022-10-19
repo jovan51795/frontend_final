@@ -23,15 +23,15 @@ const StudentDashboard = () => {
 
   const studentSchedules = []
 
-  const fetchSchedules = schedule.map((sched) => {
-    studentSchedules.push({
-      Id: sched.schedule_id,
-      Subject: sched.schedule_subject,
-      StartTime: new Date(sched.startDate + ' ' + sched.startTime),
-      EndTime: new Date(sched.startDate + ' ' + sched.endTime),
-      RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
-    })
-  })
+  // const fetchSchedules = schedule.map((sched) => {
+  //   studentSchedules.push({
+  //     Id: sched.schedule_id,
+  //     Subject: sched.schedule_subject,
+  //     StartTime: new Date(sched.startDate + ' ' + sched.startTime),
+  //     EndTime: new Date(sched.startDate + ' ' + sched.endTime),
+  //     RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
+  //   })
+  // })
 
   return (
     <>

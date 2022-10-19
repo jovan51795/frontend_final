@@ -154,17 +154,6 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       <CCard>
         <CCardBody>
           <CRow className="mb-3">
-            {/* <CCol lg={6}>
-              <CFormLabel>Student Number</CFormLabel>
-              <CFormInput
-                name="studentNo"
-                value={form.studentNo}
-                onChange={handleChange}
-                placeholder="Student number"
-                invalid={!!errors.studentNo}
-                feedback={errors.studentNo}
-              />
-            </CCol> */}
             <CCol lg={6} className="mb-3">
               <CFormLabel>First Name</CFormLabel>
               <CFormInput

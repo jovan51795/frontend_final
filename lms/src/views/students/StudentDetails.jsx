@@ -12,7 +12,7 @@ const StudentDetails = () => {
         setstudent({ ...res.data.object })
       }
     })
-  }, [])
+  }, [param])
   if (student.student_id) {
     return (
       <>

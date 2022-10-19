@@ -59,21 +59,21 @@ const Sidebar2 = ({ onLogout }) => {
           {navigation.map((nav, index) => (
             <li className="list-group-item d-flex align-items-center transparent p-3" key={index}>
               {nav.icon}
-              <p className="mb-0">
+              <div className="mb-0">
                 <Link to={nav.link} className="link">
                   &nbsp;{nav.label}
                 </Link>
-              </p>
+              </div>
             </li>
           ))}
           <li className="list-group-item d-flex align-items-center transparent p-3">
             <FiLogOut className="nav-icon" />
-            <p className="mb-0">
+            <div className="mb-0">
               <Link to="/" className="link" onClick={handleClick}>
                 &nbsp;Logout
               </Link>
               <ToastContainer />
-            </p>
+            </div>
           </li>
         </ul>
       </div>
