@@ -1,10 +1,4 @@
-import {
-  cilArrowThickFromRight,
-  cilArrowThickRight,
-  cilBook,
-  cilPencil,
-  cilTrash,
-} from '@coreui/icons'
+import { cilArrowThickRight, cilBook, cilPencil, cilTrash } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import {
   CButton,
