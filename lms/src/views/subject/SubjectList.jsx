@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import SubjectsList from 'src/components/subject/SubjectsList'
 import { getAll } from '../../services/subjectService'
 import { deleteSubject } from '../../redux/actions/subjectAction'
-import { subject } from 'src/redux/reducers/subjectReducer'
 
 const SubjectList = () => {
   const [subjects, setsubjects] = useState(null)

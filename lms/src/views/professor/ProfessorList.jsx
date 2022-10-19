@@ -1,4 +1,10 @@
-import { cilArrowThickFromRight, cilArrowThickRight, cilPencil, cilTrash } from '@coreui/icons'
+import {
+  cilArrowThickFromRight,
+  cilArrowThickRight,
+  cilBook,
+  cilPencil,
+  cilTrash,
+} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 import {
   CButton,
@@ -44,7 +50,7 @@ const ProfessorList = () => {
   if (professors) {
     return (
       <CCard>
-        <CCardBody>
+        <CCardBody style={{ overflow: 'auto scroll', width: '100%' }}>
           <CTable caption="top">
             <CTableCaption>Professor List</CTableCaption>
             <CTableHead>
@@ -61,7 +67,9 @@ const ProfessorList = () => {
               {professors.map((prof) => (
                 <CTableRow key={prof.professor_id}>
                   <CTableDataCell>{prof.professorNo}</CTableDataCell>
-                  <CTableDataCell>{prof.professorName}</CTableDataCell>
+                  <CTableDataCell>
+                    {prof.firstName} {prof.lastName}
+                  </CTableDataCell>
                   <CTableDataCell>{prof.work}</CTableDataCell>
                   <CTableDataCell>{prof.gender}</CTableDataCell>
                   <CTableDataCell>
@@ -71,7 +79,7 @@ const ProfessorList = () => {
                       <span className="badge bg-warning">{prof.status}</span>
                     )}
                   </CTableDataCell>
-                  <CTableDataCell>
+                  <CTableDataCell style={{ display: 'flex' }}>
                     <CTooltip content="View Details" placement="top">
                       <Link className="btn btn-info me-2" to={`/professor/${prof.professor_id}`}>
                         <CIcon icon={cilArrowThickRight} />
@@ -92,6 +100,14 @@ const ProfessorList = () => {
                         to={`/professor/edit/${prof.professor_id}`}
                       >
                         <CIcon icon={cilPencil} />
+                      </Link>
+                    </CTooltip>
+                    <CTooltip content="load" placement="top">
+                      <Link
+                        className="btn btn-info me-2"
+                        to={`/professor/subjects/${prof.professor_id}`}
+                      >
+                        <CIcon icon={cilBook} />
                       </Link>
                     </CTooltip>
                   </CTableDataCell>

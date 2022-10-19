@@ -79,7 +79,6 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-
     onSubmit(subjectForm)
   }
 

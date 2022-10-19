@@ -42,6 +42,14 @@ const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsP
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 
+//professor-subjects
+const ProfessorSubjectList = React.lazy(() =>
+  import('./views/professor/professor-subject/ProfessorSubjectList'),
+)
+const SubjectSchedule = React.lazy(() =>
+  import('./views/professor/professor-subject/SubjectSchedule'),
+)
+
 export const routes = [
   //LANDING PAGE
   { path: '/', exact: true, name: 'Home' },
@@ -66,6 +74,14 @@ export const routes = [
   { path: '/professors', name: 'Professors', element: ProfessorList },
   { path: '/professor/:id', name: 'Professors', element: ProfessorDetails },
   { path: '/professor/edit/:id', name: 'Professors', element: EditProfessor },
+
+  //professor-subjects
+  { path: '/professor/subjects/:id', name: 'Subjects', element: ProfessorSubjectList },
+  {
+    path: '/subject/:subject_id/professor/:professor_id',
+    name: 'Subjects',
+    element: SubjectSchedule,
+  },
 
   //FACULTY MODULE
   { path: '/faculty/dashboard', name: 'Dashboard', element: FacultyDashboard },
