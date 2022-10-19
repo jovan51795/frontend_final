@@ -1,7 +1,8 @@
-import { CCard, CCardBody, CRow, CCol, CImage } from '@coreui/react'
 import React from 'react'
+import 'src/scss/_profile.scss'
 
 const StudentProfileForm = ({ studentInfo }) => {
+  const fullname = `${studentInfo.firstName} ${studentInfo.middleName} ${studentInfo.lastName}`
   const date = new Date(studentInfo.birthDate)
   const month = [
     'January',
@@ -20,104 +21,120 @@ const StudentProfileForm = ({ studentInfo }) => {
   const birthDate = month + ' ' + date.getDate() + ', ' + date.getFullYear()
 
   return (
-    <CRow>
-      <CCol xs={12} sm={6} lg={4}>
-        <CCard className="mb-4 d-flex flex-column align-items-center text-center">
-          <CCardBody>
-            <CImage
-              src="https://www.bootdey.com/img/Content/avatar/avatar7.png"
-              alt="profile pic"
-              className="rounded-circle"
-              style={{ width: '150px' }}
-            />
-            <div>
-              <h3>
-                {studentInfo.firstName} {studentInfo.lastName}
-              </h3>
-              <p className="mb-1">{studentInfo.course.courseTitle}</p>
-              <p className="text-muted font-size-sm">{studentInfo.department.departmentName}/</p>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 comp-title pt-3">MY PROFILE</div>
+        </div>
+        <div className="card profile-card justify-content-center m-4">
+          <div className="card-body">
+            <hr />
+            <div className="row row-title">
+              <div className="col-sm-12">
+                <p className="mb-0 fw-bold card-title txt-color">PERSONAL INFORMATION</p>
+              </div>
             </div>
-          </CCardBody>
-        </CCard>
-      </CCol>
-      <CCol xs={12} sm={6} lg={8}>
-        <CCard className="mb-4">
-          <CCardBody>
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Student Number:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.studentNo}
-              </CCol>
-            </CRow>
+            <hr className="pb-4" />
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">FULL NAME</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{fullname}</p>
+              </div>
+            </div>
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">First Name:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.firstName}
-              </CCol>
-            </CRow>
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">BIRTHDATE</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{birthDate}</p>
+              </div>
+            </div>
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Last Name:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.lastName}
-              </CCol>
-            </CRow>
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">MOBILE NUMBER</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.mobileNumber}</p>
+              </div>
+            </div>
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Date of Birth:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {birthDate}
-              </CCol>
-            </CRow>{' '}
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">ADDRESS</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.address}</p>
+              </div>
+            </div>
+            <hr className="pb-4" />
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Mobile Number:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.mobileNumber}
-              </CCol>
-            </CRow>
+            <div className="row row-title">
+              <div className="col-sm-12">
+                <p className="mb-0 fw-bold card-title txt-color">COURSE INFORMATION</p>
+              </div>
+            </div>
+            <hr className="pb-4" />
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">PROGRAM</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.department.departmentName}</p>
+              </div>
+            </div>
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Address:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.address}
-              </CCol>
-            </CRow>
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">COURSE</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.course.courseTitle}</p>
+              </div>
+            </div>
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Contact Person:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.emergencyContactPerson}
-              </CCol>
-            </CRow>{' '}
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">STATUS</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.status}</p>
+              </div>
+            </div>
+            <hr className="pb-4" />
             <hr />
-            <CRow>
-              <CCol sm={3}>
-                <h6 className="mb-0">Contact Number:</h6>
-              </CCol>
-              <CCol sm={9} className="text-secondary">
-                {studentInfo.emergencyContactNumber}
-              </CCol>
-            </CRow>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+            <div className="row row-title">
+              <div className="col-sm-12">
+                <p className="mb-0 fw-bold card-title txt-color">EMERGENCY CONTACT INFORMATION</p>
+              </div>
+            </div>
+            <hr className="pb-4" />
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">CONTACT PERSON</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.emergencyContactPerson}</p>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-4">
+                <p className="mb-0 fw-bold txt-color">CONTACT NUMBER</p>
+              </div>
+              <div className="col-sm-8">
+                <p className="mb-0">{studentInfo.emergencyContactNumber}</p>
+              </div>
+            </div>
+            <hr />
+            <div className="row"></div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
