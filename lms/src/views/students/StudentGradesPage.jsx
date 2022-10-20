@@ -33,7 +33,6 @@ const StudentGradesPage = () => {
       </div>
     )
   }
-
 }
 
 export default StudentGradesPage
