@@ -19,14 +19,14 @@ $enable-rtl: true;
 @import 'auth.scss';
 
 .student-list-table {
-  @include breakpoint-max(xs) {
+  @include breakpoint-max(md) {
     display: none !important;
   }
 }
 
 .student-list-card {
   display: none !important;
-  @include breakpoint-max(xs) {
+  @include breakpoint-max(md) {
     display: block !important;
   }
 }
