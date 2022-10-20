@@ -22,6 +22,15 @@ const SubjectsList = ({ subjects, onDelete }) => {
   return (
     <>
       <CRow className="student-list-table">
+        <CCol className="mb-3">
+          <CCard>
+            <CCardBody className="d-flex justify-content-end">
+              <Link className="btn btn-success fw-bolder text-dark" to="/subject/add">
+                Add Subject
+              </Link>
+            </CCardBody>
+          </CCard>
+        </CCol>
         <CCol xs={12}>
           <CCard>
             <CCardHeader>

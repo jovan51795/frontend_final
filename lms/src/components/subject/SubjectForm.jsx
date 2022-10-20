@@ -49,8 +49,10 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
     activeDeactive: Joi.boolean().allow(),
     professorLoad: Joi.number().allow(null),
     professor: Joi.number().allow(null),
-    grades: Joi.object().allow(null),
+    grades: Joi.allow(null),
     student: Joi.array().allow(),
+    course: Joi.allow(),
+    attendance: Joi.allow(),
   })
 
   const handleOnChange = (e) => {
@@ -84,6 +86,7 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(subjectForm)
+    console.log(result)
     return !!result.error
   }
 

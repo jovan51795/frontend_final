@@ -152,6 +152,9 @@ const StudentForm = ({ onSubmit, initialValue }) => {
   return (
     <CForm onSubmit={handleSubmit}>
       <CCard>
+        <CCardHeader>
+          <CCardTitle>{initialValue ? 'Edit student' : 'Add Student'}</CCardTitle>
+        </CCardHeader>
         <CCardBody>
           <CRow className="mb-3">
             <CCol lg={6} className="mb-3">

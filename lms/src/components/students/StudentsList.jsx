@@ -40,6 +40,15 @@ const StudentsList = () => {
   return (
     <>
       <CRow className="student-list-table">
+        <CCol className="mb-3">
+          <CCard>
+            <CCardBody className="d-flex justify-content-end">
+              <Link className="btn btn-success fw-bolder text-dark" to="/student/add">
+                Add Student
+              </Link>
+            </CCardBody>
+          </CCard>
+        </CCol>
         <CCol xs={12}>
           <CCard>
             <CCardBody>

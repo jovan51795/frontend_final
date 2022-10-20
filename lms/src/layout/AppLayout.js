@@ -12,6 +12,7 @@ import * as authService from 'src/services/auth'
 import { Link, useNavigate } from 'react-router-dom'
 
 const AppLayout = () => {
+  const navigate = useNavigate()
   const date = new Date()
   const today = date.getDay()
   const userInFo = getUserInfo()
@@ -23,13 +24,12 @@ const AppLayout = () => {
     setAccessToken(null)
     alert('Goodbye for now!')
   }
-  const navigate = useNavigate()
+
   useEffect(() => {
     if (!userInFo || userInFo.status === 0) {
       navigate('/')
     }
-    console.log('called')
-  })
+  }, [])
 
   return (
     <>
