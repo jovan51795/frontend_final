@@ -39,7 +39,7 @@ const LandingHeader = () => {
       <NavHead className="transparent">
         <NavbarContainer>
           <NavLogo src={logo} alt="logo" onClick={mobileMenu} />
-          <MobileIcon onClick={handleClick} smooth={true} duration={500}>
+          <MobileIcon onClick={handleClick} smooth={true} duration={500} style={{ color: 'white' }}>
             {click ? <FaTimes /> : <FaBars />}
           </MobileIcon>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>

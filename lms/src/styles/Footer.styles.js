@@ -45,7 +45,7 @@ export const FooterLinkItems = styled.div`
   box-sizing: border-box;
   color: #fff;
 
-  @media (max-width: 780px) {
+  @media (max-width: 960px) {
     align-items: center;
   }
 

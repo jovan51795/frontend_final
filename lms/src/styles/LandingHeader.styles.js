@@ -292,5 +292,6 @@ export const Link = styled(LinkRouter)`
 export const PublicLink = styled(LinkRouter)`
   color: white !important;
   text-decoration: none;
+  font-size: 25px;
   font-weight: 500;
 `
