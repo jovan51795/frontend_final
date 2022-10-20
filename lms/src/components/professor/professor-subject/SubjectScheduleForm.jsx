@@ -11,6 +11,7 @@ import {
 } from '@coreui/react'
 import React, { useState } from 'react'
 import Joi from 'joi'
+import 'src/scss/_admin.scss'
 
 const SubjectScheduleForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
@@ -184,13 +185,18 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   <option selected value="">
                     Status
                   </option>
-                  <option value="Not Completed">Not Completed</option>
+                  <option value="Ongoing">Ongoing</option>
                   <option value="Completed">Completed</option>
                 </CFormSelect>
               </CCol>
             </CRow>
             <div className="d-grid">
-              <CButton type="submit" color="primary" disabled={isFormInvalid()}>
+              <CButton
+                type="submit"
+                color="primary"
+                disabled={isFormInvalid()}
+                className="btn-color"
+              >
                 Submit
               </CButton>
             </div>

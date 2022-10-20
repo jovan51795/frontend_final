@@ -28,6 +28,12 @@ const FacultySubjects = () => {
         </div>
       </>
     )
+  } else {
+    return (
+      <div>
+        <h1 className="text-center m-5">No Classes Yet</h1>
+      </div>
+    )
   }
 }
 

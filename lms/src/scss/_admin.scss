@@ -1,0 +1,84 @@
+.notrounded {
+  --cui-card-border-radius: 0rem !important;
+  --cui-card-inner-border-radius: 0px !important;
+}
+
+.txt-style {
+  font-weight: 650;
+  font-size: 20px;
+  color: #003169;
+}
+
+.btn-color {
+  background-color: #003169;
+  --cui-btn-disabled-bg: #003169;
+
+  &:hover {
+    background-color: #076eb0;
+  }
+}
+
+.info-header {
+  font-size: 16px;
+  font-weight: 500;
+  color: #003169;
+}
+
+.sub {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.sub2 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.col-title {
+  font-size: 15px;
+  text-align: center;
+}
+
+.sm-col-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.btn-view {
+  --cui-btn-padding-x: 0.3rem;
+  --cui-btn-padding-y: 0.25rem;
+  --cui-btn-bg: none !important;
+  --cui-btn-border-color: none;
+  --cui-btn-hover-bg: none;
+  margin-top: -10px;
+}
+
+.sm-btn-view {
+  --cui-btn-padding-x: 0.3rem;
+  --cui-btn-padding-y: 0.25rem;
+  --cui-btn-bg: none !important;
+  --cui-btn-border-color: none;
+  --cui-btn-hover-bg: none;
+}
+
+.delete {
+  background-color: #ffffff;
+  --cui-btn-padding-x: 0.3rem;
+  --cui-btn-padding-y: 0.25rem;
+  border: none !important;
+  --cui-btn-border-color: white;
+}
+
+.btn-edit {
+  &:hover {
+    --cui-btn-hover-color: rgba(255, 255, 255, 0.87);
+    --cui-btn-hover-bg: #177245;
+    --cui-btn-hover-border-color: black;
+  }
+}
+
+.a-icon {
+  color: white;
+  margin-bottom: 1px;
+  display: inline-block;
+}

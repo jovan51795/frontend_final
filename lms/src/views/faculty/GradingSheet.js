@@ -1,59 +1,41 @@
 import React from 'react'
-import { CSmartTable } from '@coreui/react-pro'
-import { studentsData } from '../data/AttendanceTableData'
-import { Btn } from 'src/styles/Btn.styles.'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { getStudentGrade, setStudentGrade } from 'src/services/professorService'
 import 'src/scss/_custom.scss'
+import ClassCard from 'src/components/faculty/ClassCard'
 
 const GradingSheet = () => {
-  const columns = [
-    { key: 'StudentNo', filter: false, sorter: false, _style: { width: '15%' } },
-    { key: 'FirstName', filter: false, sorter: false, _style: { width: '15%' } },
-    { key: 'MiddleName', filter: false, sorter: false, _style: { width: '15%' } },
-    { key: 'LastName', filter: false, sorter: false, _style: { width: '15%' } },
-    { key: 'Course', filter: false, sorter: false, _style: { width: '15%' } },
-    { key: 'YearLevel', filter: false, sorter: false, _style: { width: '15%' } },
-    {
-      key: 'show_details',
-      label: '',
-      _style: { width: '1%' },
-      filter: false,
-      sorter: false,
-      //   _props: { color: 'primary', className: 'fw-semibold' },
-    },
-  ]
+  const { subject_id, professor_id, student_id } = useParams()
+  const navigate = useNavigate()
+  const [student, setStudent] = useState([])
 
-  return (
-    <CSmartTable
-      activePage={1}
-      cleaner
-      clickableRows
-      columns={columns}
-      columnFilter
-      columnSorter
-      items={studentsData}
-      itemsPerPageSelect
-      itemsPerPage={5}
-      pagination
-      scopedColumns={{
-        show_details: (item) => {
-          return (
-            <td className="py-2">
-              <Btn>Evaluate</Btn>
-            </td>
-          )
-        },
-      }}
-      sorterValue={{ column: 'StudentNo', state: 'asc' }}
-      tableFilter
-      tableHeadProps={{
-        color: 'secondary',
-      }}
-      tableProps={{
-        striped: true,
-        hover: true,
-      }}
-    />
-  )
+  useEffect(() => {
+    getStudentGrade(+subject_id, +professor_id, +student_id).then((res) => {
+      if (res.data && res.data.status === 1) {
+        setStudent(res.data.object)
+      } else if (res.data && res.data.status === 0) {
+        toast.error(res.data.message)
+      }
+    })
+  }, [subject_id, professor_id, student_id])
+
+  const handleSubmit = (grade) => {
+    console.log('submitting')
+    setStudentGrade(+student_id, +subject_id, +professor_id, grade).then((res) => {
+      if (res && res.data && res.data.status === 1) {
+        toast.success(res.data.message)
+        navigate('/faculty/classes')
+      } else if (res && res.data && res.data.status === 0) {
+        toast.error(res.data.message)
+      }
+    })
+  }
+
+  if (student.length !== 0) {
+    return <ClassCard student={student} onSubmit={handleSubmit} />
+  }
 }
 
 export default GradingSheet

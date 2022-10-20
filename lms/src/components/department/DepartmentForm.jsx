@@ -67,6 +67,9 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
     setDepartment(
       initialValue || {
         departmentName: '',
+        logo: '',
+        altlogo: '',
+        link: '',
         course: [],
       },
     )

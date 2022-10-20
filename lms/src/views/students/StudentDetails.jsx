@@ -2,6 +2,10 @@ import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getStudentById } from '../../services/studentService'
+import { IoIosArrowBack } from 'react-icons/io'
+import 'src/scss/_admin.scss'
+import { Btn } from 'src/styles/Btn.styles.'
+import { CContainer } from '@coreui/react-pro'
 
 const StudentDetails = () => {
   const param = useParams()
@@ -16,8 +20,8 @@ const StudentDetails = () => {
   if (student.student_id) {
     return (
       <>
-        <CCard className="mb-4">
-          <CCardHeader>Student Information</CCardHeader>
+        <CCard className="mb-4 notrounded">
+          <CCardHeader className="info-header">STUDENT PERSONAL INFORMATION</CCardHeader>
           <CCardBody>
             <CRow>
               <CCol md={4} xs={6} className="mb-3">
@@ -44,11 +48,30 @@ const StudentDetails = () => {
                 <h6>Birth Date</h6>
                 {student.birthDate}
               </CCol>
+              <CCol md={4} xs={6} className="mb-3">
+                <h6>Mobile Number</h6>
+                {student.mobileNumber}
+              </CCol>
+              <CCol md={4} xs={6} className="mb-3">
+                <h6>Adress</h6>
+                {student.address}
+              </CCol>
+              <CRow>
+                <div className="sub2 py-2">EMERGENCY CONTACT INFORMATION</div>
+                <CCol md={6} xs={6} className="mb-3">
+                  <h6>Contact Person</h6>
+                  {student.emergencyContactPerson}
+                </CCol>
+                <CCol md={6} xs={6} className="mb-3">
+                  <h6>Contact Number</h6>
+                  {student.emergencyContactNumber}
+                </CCol>
+              </CRow>
             </CRow>
           </CCardBody>
         </CCard>
-        <CCard className="mb-4">
-          <CCardHeader>Academic Information</CCardHeader>
+        <CCard className="mb-4 notrounded">
+          <CCardHeader className="info-header">ACADEMIC INFORMATION</CCardHeader>
           <CCardBody>
             <CRow>
               <CCol md={6} xs={12} className="mb-3">
@@ -79,8 +102,8 @@ const StudentDetails = () => {
             </CRow>
           </CCardBody>
         </CCard>
-        <CCard>
-          <CCardHeader>Subjects</CCardHeader>
+        <CCard className="notrounded">
+          <CCardHeader className="info-header">SUBJECTS</CCardHeader>
           <CCardBody>
             <CRow>
               {student.subject.map((sub, idx) => (
@@ -116,6 +139,13 @@ const StudentDetails = () => {
             </CRow>
           </CCardBody>
         </CCard>
+        <CRow>
+          <CContainer className="py-4">
+            <Btn big="true" to="/students">
+              <IoIosArrowBack className="a-icon" /> BACK
+            </Btn>
+          </CContainer>
+        </CRow>
       </>
     )
   }

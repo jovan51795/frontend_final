@@ -1,9 +1,12 @@
-import { CCard, CCardHeader, CCardTitle, CCol, CRow } from '@coreui/react'
+import { CCard, CCardHeader, CCardTitle, CCol, CContainer, CRow } from '@coreui/react'
 import { CCardBody } from '@coreui/react-pro'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { professorDetails } from '../../redux/actions/professorAction'
+import 'src/scss/_admin.scss'
+import { IoIosArrowBack } from 'react-icons/io'
+import { Btn } from 'src/styles/Btn.styles.'
 
 const ProfessorDetails = () => {
   const prof = useSelector((state) => state.professor)
@@ -14,39 +17,77 @@ const ProfessorDetails = () => {
     dispath(professorDetails(+param.id))
   }, [param, dispath])
   return (
-    <CCard>
-      <CCardHeader>
-        <CCardTitle>Details</CCardTitle>
-      </CCardHeader>
-      <CCardBody>
-        <CRow>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Professor No.</CCardTitle>
-            <div>{prof.professorNo}</div>
-          </CCol>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Professor Name</CCardTitle>
-            <div>{prof.professorName}</div>
-          </CCol>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Gender</CCardTitle>
-            <div>{prof.gender}</div>
-          </CCol>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Work</CCardTitle>
-            <div>{prof.work}</div>
-          </CCol>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Status</CCardTitle>
-            <div>{prof.status}</div>
-          </CCol>
-          <CCol md={4} xs={12} sm={6} className="mb-3">
-            <CCardTitle>Date of birth</CCardTitle>
-            <div>{prof.birthdate}</div>
-          </CCol>
-        </CRow>
-      </CCardBody>
-    </CCard>
+    <>
+      <CCard>
+        <CCardHeader>
+          <CCardTitle className="txt-style">PROFESSOR DETAILS</CCardTitle>
+        </CCardHeader>
+        <div className="container px-5">
+          <CCardBody>
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">PROFESSOR NO. :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">{prof.professorNo}</div>
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">PROFESSOR NAME :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">
+                  {prof.firstName} {prof.lastName}
+                </div>
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">GENDER :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">{prof.gender}</div>
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">DATE OF BIRTH :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">{prof.birthdate}</div>
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">WORK :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">{prof.work}</div>
+              </CCol>
+            </CRow>
+            <hr />
+            <CRow>
+              <CCol sm={6} className="mb-3">
+                <div className="sub">STATUS :</div>
+              </CCol>
+              <CCol sm={6} className="mb-3">
+                <div className="sub2">{prof.status}</div>
+              </CCol>
+            </CRow>
+          </CCardBody>
+        </div>
+      </CCard>
+      <CContainer className="py-4">
+        <Btn big="true" to="/professors">
+          <IoIosArrowBack className="a-icon" /> BACK
+        </Btn>
+      </CContainer>
+    </>
   )
 }
 
