@@ -72,6 +72,7 @@ const Programs = () => {
               <FeatureLink to={el.link}>
                 <FeatureName>{el.departmentName}</FeatureName>
               </FeatureLink>
+              
               {/* <FeatureText>{el.description}</FeatureText> */}
             </FeatureColumn>
           ))}

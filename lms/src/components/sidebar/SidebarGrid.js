@@ -13,7 +13,7 @@ const Sidebar2 = ({ onLogout }) => {
   const [number, setNumber] = useState()
   const [navigation, setnavigation] = useState([])
   const userInFo = getUserInfo()
-  const name = `${userInFo.object.firstName} ${userInFo.object.lastName}`
+  const name = userInFo && `${userInFo.object.firstName} ${userInFo.object.lastName}`
 
   useEffect(() => {
     if (userInFo && userInFo.object.type === 'student') {

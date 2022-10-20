@@ -16,6 +16,7 @@ const SubjectDetails = () => {
       }
     })
   }, [param])
+
   if (subject) {
     return (
       <div>

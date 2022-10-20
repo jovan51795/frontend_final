@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'src/scss/_newheader.scss'
 import { FaSearch } from 'react-icons/fa'
 import { MdOutlineMenu } from 'react-icons/md'
@@ -9,12 +9,14 @@ import SidebarGrid from '../components/sidebar/SidebarGrid'
 import AppContent from '../components/AppContent'
 import { getUserInfo } from '../services/userInfo'
 import * as authService from 'src/services/auth'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AppLayout = () => {
+  const navigate = useNavigate()
   const date = new Date()
   const today = date.getDay()
   const userInFo = getUserInfo()
-  const type = userInFo.object.type
+  const usertype = userInFo ? userInFo.object.type : false
   const [setAccessToken] = useState(authService.getAccessToken())
 
   const handleLogout = () => {
@@ -23,6 +25,12 @@ const AppLayout = () => {
     alert('Goodbye for now!')
   }
 
+  useEffect(() => {
+    if (!userInFo || userInFo.status === 0) {
+      navigate('/')
+    }
+  }, [])
+
   return (
     <>
       <div className="row">
@@ -30,9 +38,9 @@ const AppLayout = () => {
           {/* Start of Top Header */}
           <nav className="navbar navbar-expand-lg top-bar">
             <div className="container-fluid">
-              <a className="navbar-brand top-bar" href="#">
+              <Link className="navbar-brand top-bar">
                 <img src={logo} height="15" alt="ABC Logo" loading="lazy" />
-              </a>
+              </Link>
               <div>
                 Today is{' '}
                 {(() => {
@@ -73,21 +81,19 @@ const AppLayout = () => {
                 <span className="navbar-text text-white">&nbsp;&nbsp;CONTACT US&nbsp;&nbsp;</span>
               </div>
             </div>
-          </nav>{' '}
+          </nav>
           {/* End of Top Header */}
-        </div>{' '}
+        </div>
         {/* End of Grid for Top Header */}
       </div>
       <div className="container">
-        {' '}
         {/*Start of Container */}
         <div className="row">
-          {' '}
           {/*Start of Main Header*/}
           <div className="col-md-6 py-3 header-logo">
-            <a href="/">
+            <Link to="/">
               <img src={ABClogo} alt="ABC Logo" />
-            </a>
+            </Link>
           </div>
           <div className="col-md-3"></div>
           <div className="col-md-3 navbar-right pt-5">
@@ -104,22 +110,21 @@ const AppLayout = () => {
               </span>
             </form>
           </div>
-        </div>{' '}
+        </div>
         {/*End of Main Header*/}
         <div className="row">
           <div className="col-md-12 py-2 pb-5">
             <AppBreadcrumb />
           </div>
-        </div>{' '}
+        </div>
         {/*End of BreadCrumb*/}
         <div className="row">
-          {' '}
           {/*Start of Sidebar*/}
           <div className="col-md-3">
             <SidebarGrid onLogout={handleLogout} />
           </div>
           <div className="col-md-9 px-0">
-            <div className="title">WELCOME {type.toUpperCase()} </div>
+            <div className="title">WELCOME {usertype && usertype.toUpperCase()} </div>
             <hr style={{ border: '0.75px solid black' }} />
             <div className="row mx-0">
               <div className="col-md-12">
@@ -127,7 +132,7 @@ const AppLayout = () => {
               </div>
             </div>
           </div>
-        </div>{' '}
+        </div>
         {/*Start of Sidebar*/}
       </div>
     </>
