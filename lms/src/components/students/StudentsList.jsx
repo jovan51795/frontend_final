@@ -4,6 +4,7 @@ import {
   CButton,
   CCard,
   CCardBody,
+  CCardFooter,
   CCardHeader,
   CCardText,
   CCardTitle,
@@ -122,7 +123,7 @@ const StudentsList = () => {
             <CRow>
               <CCol sm={6}>
                 <CCardTitle>Student No.</CCardTitle>
-                <CCardText className="mb-4">{student.student_no}</CCardText>
+                <CCardText className="mb-4">{student.studentNo}</CCardText>
               </CCol>
               <CCol sm={6}>
                 <CCardTitle>First Name</CCardTitle>
@@ -160,6 +161,31 @@ const StudentsList = () => {
               </CCol>
             </CRow>
           </CCardBody>
+          <CCardFooter className="d-flex justify-content-end">
+            <CTooltip content="View Details" placement="top">
+              <Link
+                to={`/student/details/${student.student_id}`}
+                color="info"
+                className="me-2 btn btn-info"
+              >
+                <CIcon icon={cilArrowRight} />
+              </Link>
+            </CTooltip>
+            <CTooltip content="delete" placement="top">
+              <CButton
+                onClick={() => handleOnDelete(student.student_id)}
+                color="danger"
+                className="me-2"
+              >
+                <CIcon icon={cilTrash} />
+              </CButton>
+            </CTooltip>
+            <CTooltip content="update" placement="top">
+              <Link to={`/student/edit/${student.student_id}`} className="btn btn-success">
+                <CIcon icon={cilPencil} />
+              </Link>
+            </CTooltip>
+          </CCardFooter>
         </CCard>
       ))}
     </>
