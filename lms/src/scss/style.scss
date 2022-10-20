@@ -30,3 +30,9 @@ $enable-rtl: true;
     display: block !important;
   }
 }
+
+.subject-list-table {
+  @include breakpoint-max(md) {
+    overflow-x: scroll !important;
+  }
+}

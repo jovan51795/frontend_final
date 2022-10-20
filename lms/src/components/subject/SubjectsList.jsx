@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom'
 const SubjectsList = ({ subjects, onDelete }) => {
   return (
     <>
-      <CRow className="student-list-table">
+      <CRow>
         <CCol className="mb-3">
           <CCard>
             <CCardBody className="d-flex justify-content-end">
@@ -36,8 +36,8 @@ const SubjectsList = ({ subjects, onDelete }) => {
             <CCardHeader>
               <strong>Subjects Table</strong>
             </CCardHeader>
-            <CCardBody>
-              <CTable>
+            <CCardBody className="subject-list-table">
+              <CTable className="overflow-auto">
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope="col">Subject Code</CTableHeaderCell>
@@ -62,7 +62,7 @@ const SubjectsList = ({ subjects, onDelete }) => {
                           <span className="badge bg-warning">deactivated</span>
                         )}
                       </CTableDataCell>
-                      <CTableDataCell>
+                      <CTableDataCell className="d-flex">
                         <CTooltip content="View Details" placement="top">
                           <Link className="btn btn-info" to={`/subject/details/${sub.subject_id}`}>
                             <CIcon icon={cilArrowThickRight} />
