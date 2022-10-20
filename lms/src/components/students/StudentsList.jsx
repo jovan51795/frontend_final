@@ -21,9 +21,12 @@ import {
 } from '@coreui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { FiFileText, FiArchive } from 'react-icons/fi'
+import { RiEdit2Fill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import { getAllStudents } from 'src/redux/actions/studentActions'
 import { deleteStudentById } from '../../redux/actions/studentActions'
+import 'src/scss/_admin.scss'
 
 const StudentsList = () => {
   const students = useSelector((state) => {
@@ -41,34 +44,41 @@ const StudentsList = () => {
   return (
     <>
       <CRow className="student-list-table">
-        <CCol className="mb-3">
-          <CCard>
-            <CCardBody className="d-flex justify-content-end">
-              <Link className="btn btn-success fw-bolder text-dark" to="/student/add">
-                Add Student
-              </Link>
-            </CCardBody>
-          </CCard>
-        </CCol>
         <CCol xs={12}>
           <CCard>
             <CCardBody>
               <CTable caption="top">
-                <CTableCaption>Student List</CTableCaption>
+                <CTableCaption className="text-center txt-style">
+                  STUDENTS MASTER LIST
+                </CTableCaption>
                 <CTableHead>
-                  <CTableRow className="text-capitalize fz-">
-                    <CTableHeaderCell scope="col">Student No.</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">First Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Last Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Academic Year</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Sem</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Status</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
+                  <CTableRow>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      STUDENT NO.
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      FIRST NAME
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      LAST NAME
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      ACADEMIC YEAR
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      SEMESTER
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      STATUS
+                    </CTableHeaderCell>
+                    <CTableHeaderCell scope="col" className="col-title">
+                      ACTIONS
+                    </CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
                   {students.map((student, idx) => (
-                    <CTableRow key={idx} className="text-capitalize">
+                    <CTableRow key={idx} className="text-center">
                       <CTableDataCell>{student.studentNo}</CTableDataCell>
                       <CTableDataCell>{student.firstName}</CTableDataCell>
                       <CTableDataCell>{student.lastName}</CTableDataCell>
@@ -86,26 +96,24 @@ const StudentsList = () => {
                           <Link
                             to={`/student/details/${student.student_id}`}
                             color="info"
-                            className="me-2 btn btn-info"
+                            className="mx-1 btn btn-view"
                           >
-                            <CIcon icon={cilArrowRight} />
+                            <FiFileText className="nav-icon" />
                           </Link>
                         </CTooltip>
+                        <div className="vr"></div>
                         <CTooltip content="delete" placement="top">
                           <CButton
                             onClick={() => handleOnDelete(student.student_id)}
-                            color="danger"
-                            className="me-2"
+                            className="mx-1 btn-view"
                           >
-                            <CIcon icon={cilTrash} />
+                            <FiArchive className="nav-icon" />
                           </CButton>
                         </CTooltip>
+                        <div className="vr"></div>
                         <CTooltip content="update" placement="top">
-                          <Link
-                            to={`/student/edit/${student.student_id}`}
-                            className="btn btn-success"
-                          >
-                            <CIcon icon={cilPencil} />
+                          <Link to={`/student/edit/${student.student_id}`} className="btn btn-view">
+                            <RiEdit2Fill className="nav-icon" />
                           </Link>
                         </CTooltip>
                       </CTableDataCell>
@@ -122,67 +130,68 @@ const StudentsList = () => {
           <CCardBody>
             <CRow>
               <CCol sm={6}>
-                <CCardTitle>Student No.</CCardTitle>
+                <CCardTitle className="sm-col-title">STUDENT NO.</CCardTitle>
                 <CCardText className="mb-4">{student.studentNo}</CCardText>
               </CCol>
               <CCol sm={6}>
-                <CCardTitle>First Name</CCardTitle>
+                <CCardTitle className="sm-col-title">FIRST NAME</CCardTitle>
                 <CCardText className="mb-4">{student.firstName}</CCardText>
               </CCol>
 
               <CCol sm={6}>
-                <CCardTitle>Middle Name</CCardTitle>
+                <CCardTitle className="sm-col-title">MIDDLE NAME</CCardTitle>
                 <CCardText className="mb-4">{student.middleName}</CCardText>
               </CCol>
 
               <CCol sm={6}>
-                <CCardTitle>Last Name</CCardTitle>
+                <CCardTitle className="sm-col-title">LAST NAME</CCardTitle>
                 <CCardText className="mb-4">{student.lastName}</CCardText>
               </CCol>
 
               <CCol sm={6}>
-                <CCardTitle>Academic Year</CCardTitle>
+                <CCardTitle className="sm-col-title">ACADEMIC YEAR</CCardTitle>
                 <CCardText className="mb-4">{student.academicYear}</CCardText>
               </CCol>
 
               <CCol sm={6}>
-                <CCardTitle>Sem</CCardTitle>
+                <CCardTitle className="sm-col-title">SEMESTER</CCardTitle>
                 <CCardText className="mb-4"> {student.sem}</CCardText>
               </CCol>
               <CCol sm={6}>
-                <CCardTitle>Status</CCardTitle>
+                <CCardTitle className="sm-col-title">STATUS</CCardTitle>
                 <CCardText className="mb-4">
                   {student.active_deactive ? (
-                    <span className="badge bg-info">active</span>
+                    <span className="badge bg-info">ACTIVE</span>
                   ) : (
-                    <mark className="badge bg-warning">inActive</mark>
+                    <mark className="badge bg-warning">INACTIVE</mark>
                   )}
                 </CCardText>
               </CCol>
             </CRow>
           </CCardBody>
-          <CCardFooter className="d-flex justify-content-end">
-            <CTooltip content="View Details" placement="top">
+          <CCardFooter className="d-flex justify-content-end ">
+            <CTooltip content="View Details" placement="top" className="my-2">
               <Link
                 to={`/student/details/${student.student_id}`}
                 color="info"
-                className="me-2 btn btn-info"
+                className="mx-1 btn sm-btn-view"
               >
-                <CIcon icon={cilArrowRight} />
+                <FiFileText className="nav-icon" />
               </Link>
             </CTooltip>
+            <div className="vr"></div>
             <CTooltip content="delete" placement="top">
               <CButton
                 onClick={() => handleOnDelete(student.student_id)}
-                color="danger"
-                className="me-2"
+                className="mx-1 sm-btn-view"
               >
-                <CIcon icon={cilTrash} />
+                <FiArchive className="nav-icon" />
               </CButton>
             </CTooltip>
+            <div className="vr"></div>
             <CTooltip content="update" placement="top">
-              <Link to={`/student/edit/${student.student_id}`} className="btn btn-success">
-                <CIcon icon={cilPencil} />
+              <Link to={`/student/edit/${student.student_id}`} className="btn sm-btn-view">
+                <RiEdit2Fill className="nav-icon" />
               </Link>
             </CTooltip>
           </CCardFooter>

@@ -29,7 +29,7 @@ const StudentGradesPage = () => {
   } else {
     return (
       <div>
-        <h1>No Grades Yet</h1>
+        <h1 className="text-center m-5">No Grades Yet</h1>
       </div>
     )
   }

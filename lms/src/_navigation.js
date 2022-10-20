@@ -1,7 +1,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import { cilFolderOpen, cilSpreadsheet, cilSpeedometer, cilBook } from '@coreui/icons'
-import { FaCalendarAlt, FaUserTie, FaUser, FaGraduationCap } from 'react-icons/fa'
+import { FaCalendarAlt, FaUserTie, FaUser, FaGraduationCap, FaAddressCard } from 'react-icons/fa'
 import { RiAdminFill, RiUserSettingsFill } from 'react-icons/ri'
 import { ImLibrary, ImBooks } from 'react-icons/im'
 import { MdCalendarViewMonth, MdOutlineClass } from 'react-icons/md'
@@ -22,6 +22,11 @@ export const _navAdmin = [
     link: '/admin/profile',
   },
   {
+    label: 'Student Admission',
+    icon: <FaAddressCard className="nav-icon" />,
+    link: '/student/add',
+  },
+  {
     label: 'Student Module',
     icon: <RiUserSettingsFill className="nav-icon" />,
     link: '/students',
@@ -37,19 +42,9 @@ export const _navAdmin = [
     link: '/departments',
   },
   {
-    label: 'Programs',
-    icon: <FaGraduationCap className="nav-icon" />,
-    link: '/subjects',
-  },
-  {
     label: 'Subjects',
     icon: <ImBooks className="nav-icon" />,
     link: '/subjects',
-  },
-  {
-    label: 'Class Scheduler',
-    icon: <FaCalendarAlt className="nav-icon" />,
-    link: '',
   },
 ]
 
@@ -57,32 +52,22 @@ export const _navFaculty = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: `${userInFo && userInFo.type}/dashboard`,
+    link: '/faculty/dashboard',
   },
   {
     label: 'My Profile',
     icon: <FaUserTie className="nav-icon" />,
-    link: `${userInFo && userInFo.type}/profile`,
+    link: '/faculty/profile',
   },
   {
-    label: 'My Classes',
+    label: 'My Class Monitoring',
     icon: <MdOutlineClass className="nav-icon" />,
-    link: `${userInFo.type}/classes`,
+    link: '/faculty/classes',
   },
   {
     label: 'My Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
-    link: `${userInFo && userInFo.type}/schedule`,
-  },
-  {
-    label: 'My Attendance Monitoring',
-    icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
-    link: `${userInFo && userInFo.type}/attendance-monitoring`,
-  },
-  {
-    label: 'Student Evaluation',
-    icon: <CIcon icon={cilFolderOpen} customClassName="nav-icon" />,
-    link: '/faculty/students-grades',
+    link: '/faculty/schedule',
   },
 ]
 

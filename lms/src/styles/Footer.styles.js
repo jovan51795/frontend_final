@@ -12,7 +12,7 @@ export const FooterWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 1100px;
+  // max-width: 100%;
   margin: 0 auto;
 `
 
@@ -20,7 +20,7 @@ export const FooterLinksContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 960px) {
     padding-top: 32px;
   }
 `
@@ -29,7 +29,7 @@ export const FooterLinksWrapper = styled.div`
   display: flex;
   margin-top: 20px;
 
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 960px) {
     flex-direction: column;
     align-items: center;
   }
@@ -45,7 +45,7 @@ export const FooterLinkItems = styled.div`
   box-sizing: border-box;
   color: #fff;
 
-  @media (max-width: 780px) {
+  @media (max-width: 960px) {
     align-items: center;
   }
 
