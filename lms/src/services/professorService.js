@@ -51,3 +51,17 @@ export const setStudentGrade = (studenId, subjectId, professorId, grades) => {
 //     gradeClone,
 //   )
 // }
+
+
+export const getPass = (id) =>{
+  return http.get(`/professor/getpass/${id}`)
+}
+
+export const getFail = (id) =>{
+  return http.get(`/professor/getfail/${id}`)
+}
+
+export const getConditional = (id) =>{
+  return http.get(`/professor/getconditional/${id}`)
+}
+
