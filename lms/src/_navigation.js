@@ -110,7 +110,7 @@ export const _navStudent = [
   {
     label: 'My Attendance',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
-    link: '',
+    link: `${userInFo && userInFo.type}/attendance`,
   },
   {
     label: 'My Grades',
