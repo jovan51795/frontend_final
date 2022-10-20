@@ -7,7 +7,6 @@ import { getUserInfo } from 'src/services/userInfo'
 const FacultySchedule = () => {
   const [schedules, setSchedules] = useState([])
   const userInfo = getUserInfo().object
-  console.log(schedules)
   useEffect(() => {
     getSchedules(userInfo.professor_id)
   }, [])
