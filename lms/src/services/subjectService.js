@@ -15,3 +15,7 @@ export const updateSubjectHistory = (subjectId, professorId, form) => {
 export const getStudentScheduleById = (id) => {
   return http.get(`/student/schedule/${id}`)
 }
+
+export const getFacultyScheduleById = (id) => {
+  return http.get(`/professor/schedule/${id}`)
+}

@@ -30,7 +30,7 @@ const StudentDashboardCalendar = ({ schedules }) => {
 
   return (
     <>
-      <ScheduleComponent currentView="Week" eventSettings={events}>
+      <ScheduleComponent currentView="Month" eventSettings={events}>
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
     </>
