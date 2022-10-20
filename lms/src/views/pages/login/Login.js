@@ -32,7 +32,7 @@ const Login = () => {
 
   useSelector((state) => {
     if (state.adminAuth && state.adminAuth.status === 1) {
-      navigate('/dashboard')
+      navigate(`/${param.type}/dashboard`)
     }
   })
 
