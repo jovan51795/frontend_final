@@ -1,34 +1,25 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import * as scheduleService from 'src/services/scheduleService'
+import * as subjecService from 'src/services/subjectService'
+import { getUserInfo } from 'src/services/userInfo'
 import { CCard, CCardBody, CCardHeader } from '@coreui/react'
 import StudentDashboardCalendar from 'src/components/Student-Module/StudentDashboardCalendar'
 
 const StudentSchedule = () => {
-  const [schedule, setSchedule] = useState([])
-
+  const [schedules, setSchedules] = useState([])
+  const userInfo = getUserInfo().object
   useEffect(() => {
-    getSchedules()
+    getSchedules(userInfo.student_id)
   }, [])
 
-  const getSchedules = () => {
-    scheduleService.getAll().then((res) => {
+  const getSchedules = (id) => {
+    subjecService.getStudentScheduleById(id).then((res) => {
       if (res.data) {
-        setSchedule(res.data)
+        setSchedules(res.data.object)
       }
     })
   }
-  const studentSchedules = []
 
-  schedule.map((sched) => {
-    studentSchedules.push({
-      Id: sched.schedule_id,
-      Subject: sched.schedule_subject,
-      StartTime: new Date(sched.startDate + ' ' + sched.startTime),
-      EndTime: new Date(sched.startDate + ' ' + sched.endTime),
-      RecurrenceRule: 'FREQ=WEEKLY;COUNT=50',
-    })
-  })
   return (
     <>
       <CCard className="mb-4">
@@ -36,7 +27,7 @@ const StudentSchedule = () => {
           <strong>My Schedule</strong>
         </CCardHeader>
         <CCardBody style={{ height: '800px', width: 'auto', overflow: 'scroll', overflow: 'auto' }}>
-          <StudentDashboardCalendar schedules={studentSchedules} />
+          <StudentDashboardCalendar schedules={schedules} />
         </CCardBody>
       </CCard>
     </>

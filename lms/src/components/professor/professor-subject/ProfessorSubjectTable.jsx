@@ -13,7 +13,7 @@ import {
 import { Link } from 'react-router-dom'
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilArrowThickRight, cilPen } from '@coreui/icons'
+import { cilArrowThickRight, cilCalendar, cilPen } from '@coreui/icons'
 import { update } from 'lodash'
 
 const ProfessorSubjectTable = ({ subjectList, params }) => {
@@ -52,10 +52,10 @@ const ProfessorSubjectTable = ({ subjectList, params }) => {
                   <CTableDataCell>
                     <CTooltip content="Schedule" placement="top">
                       <Link
-                        className="btn btn-success"
+                        className="btn btn-warning"
                         to={`/subject/${sub.subject_id}/professor/${params}`}
                       >
-                        <CIcon icon={cilPen} />
+                        <CIcon icon={cilCalendar} />
                       </Link>
                     </CTooltip>
                   </CTableDataCell>
