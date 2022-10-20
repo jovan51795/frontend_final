@@ -88,7 +88,7 @@ const ProfessorList = () => {
                         <CIcon icon={cilTrash} />
                       </CButton>
                     </CTooltip>
-                    <CTooltip content="update" placement="top">
+                    <CTooltip content="Update" placement="top">
                       <Link
                         className="btn btn-success me-2"
                         to={`/professor/edit/${prof.professor_id}`}
@@ -96,9 +96,9 @@ const ProfessorList = () => {
                         <CIcon icon={cilPencil} />
                       </Link>
                     </CTooltip>
-                    <CTooltip content="load" placement="top">
+                    <CTooltip content="Subjects" placement="top">
                       <Link
-                        className="btn btn-info me-2"
+                        className="btn btn-warning me-2"
                         to={`/professor/subjects/${prof.professor_id}`}
                       >
                         <CIcon icon={cilBook} />

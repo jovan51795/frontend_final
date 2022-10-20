@@ -72,7 +72,7 @@ export const _navFaculty = [
   {
     label: 'My Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
-    link: `${userInFo && userInFo.type}/class-schedule`,
+    link: `${userInFo && userInFo.type}/schedule`,
   },
   {
     label: 'My Attendance Monitoring',
