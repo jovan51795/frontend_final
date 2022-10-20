@@ -15,9 +15,13 @@ import {
 import { CTableRow } from '@coreui/react-pro'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { FiFileText, FiArchive } from 'react-icons/fi'
+import { RiEdit2Fill } from 'react-icons/ri'
+import { GrBook } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { deleteProfessor } from '../../redux/actions/professorAction'
 import { getAllProfessor } from '../../services/professorService'
+import 'src/scss/_admin.scss'
 
 const ProfessorList = () => {
   const dispatch = useDispatch()
@@ -43,23 +47,25 @@ const ProfessorList = () => {
   })
   if (professors) {
     return (
-      <CCard>
+      <CCard className="notrounded">
         <CCardBody style={{ overflow: 'auto scroll', width: '100%' }}>
           <CTable caption="top">
-            <CTableCaption>Professor List</CTableCaption>
+            <CTableCaption className="text-center txt-style pt-1">
+              FACULTY MASTER LIST
+            </CTableCaption>
             <CTableHead>
               <CTableRow>
-                <CTableHeaderCell>Professor No.</CTableHeaderCell>
-                <CTableHeaderCell>Name</CTableHeaderCell>
-                <CTableHeaderCell>Work</CTableHeaderCell>
-                <CTableHeaderCell>Gender</CTableHeaderCell>
-                <CTableHeaderCell>Status</CTableHeaderCell>
-                <CTableHeaderCell>Actions</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">PROFESSOR NO.</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">NAME</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">WORK</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">GENDER</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">STATUS</CTableHeaderCell>
+                <CTableHeaderCell className="col-title">ACTIONS</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
               {professors.map((prof) => (
-                <CTableRow key={prof.professor_id}>
+                <CTableRow key={prof.professor_id} className="text-center">
                   <CTableDataCell>{prof.professorNo}</CTableDataCell>
                   <CTableDataCell>
                     {prof.firstName} {prof.lastName}
@@ -75,33 +81,36 @@ const ProfessorList = () => {
                   </CTableDataCell>
                   <CTableDataCell style={{ display: 'flex' }}>
                     <CTooltip content="View Details" placement="top">
-                      <Link className="btn btn-info me-2" to={`/professor/${prof.professor_id}`}>
-                        <CIcon icon={cilArrowThickRight} />
+                      <Link className="btn btn-view mx-1" to={`/professor/${prof.professor_id}`}>
+                        <FiFileText className="nav-icon" />
                       </Link>
                     </CTooltip>
+                    <div className="vr"></div>
                     <CTooltip content="Delete" placement="top">
                       <CButton
                         onClick={() => handleOnDelete(prof.professor_id)}
                         color="danger"
-                        className="me-2"
+                        className="mx-1 btn-view"
                       >
-                        <CIcon icon={cilTrash} />
+                        <FiArchive className="nav-icon" />
                       </CButton>
                     </CTooltip>
+                    <div className="vr"></div>
                     <CTooltip content="Update" placement="top">
                       <Link
-                        className="btn btn-success me-2"
+                        className="btn btn-view mx-1"
                         to={`/professor/edit/${prof.professor_id}`}
                       >
-                        <CIcon icon={cilPencil} />
+                        <RiEdit2Fill className="nav-icon" />
                       </Link>
                     </CTooltip>
+                    <div className="vr"></div>
                     <CTooltip content="Subjects" placement="top">
                       <Link
-                        className="btn btn-warning me-2"
+                        className="btn btn-view mx-1"
                         to={`/professor/subjects/${prof.professor_id}`}
                       >
-                        <CIcon icon={cilBook} />
+                        <GrBook className="nav-icon" />
                       </Link>
                     </CTooltip>
                   </CTableDataCell>

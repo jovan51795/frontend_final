@@ -48,34 +48,39 @@ const Sidebar2 = ({ onLogout }) => {
 
   return (
     <div className="card-body text-center">
-      <img src={noimage} alt="avatar" className="img-fluid" style={{ width: '150px' }} />
-      <h5 className="my-3 maincolor">{name}</h5>
-      <p className="text-dark mb-0">{work}</p>
-      <hr className="hr" />
-      <p className="text-dark mb-4">{number}</p>
-
-      <div>
-        <ul className="list-group list-group-flush rounded-3">
-          {navigation.map((nav, index) => (
-            <li className="list-group-item d-flex align-items-center transparent p-3" key={index}>
-              {nav.icon}
+      <div className="container">
+        <div className="row d-flex justify-content-center">
+          <img src={noimage} alt="avatar" className="img-fluid" style={{ width: '150px' }} />
+        </div>
+        <div className="row">
+          <h5 className="my-3 maincolor d-flex justify-content-center">{name}</h5>
+          <p className="text-dark mb-0 d-flex justify-content-center">{work}</p>
+          <hr className="hr" />
+          <p className="text-dark mb-4 d-flex justify-content-center">{number}</p>
+        </div>
+        <div className="row">
+          <ul className="list-group list-group-flush rounded-3">
+            {navigation.map((nav, index) => (
+              <li className="list-group-item d-flex align-items-center transparent p-3" key={index}>
+                {nav.icon}
+                <div className="mb-0">
+                  <Link to={nav.link} className="link">
+                    &nbsp;&nbsp;&nbsp;{nav.label}
+                  </Link>
+                </div>
+              </li>
+            ))}
+            <li className="list-group-item d-flex align-items-center transparent p-3">
+              <FiLogOut className="nav-icon" />
               <div className="mb-0">
-                <Link to={nav.link} className="link">
-                  &nbsp;{nav.label}
+                <Link to="/" className="link" onClick={handleClick}>
+                  &nbsp;Logout
                 </Link>
+                <ToastContainer />
               </div>
             </li>
-          ))}
-          <li className="list-group-item d-flex align-items-center transparent p-3">
-            <FiLogOut className="nav-icon" />
-            <div className="mb-0">
-              <Link to="/" className="link" onClick={handleClick}>
-                &nbsp;Logout
-              </Link>
-              <ToastContainer />
-            </div>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   )

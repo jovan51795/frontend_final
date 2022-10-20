@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import {
+  CContainer,
   CButton,
   CCard,
   CCardBody,
@@ -16,6 +17,9 @@ import { useState } from 'react'
 import { getAll } from '../../services/departmentService'
 import Joi from 'joi'
 import camelCaseToWords from '../../services/lodashService'
+import 'src/scss/_admin.scss'
+import { IoIosArrowBack } from 'react-icons/io'
+import { Btn } from 'src/styles/Btn.styles.'
 
 const SubjectForm = ({ onSubmit, initialValue }) => {
   const [departments, setDepartments] = useState([])
@@ -94,128 +98,145 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
   }
 
   return (
-    <CForm onSubmit={handleSubmit}>
-      <CRow className="mb-4">
-        <CCol>
-          <CCard>
-            <CCardBody>
-              <CRow>
-                {departments.map((dep) => (
-                  <CCol xs={12} lg={6} key={dep.departmentId}>
-                    <CCardTitle>{dep.departmentName}</CCardTitle>
-                    <CCard>
-                      <CCardBody>
-                        {dep.course.map((course) => (
-                          <CFormCheck
-                            name="course"
-                            checked={
-                              subjectForm.course &&
-                              course &&
-                              subjectForm.course.courseId === course.courseId
-                                ? true
-                                : false
-                            }
-                            label={course.courseTitle}
-                            key={course.courseId}
-                            onChange={(e) => handleChangeCourse(e, course)}
-                            type="radio"
-                          />
-                        ))}
-                      </CCardBody>
-                    </CCard>
+    <>
+      <CForm onSubmit={handleSubmit}>
+        <CRow>
+          <div className="txt-style text-center py-3">
+            {initialValue ? 'SUBJECT EDIT DETAILS FORM' : 'SUBJECT ADDITION FORM'}
+          </div>
+        </CRow>
+        <CRow className="mb-4">
+          <CCol>
+            <CCard className="my-3">
+              <CCardBody>
+                <CRow>
+                  {departments.map((dep) => (
+                    <CCol xs={12} lg={6} key={dep.departmentId}>
+                      <CCardTitle>{dep.departmentName}</CCardTitle>
+                      <CCard>
+                        <CCardBody>
+                          {dep.course.map((course) => (
+                            <CFormCheck
+                              name="course"
+                              checked={
+                                subjectForm.course &&
+                                course &&
+                                subjectForm.course.courseId === course.courseId
+                                  ? true
+                                  : false
+                              }
+                              label={course.courseTitle}
+                              key={course.courseId}
+                              onChange={(e) => handleChangeCourse(e, course)}
+                              type="radio"
+                            />
+                          ))}
+                        </CCardBody>
+                      </CCard>
+                    </CCol>
+                  ))}
+                </CRow>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+        <CRow>
+          <CCol xs={12}>
+            <CCard className="mb-4">
+              <CCardHeader>
+                <strong>SUBJECT INFORMATION</strong>
+              </CCardHeader>
+              <CCardBody>
+                <CRow className="mb-3">
+                  <CFormLabel htmlFor="title" className="col-sm-2 col-form-label">
+                    Title:
+                  </CFormLabel>
+                  <CCol sm={10}>
+                    <CFormInput
+                      type="text"
+                      id="title"
+                      placeholder="Enter subject title"
+                      name="subjectTitle"
+                      value={subjectForm.subjectTitle}
+                      onChange={handleOnChange}
+                      invalid={!!errors.subjectTitle}
+                      feedback={errors.subjectTitle}
+                    />
                   </CCol>
-                ))}
-              </CRow>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-      <CRow>
-        <CCol xs={12}>
-          <CCard className="mb-4">
-            <CCardHeader>
-              <strong>Subject Information</strong>
-            </CCardHeader>
-            <CCardBody>
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="title" className="col-sm-2 col-form-label">
-                  Title:
-                </CFormLabel>
-                <CCol sm={10}>
-                  <CFormInput
-                    type="text"
-                    id="title"
-                    placeholder="Enter subject title"
-                    name="subjectTitle"
-                    value={subjectForm.subjectTitle}
-                    onChange={handleOnChange}
-                    invalid={!!errors.subjectTitle}
-                    feedback={errors.subjectTitle}
-                  />
-                </CCol>
-              </CRow>
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="subject_code" className="col-sm-2 col-form-label">
-                  Code:
-                </CFormLabel>
-                <CCol sm={10}>
-                  <CFormInput
-                    type="text"
-                    id="subject_code"
-                    placeholder="Enter subject code"
-                    name="subjectCode"
-                    value={subjectForm.subjectCode}
-                    onChange={handleOnChange}
-                    invalid={!!errors.subjectCode}
-                    feedback={errors.subjectCode}
-                  />
-                </CCol>
-              </CRow>
+                </CRow>
+                <CRow className="mb-3">
+                  <CFormLabel htmlFor="subject_code" className="col-sm-2 col-form-label">
+                    Code:
+                  </CFormLabel>
+                  <CCol sm={10}>
+                    <CFormInput
+                      type="text"
+                      id="subject_code"
+                      placeholder="Enter subject code"
+                      name="subjectCode"
+                      value={subjectForm.subjectCode}
+                      onChange={handleOnChange}
+                      invalid={!!errors.subjectCode}
+                      feedback={errors.subjectCode}
+                    />
+                  </CCol>
+                </CRow>
 
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="units" className="col-sm-2 col-form-label">
-                  Units:
-                </CFormLabel>
-                <CCol sm={10}>
-                  <CFormInput
-                    type="number"
-                    id="units"
-                    placeholder="Enter number of units"
-                    name="units"
-                    value={subjectForm.units}
-                    onChange={handleOnChange}
-                    invalid={!!errors.units}
-                    feedback={errors.units}
-                  />
-                </CCol>
-              </CRow>
-              <CRow className="mb-3">
-                <CFormLabel htmlFor="prerequisities" className="col-sm-2 col-form-label">
-                  Prerequisities:
-                </CFormLabel>
-                <CCol sm={10}>
-                  <CFormInput
-                    type="text"
-                    id="prerequisites"
-                    placeholder="Enter subject prerequisites"
-                    name="prerequisites"
-                    value={subjectForm.prerequisites}
-                    onChange={handleOnChange}
-                    invalid={!!errors.prerequisites}
-                    feedback={errors.prerequisites}
-                  />
-                </CCol>
-              </CRow>
-              <div className="d-grid">
-                <CButton type="submit" color="primary" disabled={isFormInvalid()}>
-                  Add Subject
-                </CButton>
-              </div>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
-    </CForm>
+                <CRow className="mb-3">
+                  <CFormLabel htmlFor="units" className="col-sm-2 col-form-label">
+                    Units:
+                  </CFormLabel>
+                  <CCol sm={10}>
+                    <CFormInput
+                      type="number"
+                      id="units"
+                      placeholder="Enter number of units"
+                      name="units"
+                      value={subjectForm.units}
+                      onChange={handleOnChange}
+                      invalid={!!errors.units}
+                      feedback={errors.units}
+                    />
+                  </CCol>
+                </CRow>
+                <CRow className="mb-3">
+                  <CFormLabel htmlFor="prerequisities" className="col-sm-2 col-form-label">
+                    Prerequisities:
+                  </CFormLabel>
+                  <CCol sm={10}>
+                    <CFormInput
+                      type="text"
+                      id="prerequisites"
+                      placeholder="Enter subject prerequisites"
+                      name="prerequisites"
+                      value={subjectForm.prerequisites}
+                      onChange={handleOnChange}
+                      invalid={!!errors.prerequisites}
+                      feedback={errors.prerequisites}
+                    />
+                  </CCol>
+                </CRow>
+                <div className="d-grid">
+                  <CButton
+                    type="submit"
+                    color="primary"
+                    disabled={isFormInvalid()}
+                    className="btn-color"
+                  >
+                    SUBMIT
+                  </CButton>
+                </div>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      </CForm>
+      <CContainer className="py-4">
+        <Btn big="true" to="/subjects">
+          <IoIosArrowBack className="a-icon" /> BACK
+        </Btn>
+      </CContainer>
+    </>
   )
 }
 

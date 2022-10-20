@@ -33,7 +33,6 @@ const AttendanceSheet = React.lazy(() => import('./views/faculty/AttendanceSheet
 const GradingSheet = React.lazy(() => import('./views/faculty/GradingSheet'))
 const EditFacultyProfile = React.lazy(() => import('./views/faculty/EditFacultyProfile'))
 const FacultySchedule = React.lazy(() => import('./views/faculty/FacultySchedule'))
-const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //STUDENT MODULE
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
@@ -93,9 +92,16 @@ export const routes = [
   { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
   { path: '/faculty/classes', name: 'Class Subjects', element: FacultyClasses },
   { path: '/faculty/schedule', name: 'Class Schedule', element: FacultySchedule },
-  { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
-  { path: '/faculty/students-grades', name: 'Grades', element: GradingSheet },
-  { path: '/faculty/students-grades/id', name: 'Class Card', element: ClassCard },
+  {
+    path: '/professor/attendance/subject/:subject_id/prof/:professor_id/student/:student_id',
+    name: 'Attendance',
+    element: AttendanceSheet,
+  },
+  {
+    path: '/professor/grades/subject/:subject_id/prof/:professor_id/student/:student_id',
+    name: 'Grades',
+    element: GradingSheet,
+  },
 
   //STUDENT MODULE
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },

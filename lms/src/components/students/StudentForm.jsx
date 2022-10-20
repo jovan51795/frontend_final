@@ -17,6 +17,7 @@ import Joi from 'joi'
 import React, { useEffect, useState } from 'react'
 import { getAllDepartmentWithSubject } from '../../services/departmentService'
 import camelCaseToWords from '../../services/lodashService'
+import 'src/scss/_admin.scss'
 
 const StudentForm = ({ onSubmit, initialValue }) => {
   const [departments, setDepartments] = useState([])
@@ -31,6 +32,10 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       sem: '1st Sem',
       status: 'regular',
       birthDate: '',
+      address: '',
+      mobileNumber: '',
+      emergencyContactPerson: '',
+      emergencyContactNumber: '',
       department: {},
       course: {},
       subject: [],
@@ -66,6 +71,10 @@ const StudentForm = ({ onSubmit, initialValue }) => {
           return true
         }
       }),
+    address: Joi.string().allow(),
+    mobileNumber: Joi.string().allow(),
+    emergencyContactPerson: Joi.string().allow(),
+    emergencyContactNumber: Joi.string().allow(),
     department: Joi.object().allow({}).optional(),
     course: Joi.object().allow({}).optional(),
     subject: Joi.array().optional().required(),
@@ -151,9 +160,11 @@ const StudentForm = ({ onSubmit, initialValue }) => {
   }
   return (
     <CForm onSubmit={handleSubmit}>
-      <CCard>
+      <CCard className="notrounded">
         <CCardHeader>
-          <CCardTitle>{initialValue ? 'Edit student' : 'Add Student'}</CCardTitle>
+          <CCardTitle className="text-center txt-style pt-1">
+            {initialValue ? 'STUDENT DETAILS EDIT FORM' : 'STUDENT ENROLLMENT FORM'}
+          </CCardTitle>
         </CCardHeader>
         <CCardBody>
           <CRow className="mb-3">
@@ -242,13 +253,57 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 feedback={errors.birthDate}
               />
             </CCol>
+            <CCol lg={6} className="mb-3">
+              <CFormLabel>Mobile Number</CFormLabel>
+              <CFormInput
+                name="mobileNumber"
+                value={form.mobileNumber}
+                onChange={handleChange}
+                placeholder="Mobile Number"
+                invalid={!!errors.mobileNumber}
+                feedback={errors.mobileNumber}
+              />
+            </CCol>
+            <CCol lg={12} className="mb-3">
+              <CFormLabel>Address</CFormLabel>
+              <CFormInput
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+                placeholder="Address"
+                invalid={!!errors.address}
+                feedback={errors.address}
+              />
+            </CCol>
+            <div className="sub p-2 text-center">EMERGENCY CONTACT INFORMATION</div>
+            <CCol lg={6} className="mb-3">
+              <CFormLabel>Emergency Contact Person:</CFormLabel>
+              <CFormInput
+                name="emergencyContactPerson"
+                value={form.emergencyContactPerson}
+                onChange={handleChange}
+                placeholder="Contact Person"
+                invalid={!!errors.emergencyContactPerson}
+                feedback={errors.emergencyContactPerson}
+              />
+            </CCol>
+            <CCol lg={6} className="mb-3">
+              <CFormLabel>Emergency Contact Number:</CFormLabel>
+              <CFormInput
+                name="emergencyContactNumber"
+                value={form.emergencyContactNumber}
+                onChange={handleChange}
+                placeholder="Emergency Contact Numberr"
+                invalid={!!errors.emergencyContactNumber}
+                feedback={errors.emergencyContactNumber}
+              />
+            </CCol>
           </CRow>
-
           <CRow>
             <CCol>
-              <CCard>
+              <CCard className="notrounded">
                 <CCardHeader>
-                  <CCardTitle>Departments and Courses</CCardTitle>
+                  <CCardTitle className="text-center txt-style">DEPARTMENT AND COURSE</CCardTitle>
                 </CCardHeader>
                 <CCardBody>
                   <CRow>
@@ -281,7 +336,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                                 label={crs.courseTitle}
                                 onChange={(e) => handleChangeDep(e, crs, 'course')}
                               />
-                              <CCard>
+                              <CCard className="notrounded my-2">
                                 <CCardHeader>
                                   <span>Subjects {!subjects.toString()}</span>
                                 </CCardHeader>
@@ -314,9 +369,11 @@ const StudentForm = ({ onSubmit, initialValue }) => {
           </CRow>
         </CCardBody>
         <CCardFooter>
-          <CButton type="submit" className="mr-4" disabled={isFormInvalid()}>
-            Submit
-          </CButton>
+          <CRow className="d-flex justify-content-center p-3">
+            <CButton type="submit" disabled={isFormInvalid()} className="btn-color">
+              SUBMIT
+            </CButton>
+          </CRow>
         </CCardFooter>
       </CCard>
     </CForm>

@@ -1,0 +1,13 @@
+.subject-card {
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+.sub-list {
+  border: none;
+  --cui-list-group-border-width: 0px;
+  --cui-list-group-border-color: white;
+  border-radius: 0px;
+  box-shadow: none;
+}

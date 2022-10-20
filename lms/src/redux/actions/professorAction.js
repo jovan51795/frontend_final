@@ -59,4 +59,22 @@ export const deleteProfessor = (id) => {
   }
 }
 
+export const addGrades = (studenId, subjectId, professorId, data) => {
+  return async function (dispatch) {
+    http
+      .post(`/professor/setgradesto/${studenId}/subject/${subjectId}/prof/${professorId}`, data)
+      .then((res) => {
+        if (res && res.data && res.data.status === 1) {
+          toast.success(res.data.message)
+          return dispatch({
+            type: variables.SETGRADE,
+            payload: res.data,
+          })
+        } else if (res && res.data && res.data.status === 0) {
+          toast.error(res.data.message)
+        }
+      })
+  }
+}
+
 export const studentsListByProf = () => {}
