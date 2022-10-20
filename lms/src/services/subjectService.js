@@ -9,5 +9,9 @@ export const getSubjectById = (id) => {
 }
 
 export const updateSubjectHistory = (subjectId, professorId, form) => {
-  return http.put(`/subject/${subjectId}/professor/${professorId}`, form)
+  return http.post(`/subject/${subjectId}/professor/${professorId}`, form)
+}
+
+export const getStudentScheduleById = (id) => {
+  return http.get(`/student/schedule/${id}`)
 }

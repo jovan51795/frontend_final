@@ -3,7 +3,6 @@ import {
   CCardBody,
   CCardHeader,
   CRow,
-  CFormLabel,
   CCol,
   CFormInput,
   CFormSelect,
@@ -19,6 +18,7 @@ const SubjectScheduleForm = ({ onSubmit }) => {
     sem: '',
     schedule: '',
     section: '',
+    startDate: '',
     yearLevel: '',
     status: '',
   })
@@ -39,12 +39,13 @@ const SubjectScheduleForm = ({ onSubmit }) => {
       setErrors(errors)
     }
   }
+
   const schema = Joi.object({
     academicYear: Joi.string().required(),
     sem: Joi.string().required(),
     schedule: Joi.string().required(),
     section: Joi.string().required(),
-    yearLevel: Joi.string().required(),
+    startDate: Joi.string().required(),
     yearLevel: Joi.string().required(),
     status: Joi.string().required(),
   })
@@ -56,11 +57,11 @@ const SubjectScheduleForm = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     onSubmit(form)
-    console.log(form)
   }
+
   return (
     <>
-      <CCard>
+      <CCard style={{ overflow: 'scroll', overflow: 'auto' }}>
         <CCardHeader>
           <strong>Schedule Form</strong>
         </CCardHeader>
@@ -93,10 +94,24 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   <option selected value="">
                     Semester
                   </option>
-                  <option value="1st">1st</option>
-                  <option value="2nd">2nd</option>
+                  <option value="1st sem">1st sem</option>
+                  <option value="2nd sem">2nd sem</option>
                 </CFormSelect>
               </CCol>
+            </CRow>
+            <CRow className="mb-3">
+              <CCol>
+                <div>
+                  <CFormInput
+                    type="date"
+                    label="Start Date"
+                    name="startDate"
+                    value={form.startDate}
+                    onChange={handleChange}
+                  />
+                </div>
+              </CCol>
+              <CCol></CCol>
             </CRow>
             <CRow className="mb-3">
               <CCol>
@@ -141,10 +156,10 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   <option selected value="">
                     Year Level
                   </option>
-                  <option value="1">1st Year</option>
-                  <option value="2">2nd Year</option>
-                  <option value="3">3rd Year</option>
-                  <option value="4">4th Year</option>
+                  <option value="Freshmen">Freshmen</option>
+                  <option value="Sophomore">Sophomore</option>
+                  <option value="Junior">Junior</option>
+                  <option value="Senior">Senior</option>
                 </CFormSelect>
               </CCol>
               <CCol>
