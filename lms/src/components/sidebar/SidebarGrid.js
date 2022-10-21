@@ -5,6 +5,7 @@ import '../../scss/_newheader.scss'
 import { FiLogOut } from 'react-icons/fi'
 import noimage from 'src/assets/images/noimage.gif'
 import { getUserInfo } from 'src/services/userInfo'
+import camelCaseToWords from '../../services/lodashService'
 
 import { _navAdmin, _navFaculty, _navStudent, _navParent } from 'src/_navigation'
 
@@ -13,7 +14,9 @@ const Sidebar2 = ({ onLogout }) => {
   const [number, setNumber] = useState()
   const [navigation, setnavigation] = useState([])
   const userInFo = getUserInfo()
-  const name = userInFo && `${userInFo.object.firstName} ${userInFo.object.lastName}`
+  const name =
+    userInFo &&
+    `${camelCaseToWords(userInFo.object.firstName)} ${camelCaseToWords(userInFo.object.lastName)}`
 
   useEffect(() => {
     if (userInFo && userInFo.object.type === 'student') {
