@@ -5,10 +5,13 @@ import DepartmentWidgets from 'src/components/department/DepartmentWidgets'
 import { getAll } from '../../services/departmentService'
 import { deleteDepartment } from '../../redux/actions/departmentActions'
 import { useDispatch, useSelector } from 'react-redux'
+import { Btn } from 'src/styles/Btn.styles.'
+import { MdAddBusiness } from 'react-icons/md'
+import 'src/scss/_custom.scss'
 
 const Department = () => {
   const dispatch = useDispatch()
-  const [colors, setColors] = useState(['warning', 'info', 'danger', 'success', 'secondary'])
+  const [colors, setColors] = useState(['primary', 'secondary', 'info', 'success'])
   var colorCounter = 0
   const [departments, setDepartments] = useState([])
   useEffect(() => {
@@ -42,15 +45,16 @@ const Department = () => {
   }
   return (
     <div>
-      <CCard className="mb-4">
-        <CCardHeader>
-          <div className="d-flex justify-content-end align-items-center">
-            <Link to="/department/add" className="btn btn-info fw-bold">
-              Add Department
-            </Link>
-          </div>
-        </CCardHeader>
-      </CCard>
+      <div className="heading">DEPARTMENTS</div>
+      {/* <hr className="mt-2 m-0" /> */}
+      <div className="container">
+        <div className="d-flex justify-content-end align-items-center">
+          <Btn big="true" to="/department/add" className="my-3">
+            <MdAddBusiness /> Add Department
+          </Btn>
+        </div>
+      </div>
+      <hr className="mb-5 m-0" />
       <CRow>
         {departments.map((dep) => (
           <CCol sm={6} lg={6} key={dep.departmentId}>

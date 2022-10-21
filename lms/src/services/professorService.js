@@ -22,8 +22,14 @@ export const getStudentAttendance = (subjectId, professorId, studenId) => {
   )
 }
 
-export const getStudentGrade = (subjectId, professorId, studenId) => {
-  return http.get(`/professor/grades?subID=${subjectId}&profID=${professorId}&studID=${studenId}`)
+export const getStudentGrade = (subjectId, professorId, studentId) => {
+  return http.get(`/professor/grades?subID=${subjectId}&profID=${professorId}&studID=${studentId}`)
+}
+
+export const getAllStudentGrade = (professorId, subjectId) => {
+  return http.get(
+    `/professor/getAllGradesbySubjectbyStudents?profID=${professorId}&subID=${subjectId}`,
+  )
 }
 
 export const setStudentAttendance = (studenId, subjectId, professorId) => {
@@ -52,16 +58,14 @@ export const setStudentGrade = (studenId, subjectId, professorId, grades) => {
 //   )
 // }
 
-
-export const getPass = (id) =>{
+export const getPass = (id) => {
   return http.get(`/professor/getpass/${id}`)
 }
 
-export const getFail = (id) =>{
+export const getFail = (id) => {
   return http.get(`/professor/getfail/${id}`)
 }
 
-export const getConditional = (id) =>{
+export const getConditional = (id) => {
   return http.get(`/professor/getconditional/${id}`)
 }
-

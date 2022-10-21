@@ -23,7 +23,7 @@ const FacultySubjectsTable = ({ profsubject }) => {
               <div>SUBJECT CODE: {profsubject[1]}</div>
             </CListGroupItem>
             {/* <CListGroupItem> */}
-            <CAccordion flush>
+            <CAccordion>
               <CAccordionItem itemKey={profsubject[2]}>
                 <CAccordionHeader>Student List</CAccordionHeader>
                 <CAccordionBody>

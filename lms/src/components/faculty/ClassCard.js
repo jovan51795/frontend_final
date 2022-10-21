@@ -1,154 +1,66 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
+  CTable,
+  CTableHead,
+  CTableBody,
+  CTableRow,
+  CTableDataCell,
+  CTableHeaderCell,
   CCard,
-  CCardHeader,
-  CListGroup,
-  CListGroupItem,
-  CRow,
-  CCol,
   CContainer,
   CCardBody,
-  CForm,
-  CFormTextarea,
-  CFormInput,
-  CFormSelect,
-  CButton,
 } from '@coreui/react'
-import 'src/scss/_grades.scss'
-import Joi from 'joi'
+import { CCardHeader } from '@coreui/react-pro'
 
-const ClassCard = ({ student, onSubmit }) => {
-  const [grades, setGrades] = useState({
-    prelimGrade: '',
-    midtermGrade: '',
-    remarks: '',
-    comment: '',
-  })
-
-  const [errors, setErrors] = useState({})
-
-  const schema = Joi.object({
-    prelimGrade: Joi.number().allow(),
-    midtermGrade: Joi.number().allow(),
-    remarks: Joi.string().allow(''),
-    comment: Joi.string().allow(''),
-  })
-
-  const handleOnChange = (event) => {
-    setGrades({ ...grades, [event.currentTarget.name]: event.currentTarget.value })
-    const { error } = schema
-      .extract(event.currentTarget.name)
-      .label(event.currentTarget.name.toUpperCase())
-      .validate(event.currentTarget.value)
-    if (error) {
-      setErrors({
-        ...errors,
-        [event.currentTarget.name]: error.details[0].message,
-      })
-    } else {
-      delete errors[event.currentTarget.name]
-      setErrors(errors)
-    }
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    onSubmit(grades)
-  }
-
-  const isFormInvalid = () => {
-    const result = schema.validate(grades)
-    return !!result.error
-  }
-
+const ClassCard = ({ gradeData }) => {
   return (
-    <CContainer>
+    <>
       <CCard>
-        <CCardHeader>CLASS CARD</CCardHeader>
-        {student?.map((student) => (
-          <CListGroup flush key={student[0]}>
-            <CListGroupItem>
-              <CRow>
-                <CCol md={3} sm={4}>
-                  STUDENT NAME:{' '}
-                </CCol>
-                <CCol md={9} sm={8}>
-                  {student[3].toUpperCase()}, {student[1].toUpperCase()} {student[2].toUpperCase()}
-                </CCol>
-              </CRow>
-            </CListGroupItem>
-            <CListGroupItem>
-              <CRow>
-                <CCol sm={6}>SUBJECT CODE:&nbsp;&nbsp; {student[6]}</CCol>
-                <CCol sm={6}>SUBJECT TITLE:&nbsp;&nbsp; {student[5].toUpperCase()}</CCol>
-              </CRow>
-            </CListGroupItem>
-          </CListGroup>
-        ))}
-
-        <CCard style={{ overflow: 'scroll', overflow: 'auto' }}>
+        <CContainer>
+          <CCardHeader>CLASS CARD</CCardHeader>
+          <CCardHeader>
+            <div>
+              STUDENT NAME: {gradeData?.student.lastName},&nbsp;{gradeData?.student.firstName}
+              &nbsp;{gradeData?.student.middleName}
+            </div>
+            <div>COURSE: {gradeData?.student.course.courseTitle}</div>
+            <div>YEAR: {gradeData?.student.academicYear}</div>
+            <div>SEMESTER: {gradeData?.student.sem}</div>
+            <div>DATE MODIFIED: {gradeData?.date_modified}</div>
+          </CCardHeader>
           <CCardBody>
-            <CForm onSubmit={handleSubmit}>
-              <CRow className="mb-3">
-                <CCol>
-                  <CFormInput
-                    type="text"
-                    label="Prelim Grade"
-                    name="prelimGrade"
-                    invalid={!!errors.prelimGrade}
-                    feedback={errors.prelimGrade}
-                    value={grades.prelimGrade}
-                    onChange={handleOnChange}
-                  />
-                </CCol>
-                <CCol>
-                  <CFormInput
-                    type="text"
-                    label="Midterm Grade"
-                    name="midtermGrade"
-                    invalid={!!errors.midtermGrade}
-                    feedback={errors.midtermGrade}
-                    value={grades.midtermGrade}
-                    onChange={handleOnChange}
-                  />
-                </CCol>
-                <CCol>
-                  <CFormSelect
-                    name="remarks"
-                    label="Remarks"
-                    invalid={!!errors.remarks}
-                    feedback={errors.remarks}
-                    value={grades.remarks}
-                    onChange={handleOnChange}
-                  >
-                    <option disabled>Remarks</option>
-                    <option value="Excellent">Excellent</option>
-                    <option value="Good">Good</option>
-                    <option value="Satisfactory">Satisfactory</option>
-                    <option value="Poor">Poor</option>
-                  </CFormSelect>
-                </CCol>
-              </CRow>
-              <CRow className="mb-3 mx-1">
-                <CFormTextarea
-                  name="comment"
-                  label="Comments"
-                  invalid={!!errors.comment}
-                  feedback={errors.comment}
-                  value={grades.comment}
-                  onChange={handleOnChange}
-                ></CFormTextarea>
-              </CRow>
-              <div className="d-grid">
-                <CButton type="submit" color="primary" disabled={isFormInvalid()}>
-                  Submit
-                </CButton>
-              </div>
-            </CForm>
+            <CTable hover>
+              <CTableHead color="light">
+                <CTableRow>
+                  <CTableHeaderCell scope="col">STUDENT NO</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">PRELIMS GRADE</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">MIDTERMS GRADE</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">FINAL RATING</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">REMARKS</CTableHeaderCell>
+                </CTableRow>
+              </CTableHead>
+              <CTableBody>
+                <CTableRow>
+                  <CTableHeaderCell scope="row">{gradeData?.student.studentNo}</CTableHeaderCell>
+                  <CTableHeaderCell scope="row">{gradeData?.prelimGrade}</CTableHeaderCell>
+                  <CTableDataCell>{gradeData?.midtermGrade}</CTableDataCell>
+                  <CTableDataCell>{gradeData?.finalGrade}</CTableDataCell>
+                  <CTableDataCell>{gradeData?.remarks}</CTableDataCell>
+                </CTableRow>
+              </CTableBody>
+              <CTableHead>
+                <CTableRow>
+                  <CTableDataCell></CTableDataCell>
+                  <CTableDataCell></CTableDataCell>
+                  <CTableDataCell>STATUS</CTableDataCell>
+                  <CTableDataCell>{gradeData?.status}</CTableDataCell>
+                </CTableRow>
+              </CTableHead>
+            </CTable>
           </CCardBody>
-        </CCard>
+        </CContainer>
       </CCard>
-    </CContainer>
+    </>
   )
 }
 

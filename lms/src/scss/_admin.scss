@@ -12,9 +12,24 @@
 .btn-color {
   background-color: #003169;
   --cui-btn-disabled-bg: #003169;
+  --cui-btn-border-color: black;
+  --cui-btn-hover-border-color: black;
+  --cui-btn-disabled-border-color: black;
 
   &:hover {
     background-color: #076eb0;
+  }
+}
+
+.btn-color2 {
+  background-color: #076eb0;
+  --cui-btn-disabled-bg: #076eb0;
+  --cui-btn-border-color: black;
+  --cui-btn-hover-border-color: black;
+  --cui-btn-disabled-border-color: black;
+
+  &:hover {
+    background-color: #003169;
   }
 }
 
@@ -80,5 +95,12 @@
 .a-icon {
   color: white;
   margin-bottom: 1px;
+  display: inline-block;
+}
+
+.c-icon {
+  color: white;
+  font-size: 28px;
+  margin: 0px !important;
   display: inline-block;
 }
