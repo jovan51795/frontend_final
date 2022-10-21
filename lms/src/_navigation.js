@@ -65,11 +65,11 @@ export const _navFaculty = [
     icon: <MdOutlineClass className="nav-icon" />,
     link: '/faculty/classes',
   },
-  {
-    label: 'Grades Masterlist',
-    icon: <BsCardHeading className="nav-icon" />,
-    link: '/faculty/grades-list',
-  },
+  // {
+  //   label: 'Grades Masterlist',
+  //   icon: <BsCardHeading className="nav-icon" />,
+  //   link: '/faculty/grades-list',
+  // },
   {
     label: 'My Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,
