@@ -6,3 +6,15 @@
 .form-custom {
   border-radius: 0px;
 }
+
+.btn-color {
+  background-color: #003169;
+  --cui-btn-disabled-bg: #003169;
+  --cui-btn-border-color: black;
+  --cui-btn-hover-border-color: black;
+  --cui-btn-disabled-border-color: black;
+
+  &:hover {
+    background-color: #076eb0;
+  }
+}

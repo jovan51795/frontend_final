@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { getUserInfo } from 'src/services/userInfo'
 import { getSubjectByProfessor } from 'src/services/professorService'
+import { CNav, CNavItem, CNavLink, CTabContent, CTabPane } from '@coreui/react'
+import { BsCardHeading } from 'react-icons/bs'
+import { FaBookReader } from 'react-icons/fa'
 import FacultyClassesTable from 'src/components/faculty/FacultyClassesTable'
+import GradeList from 'src/components/faculty/GradeList'
 
 const FacultySubjects = () => {
-  const param = useParams()
   const userInfo = getUserInfo().object
   const [profsubject, setProfSubject] = useState()
+  const [activeKey, setActiveKey] = useState(1)
 
   useEffect(() => {
     getSubjectByProfessor(+userInfo.professor_id).then((res) => {
@@ -18,14 +21,41 @@ const FacultySubjects = () => {
         toast.error(res.data.message)
       }
     })
-  }, [param])
+  }, [])
 
   if (profsubject) {
     return (
       <>
-        <div>
-          <FacultyClassesTable profsubject={profsubject} />
-        </div>
+        <CNav variant="tabs" role="tablist">
+          <CNavItem>
+            <CNavLink
+              href="javascript:void(0);"
+              active={activeKey === 1}
+              onClick={() => setActiveKey(1)}
+            >
+              <FaBookReader className="nav-icon pb-1" />
+              &nbsp;&nbsp;STUDENT MASTERLIST
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink
+              href="javascript:void(0);"
+              active={activeKey === 2}
+              onClick={() => setActiveKey(2)}
+            >
+              <BsCardHeading className="nav-icon mb-1" />
+              &nbsp;&nbsp;GRADES MASTERLIST
+            </CNavLink>
+          </CNavItem>
+        </CNav>
+        <CTabContent>
+          <CTabPane role="tabpanel" aria-labelledby="home-tab" visible={activeKey === 1}>
+            <FacultyClassesTable profsubject={profsubject} />
+          </CTabPane>
+          <CTabPane role="tabpanel" aria-labelledby="profile-tab" visible={activeKey === 2}>
+            <GradeList profsubject={profsubject} />
+          </CTabPane>
+        </CTabContent>
       </>
     )
   } else {

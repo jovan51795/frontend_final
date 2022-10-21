@@ -32,15 +32,15 @@ const DepartmentWidgets = ({ dep, color, onDelete }) => {
 
   return (
     <CWidgetStatsA
-      className="mb-4"
+      className="mb-4 pb-3"
       color={color}
       value={
         <>
+          <div className="fs-5 pb-1">{dep.departmentName}</div>
           {dep.course.length} &nbsp;&nbsp;&nbsp;
-          <span className="fs-6 fw-normal">Courses</span>
+          <span className="fs-4 mb-3 fw-normal">Course/s Available</span>
         </>
       }
-      title={dep.departmentName}
       action={
         <CDropdown alignment="end">
           <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -48,12 +48,17 @@ const DepartmentWidgets = ({ dep, color, onDelete }) => {
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem onClick={handleEditDep}>
-              <CIcon icon={cilPencil} className="me-4" /> View / Edit
+              <CIcon icon={cilPencil} className="me-4" style={{ color: '#003169' }} />
+              <span className="fw-bold" style={{ color: '#003169' }}>
+                View / Edit
+              </span>
             </CDropdownItem>
 
             <CDropdownItem onClick={() => setVisible(!visible)}>
-              <CIcon icon={cilTrash} className="me-4" />
-              Delete
+              <CIcon icon={cilTrash} className="me-4" style={{ color: '#003169' }} />
+              <span className="fw-bold" style={{ color: '#003169' }}>
+                Delete
+              </span>
               <CModal visible={visible}>
                 <CModalHeader className="bg-warning">
                   <CModalTitle>

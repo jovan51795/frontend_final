@@ -1,6 +1,8 @@
 import { cilPlus, cilTrash } from '@coreui/icons'
+import { TiCancel } from 'react-icons/ti'
 import CIcon from '@coreui/icons-react'
 import {
+  CContainer,
   CButton,
   CCard,
   CCardBody,
@@ -15,7 +17,9 @@ import {
 } from '@coreui/react'
 import React, { useState } from 'react'
 import Joi from 'joi'
-import { useSelector } from 'react-redux'
+import { IoIosArrowBack } from 'react-icons/io'
+import 'src/scss/_admin.scss'
+import { Btn } from 'src/styles/Btn.styles.'
 
 const DepartmentForm = ({ initialValue, onSubmit }) => {
   const [department, setDepartment] = useState(
@@ -132,98 +136,109 @@ const DepartmentForm = ({ initialValue, onSubmit }) => {
   }
 
   return (
-    <CForm onSubmit={handleOnSubmit}>
-      <CCard>
-        <CCardBody>
-          <CRow>
-            <CCol>
-              <CFormLabel>Department Name</CFormLabel>
-              <CFormInput
-                onChange={handleOnChange}
-                name="departmentName"
-                value={department.departmentName}
-                invalid={!!errors.departmentName}
-                feedback={errors.departmentName}
-              />
-            </CCol>
-          </CRow>
-          <CRow>
-            <CCol>
-              <CFormLabel>Department Logo</CFormLabel>
-              <CFormInput
-                onChange={handleOnChange}
-                name="logo"
-                value={department.logo}
-                invalid={!!errors.logo}
-                feedback={errors.logo}
-              />
-            </CCol>
-          </CRow>
-          <CRow>
-            <CCol>
-              <CFormLabel>Department Logo Alt Text</CFormLabel>
-              <CFormInput
-                onChange={handleOnChange}
-                name="altlogo"
-                value={department.altlogo}
-                invalid={!!errors.altlogo}
-                feedback={errors.altlogo}
-              />
-            </CCol>
-          </CRow>
-          <CRow className="mt-4">
-            <CCol>
-              <CButton onClick={() => handleAddCourse()}>
-                <CIcon icon={cilPlus} color="danger" className="me-2" />
-                Add Course
-              </CButton>
-            </CCol>
-          </CRow>
-
-          {department.course.map((crse, idx) => (
-            <CRow key={idx} className="mt-4">
+    <>
+      <CForm onSubmit={handleOnSubmit}>
+        <CCard>
+          <CCardBody>
+            <CRow>
               <CCol>
-                <CInputGroup>
-                  <CFormInput
-                    name="courseTitle"
-                    onChange={(e) => handleChangeSelect(e, idx)}
-                    value={crse.courseTitle}
-                    placeholder="Course Title"
-                    invalid={department.course[idx].courseTitle === '' ? true : false}
-                  />
-                  <CFormInput
-                    name="courseCode"
-                    onChange={(e) => handleChangeSelect(e, idx)}
-                    value={crse.courseCode}
-                    placeholder="Course Code"
-                    invalid={department.course[idx].courseCode === '' ? true : false}
-                  />
-
-                  <CButton color="danger" onClick={() => handleDeleteCourse(idx)}>
-                    <CIcon icon={cilTrash} className="me-2" />
-                  </CButton>
-                </CInputGroup>
+                <CFormLabel>DEPARTMENT NAME</CFormLabel>
+                <CFormInput
+                  onChange={handleOnChange}
+                  name="departmentName"
+                  value={department.departmentName}
+                  invalid={!!errors.departmentName}
+                  feedback={errors.departmentName}
+                />
               </CCol>
-              <CRow>
-                <CCol>
-                  {(department.course[idx].courseCode === '' ||
-                    department.course[idx].courseTitle === '') && (
-                    <CFormFeedback className="text-danger">
-                      This is fields are required
-                    </CFormFeedback>
-                  )}
-                </CCol>
-              </CRow>
             </CRow>
-          ))}
-        </CCardBody>
-        <CCardFooter>
-          <CButton color="success" type="submit" disabled={isFormInvalid()}>
-            Submit
-          </CButton>
-        </CCardFooter>
-      </CCard>
-    </CForm>
+            <CRow>
+              <CCol>
+                <CFormLabel>DEPARTMENT LOGO</CFormLabel>
+                <CFormInput
+                  onChange={handleOnChange}
+                  name="logo"
+                  value={department.logo}
+                  invalid={!!errors.logo}
+                  feedback={errors.logo}
+                />
+              </CCol>
+            </CRow>
+            <CRow>
+              <CCol>
+                <CFormLabel>DEPARTMENT LOGO ALT TEXT</CFormLabel>
+                <CFormInput
+                  onChange={handleOnChange}
+                  name="altlogo"
+                  value={department.altlogo}
+                  invalid={!!errors.altlogo}
+                  feedback={errors.altlogo}
+                />
+              </CCol>
+            </CRow>
+            <CRow className="mt-4">
+              <CCol>
+                <CButton onClick={() => handleAddCourse()} className="btn-color">
+                  <CIcon icon={cilPlus} color="danger" className="me-2" />
+                  Add Course
+                </CButton>
+              </CCol>
+            </CRow>
+
+            {department.course.map((crse, idx) => (
+              <CRow key={idx} className="mt-4">
+                <CCol>
+                  <CInputGroup>
+                    <CFormInput
+                      name="courseTitle"
+                      onChange={(e) => handleChangeSelect(e, idx)}
+                      value={crse.courseTitle}
+                      placeholder="Course Title"
+                      invalid={department.course[idx].courseTitle === '' ? true : false}
+                    />
+                    <CFormInput
+                      name="courseCode"
+                      onChange={(e) => handleChangeSelect(e, idx)}
+                      value={crse.courseCode}
+                      placeholder="Course Code"
+                      invalid={department.course[idx].courseCode === '' ? true : false}
+                    />
+
+                    <CButton className="btn-color2" onClick={() => handleDeleteCourse(idx)}>
+                      <TiCancel className="c-icon" />
+                    </CButton>
+                  </CInputGroup>
+                </CCol>
+                <CRow>
+                  <CCol>
+                    {(department.course[idx].courseCode === '' ||
+                      department.course[idx].courseTitle === '') && (
+                      <CFormFeedback className="text-danger">
+                        This is fields are required
+                      </CFormFeedback>
+                    )}
+                  </CCol>
+                </CRow>
+              </CRow>
+            ))}
+          </CCardBody>
+          <CCardFooter>
+            <CRow className="d-flex justify-content-center p-3">
+              <CButton className="d-block btn-color" type="submit" disabled={isFormInvalid()}>
+                Submit
+              </CButton>
+            </CRow>
+          </CCardFooter>
+        </CCard>
+      </CForm>
+      <CRow>
+        <CContainer className="py-4">
+          <Btn big="true" to="/departments">
+            <IoIosArrowBack className="a-icon" /> BACK
+          </Btn>
+        </CContainer>
+      </CRow>
+    </>
   )
 }
 
