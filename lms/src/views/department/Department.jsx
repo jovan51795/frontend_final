@@ -46,7 +46,6 @@ const Department = () => {
   return (
     <div>
       <div className="heading">DEPARTMENTS</div>
-      {/* <hr className="mt-2 m-0" /> */}
       <div className="container">
         <div className="d-flex justify-content-end align-items-center">
           <Btn big="true" to="/department/add" className="my-3">
