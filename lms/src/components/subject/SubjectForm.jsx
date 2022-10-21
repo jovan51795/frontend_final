@@ -94,7 +94,6 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(subjectForm)
-    console.log(result)
     return !!result.error
   }
 
