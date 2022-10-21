@@ -25,6 +25,8 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
   const [departments, setDepartments] = useState([])
   const [subjectForm, setSubjectForm] = useState(
     initialValue || {
+      department_id: null,
+      departmentName: '',
       subjectTitle: '',
       subjectCode: '',
       units: 0,
@@ -47,16 +49,18 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
     subjectCode: Joi.string().required(),
     subjectTitle: Joi.string().required(),
     units: Joi.number().min(1).required(),
-    prerequisites: Joi.string().required(),
+    prerequisites: Joi.string().allow(null).required(),
     course: Joi.object().allow({}).optional(),
     subject_id: Joi.number().allow(),
     activeDeactive: Joi.boolean().allow(),
     professorLoad: Joi.number().allow(null),
-    professor: Joi.number().allow(null),
+    professor: Joi.object().allow(null),
     grades: Joi.allow(null),
     student: Joi.array().allow(),
     course: Joi.allow(),
     attendance: Joi.allow(),
+    department_id: Joi.number().allow(null).optional(),
+    departmentName: Joi.string().allow('').optional(),
   })
 
   const handleOnChange = (e) => {
@@ -90,11 +94,17 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(subjectForm)
+    console.log(result)
     return !!result.error
   }
 
-  const handleChangeCourse = (e, data) => {
-    setSubjectForm({ ...subjectForm, [e.currentTarget.name]: data })
+  const handleChangeCourse = (e, data, dep) => {
+    setSubjectForm({
+      ...subjectForm,
+      [e.currentTarget.name]: data,
+      department_id: dep.departmentId,
+      departmentName: dep.departmentName,
+    })
   }
 
   return (
@@ -127,7 +137,7 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
                               }
                               label={course.courseTitle}
                               key={course.courseId}
-                              onChange={(e) => handleChangeCourse(e, course)}
+                              onChange={(e) => handleChangeCourse(e, course, dep)}
                               type="radio"
                             />
                           ))}

@@ -45,6 +45,7 @@ const SubjectsList = ({ subjects, onDelete }) => {
                     <CTableHeaderCell scope="col">Units</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Prerequisites</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Status</CTableHeaderCell>
+                    <CTableHeaderCell scope="col">Department</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
@@ -62,6 +63,7 @@ const SubjectsList = ({ subjects, onDelete }) => {
                           <span className="badge bg-warning">deactivated</span>
                         )}
                       </CTableDataCell>
+                      <CTableDataCell>{sub.departmentName}</CTableDataCell>
                       <CTableDataCell className="d-flex">
                         <CTooltip content="View Details" placement="top">
                           <Link className="btn btn-info" to={`/subject/details/${sub.subject_id}`}>
