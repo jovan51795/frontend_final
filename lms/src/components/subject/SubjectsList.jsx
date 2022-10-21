@@ -63,7 +63,7 @@ const SubjectsList = ({ subjects, onDelete }) => {
                           <span className="badge bg-warning">deactivated</span>
                         )}
                       </CTableDataCell>
-                      <CTableDataCell>Department</CTableDataCell>
+                      <CTableDataCell>{sub.departmentName}</CTableDataCell>
                       <CTableDataCell className="d-flex">
                         <CTooltip content="View Details" placement="top">
                           <Link className="btn btn-info" to={`/subject/details/${sub.subject_id}`}>
