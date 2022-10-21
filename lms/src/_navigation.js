@@ -102,11 +102,11 @@ export const _navStudent = [
     icon: <MdCalendarViewMonth className="nav-icon" />,
     link: `${userInFo && userInFo.type}/grades`,
   },
-  {
-    label: 'Course Evaluation',
-    icon: <GiDiploma className="nav-icon" />,
-    link: '',
-  },
+  // {
+  //   label: 'Course Evaluation',
+  //   icon: <GiDiploma className="nav-icon" />,
+  //   link: '',
+  // },
 ]
 
 export const _navParent = [
