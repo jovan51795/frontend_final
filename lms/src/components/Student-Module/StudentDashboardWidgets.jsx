@@ -13,7 +13,7 @@ const StudentDashboardWidgets = ({ grades }) => {
     totalProduct += grade[2] * grade[3]
     totalSubjects++
   })
-  const GWA = totalProduct / totalUnits
+  const GWA = totalProduct / totalUnits || 0
   console.log(grades)
   return (
     <CRow>
