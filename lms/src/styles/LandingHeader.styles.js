@@ -293,4 +293,8 @@ export const PublicLink = styled(LinkRouter)`
   color: white !important;
   text-decoration: none;
   font-weight: 500;
+
+  @media screen and (max-width: 960px) {
+    font-size: 25px;
+  }
 `

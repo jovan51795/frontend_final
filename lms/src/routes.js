@@ -33,7 +33,6 @@ const AttendanceSheet = React.lazy(() => import('./views/faculty/AttendanceSheet
 const GradingSheet = React.lazy(() => import('./views/faculty/GradingSheet'))
 const EditFacultyProfile = React.lazy(() => import('./views/faculty/EditFacultyProfile'))
 const FacultySchedule = React.lazy(() => import('./views/faculty/FacultySchedule'))
-const ClassCard = React.lazy(() => import('./views/faculty/ClassCard'))
 
 //STUDENT MODULE
 const StudentDashboard = React.lazy(() => import('./views/students/StudentDashboard'))
@@ -44,6 +43,7 @@ const EnrollSubjects = React.lazy(() => import('./views/students/EnrollSubjectsP
 const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'))
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 const StudentSchedule = React.lazy(() => import('./views/students/StudentSchedule'))
+const StudentAttendance = React.lazy(() => import('./views/students/StudentAttendancePage'))
 
 //professor-subjects
 const ProfessorSubjectList = React.lazy(() =>
@@ -58,7 +58,7 @@ export const routes = [
   { path: '/', exact: true, name: 'Home' },
 
   //ADMIN MODULE
-  { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+  { path: 'admin/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/admin/profile', name: 'Profile', element: AdminProfile },
   { path: '/students', name: 'ABC Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },
@@ -93,9 +93,16 @@ export const routes = [
   { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
   { path: '/faculty/classes', name: 'Class Subjects', element: FacultyClasses },
   { path: '/faculty/schedule', name: 'Class Schedule', element: FacultySchedule },
-  { path: '/faculty/attendance-monitoring', name: 'Attendance', element: AttendanceSheet },
-  { path: '/faculty/students-grades', name: 'Grades', element: GradingSheet },
-  { path: '/faculty/students-grades/id', name: 'Class Card', element: ClassCard },
+  {
+    path: '/professor/attendance/subject/:subject_id/prof/:professor_id/student/:student_id',
+    name: 'Attendance',
+    element: AttendanceSheet,
+  },
+  {
+    path: '/professor/grades/subject/:subject_id/prof/:professor_id/student/:student_id',
+    name: 'Grades',
+    element: GradingSheet,
+  },
 
   //STUDENT MODULE
   { path: '/student/dashboard', name: 'Student Dashboard', element: StudentDashboard },
@@ -104,4 +111,5 @@ export const routes = [
   { path: '/student/grades', name: 'Grades', element: StudentGrades },
   { path: '/student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
   { path: '/student/schedule', name: 'My Schedule', element: StudentSchedule },
+  { path: '/student/attendance', name: 'My Attendance', element: StudentAttendance },
 ]

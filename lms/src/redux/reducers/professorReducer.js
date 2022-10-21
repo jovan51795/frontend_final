@@ -8,6 +8,10 @@ export const professor = (state = {}, action) => {
       return action.payload
     case variables.DELETEPROFESSOR:
       return action.payload
+    case variables.SETATTENDANCE:
+      return action.payload
+    case variables.SETGRADE:
+      return action.payload
     default:
       return state
   }
