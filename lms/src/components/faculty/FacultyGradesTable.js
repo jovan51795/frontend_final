@@ -36,7 +36,7 @@ const FacultyGradesTable = ({ professor_id, subject_id }) => {
     })
   }, [professor_id, subject_id])
 
-  console.log(gradesInfo)
+  // console.log(gradesInfo)
   // console.log('breakline')
   // console.log(profStudents)
 
@@ -45,15 +45,14 @@ const FacultyGradesTable = ({ professor_id, subject_id }) => {
       <CCard style={{ width: '100%' }}>
         {profStudents?.map((profStudents) => (
           <CListGroup flush key={profStudents[0]}>
-            {/* <CListGroupItem>{profStudents[0]}</CListGroupItem> */}
             <CListGroupItem>
               <CListGroup>
                 {profStudents[0]} {profStudents[3]}, {profStudents[1]} {profStudents[2]}
                 <CListGroupItem>
                   {gradesInfo
                     ?.filter((g) => g[0] === profStudents[0])
-                    ?.map((gradesInfo) => (
-                      <CTable hover align="middle" key={gradesInfo[0]}>
+                    ?.map((grades) => (
+                      <CTable hover align="middle" key={grades[0]}>
                         <CTableHead>
                           <CTableRow>
                             <CTableHeaderCell scope="col">STUDENT ID</CTableHeaderCell>
@@ -65,15 +64,25 @@ const FacultyGradesTable = ({ professor_id, subject_id }) => {
                         </CTableHead>
                         <CTableBody>
                           <CTableRow>
-                            <CTableDataCell>{gradesInfo[0]}</CTableDataCell>
-                            <CTableDataCell>{gradesInfo[4]}</CTableDataCell>
-                            <CTableDataCell>{gradesInfo[5]}</CTableDataCell>
-                            <CTableDataCell>{gradesInfo[6]}</CTableDataCell>
-                            <CTableDataCell>{gradesInfo[8]}</CTableDataCell>
+                            <CTableDataCell>{grades[0]}</CTableDataCell>
+                            <CTableDataCell>{grades[4]}</CTableDataCell>
+                            <CTableDataCell>{grades[5]}</CTableDataCell>
+                            <CTableDataCell>{grades[6]}</CTableDataCell>
+                            <CTableDataCell>{grades[8]}</CTableDataCell>
                           </CTableRow>
                         </CTableBody>
                       </CTable>
                     ))}
+                  {!gradesInfo.find((e) => e[0] === profStudents[0]) && (
+                    <div>
+                      <Btn
+                        className="d-flex"
+                        to={`/professor/grades/subject/${subject_id}/prof/${professor_id}/student/${profStudents[0]}`}
+                      >
+                        Evaluate
+                      </Btn>
+                    </div>
+                  )}
                 </CListGroupItem>
               </CListGroup>
             </CListGroupItem>
