@@ -119,26 +119,32 @@ export const _navParent = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: '',
+    link: `${userInFo && userInFo.type}/dashboard`,
   },
   {
-    label: 'My Student Schedule',
-    icon: <FaCalendarAlt className="nav-icon" />,
-    link: '',
+    label: 'Profile',
+    icon: <FaUser className="nav-icon" />,
+    link: `${userInFo && userInFo.type}/profile`,
   },
+
   {
-    label: 'My Student Attendance',
+    label: 'Attendance',
     icon: <CIcon icon={cilSpreadsheet} customClassName="nav-icon" />,
-    link: '',
+    link: `${userInFo && userInFo.type}/attendance`,
   },
   {
-    label: 'My Student Grades',
+    label: 'Schedule',
+    icon: <FaCalendarAlt className="nav-icon" />,
+    link: `${userInFo && userInFo.type}/schedule`,
+  },
+  {
+    label: 'Grades',
     icon: <MdCalendarViewMonth className="nav-icon" />,
-    link: '',
+    link: `${userInFo && userInFo.type}/grades`,
   },
-  {
-    label: 'Course Evaluation',
-    icon: <GiDiploma className="nav-icon" />,
-    link: '',
-  },
+  // {
+  //   label: 'Course Evaluation',
+  //   icon: <GiDiploma className="nav-icon" />,
+  //   link: '',
+  // },
 ]
