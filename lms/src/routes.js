@@ -53,6 +53,12 @@ const SubjectSchedule = React.lazy(() =>
   import('./views/professor/professor-subject/SubjectSchedule'),
 )
 
+//parent-module
+const ParentDashboard = React.lazy(() => import('./views/parent/parentDashboard'))
+const ParentChildProfile = React.lazy(() => import('./views/parent/parentChildProfilePage'))
+const ParentChildSchedule = React.lazy(() => import('./views/parent/parentChildSchedulePage'))
+const ParentChildGrade = React.lazy(() => import('./views/parent/parentChildGradePage'))
+
 export const routes = [
   //LANDING PAGE
   { path: '/', exact: true, name: 'Home' },
@@ -112,4 +118,10 @@ export const routes = [
   { path: '/student/enroll', name: 'Enroll Subjects', element: EnrollSubjects },
   { path: '/student/schedule', name: 'My Schedule', element: StudentSchedule },
   { path: '/student/attendance', name: 'My Attendance', element: StudentAttendance },
+
+  //PARENT MODULE
+  { path: '/parent/dashboard', name: 'Dashboard', element: ParentDashboard },
+  { path: '/parent/profile', name: 'Profile', element: ParentChildProfile },
+  { path: '/parent/grades', name: 'Grades', element: ParentChildGrade },
+  { path: '/parent/schedule', name: 'Schedule', element: ParentChildSchedule },
 ]
