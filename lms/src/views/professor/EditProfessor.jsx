@@ -12,7 +12,7 @@ const EditProfessor = () => {
   useEffect(() => {
     getProfById(+param.id).then((res) => {
       if (res.data) {
-        setProf(res.data)
+        setProf(res.data.object)
       }
     })
   }, [param])

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import SubjectsList from 'src/components/subject/SubjectsList'
 import { getAll } from '../../services/subjectService'
+import { getAllDepartmentWithSubject } from '../../services/departmentService'
 import { deleteSubject } from '../../redux/actions/subjectAction'
 
 const SubjectList = () => {
   const [subjects, setsubjects] = useState(null)
+  const [departments, setDepartments] = useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,16 +21,17 @@ const SubjectList = () => {
   }
 
   const getAllSubject = () => {
-    getAll().then((res) => {
-      if (res && res.data) {
-        setsubjects(res.data)
+    getAllDepartmentWithSubject().then((res) => {
+      if (res && res.data.status === 1) {
+        setDepartments(res.data.object)
+        setsubjects(res.data.subjects)
       }
     })
   }
   if (subjects) {
     return (
       <div>
-        <SubjectsList subjects={subjects} onDelete={handleDeleteSubject} />
+        <SubjectsList department={departments} subjects={subjects} onDelete={handleDeleteSubject} />
       </div>
     )
   }
