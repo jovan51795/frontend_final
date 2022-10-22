@@ -21,19 +21,17 @@ const StudentProfileForm = ({ studentInfo, type }) => {
   ][date.getMonth()]
   const birthDate = month + ' ' + date.getDate() + ', ' + date.getFullYear()
   const userType = () => {
-    if(type ="parent"){
-      return (<div className="col-md-12 comp-title pt-3">MY STUDENT PROFILE</div>)
-    }else if(type ="student"){
-      return (<div className="col-md-12 comp-title pt-3">MY PROFILE</div>)
+    if (type === 'parent') {
+      return <div className="col-md-12 comp-title pt-3">MY STUDENT PROFILE</div>
+    } else {
+      return <div className="col-md-12 comp-title pt-3">MY PROFILE</div>
     }
   }
 
   return (
     <>
       <div className="container">
-        <div className="row">
-        {userType()}
-        </div>
+        <div className="row">{userType()}</div>
         <div className="card profile-card justify-content-center m-4">
           <div className="card-body">
             <hr />
