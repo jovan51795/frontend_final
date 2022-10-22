@@ -101,7 +101,7 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
                 columnSorter
                 items={subject}
                 itemsPerPageSelect
-                itemsPerPage={2}
+                itemsPerPage={5}
                 pagination
                 sorterValue={{ column: 'subjectCode', state: 'asc' }}
                 tableProps={{
