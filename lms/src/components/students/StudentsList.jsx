@@ -79,34 +79,36 @@ const StudentsList = () => {
                     },
                     actions: (student) => {
                       return (
-                        <CTableDataCell className="d-flex">
-                          <CTooltip content="View Details" placement="top">
-                            <Link
-                              to={`/student/details/${student.student_id}`}
-                              color="info"
-                              className="mx-1 btn btn-view"
-                            >
-                              <FiFileText className="nav-icon" />
-                            </Link>
-                          </CTooltip>
-                          <div className="vr"></div>
-                          <CTooltip content="delete" placement="top">
-                            <CButton
-                              onClick={() => handleOnDelete(student.student_id)}
-                              className="mx-1 btn-view"
-                            >
-                              <FiArchive className="nav-icon" />
-                            </CButton>
-                          </CTooltip>
-                          <div className="vr"></div>
-                          <CTooltip content="update" placement="top">
-                            <Link
-                              to={`/student/edit/${student.student_id}`}
-                              className="btn btn-view"
-                            >
-                              <RiEdit2Fill className="nav-icon" />
-                            </Link>
-                          </CTooltip>
+                        <CTableDataCell>
+                          <div className="d-flex">
+                            <CTooltip content="View Details" placement="top">
+                              <Link
+                                to={`/student/details/${student.student_id}`}
+                                color="info"
+                                className="mx-1 btn btn-view"
+                              >
+                                <FiFileText className="nav-icon" />
+                              </Link>
+                            </CTooltip>
+                            <div className="vr"></div>
+                            <CTooltip content="delete" placement="top">
+                              <CButton
+                                onClick={() => handleOnDelete(student.student_id)}
+                                className="mx-1 btn-view"
+                              >
+                                <FiArchive className="nav-icon" />
+                              </CButton>
+                            </CTooltip>
+                            <div className="vr"></div>
+                            <CTooltip content="update" placement="top">
+                              <Link
+                                to={`/student/edit/${student.student_id}`}
+                                className="btn btn-view"
+                              >
+                                <RiEdit2Fill className="nav-icon" />
+                              </Link>
+                            </CTooltip>
+                          </div>
                         </CTableDataCell>
                       )
                     },

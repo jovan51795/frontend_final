@@ -1,20 +1,13 @@
-import { cilArrowThickRight, cilBook, cilPencil, cilTrash } from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
 import {
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCardTitle,
-  CTable,
-  CTableBody,
-  CTableCaption,
   CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
   CTooltip,
 } from '@coreui/react'
-import { CSmartTable, CTableRow } from '@coreui/react-pro'
+import { CSmartTable } from '@coreui/react-pro'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiFileText, FiArchive } from 'react-icons/fi'
@@ -109,40 +102,45 @@ const ProfessorList = () => {
                 },
                 actions: (prof) => {
                   return (
-                    <CTableDataCell style={{ display: 'flex' }}>
-                      <CTooltip content="View Details" placement="top">
-                        <Link className="btn btn-view mx-1" to={`/professor/${prof.professor_id}`}>
-                          <FiFileText className="nav-icon" />
-                        </Link>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Delete" placement="top">
-                        <CButton
-                          onClick={() => handleOnDelete(prof.professor_id)}
-                          color="danger"
-                          className="mx-1 btn-view"
-                        >
-                          <FiArchive className="nav-icon" />
-                        </CButton>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Update" placement="top">
-                        <Link
-                          className="btn btn-view mx-1"
-                          to={`/professor/edit/${prof.professor_id}`}
-                        >
-                          <RiEdit2Fill className="nav-icon" />
-                        </Link>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Subjects" placement="top">
-                        <Link
-                          className="btn btn-view mx-1"
-                          to={`/professor/subjects/${prof.professor_id}`}
-                        >
-                          <GrBook className="nav-icon" />
-                        </Link>
-                      </CTooltip>
+                    <CTableDataCell>
+                      <div className="d-flex">
+                        <CTooltip content="View Details" placement="top">
+                          <Link
+                            className="btn btn-view mx-1"
+                            to={`/professor/${prof.professor_id}`}
+                          >
+                            <FiFileText className="nav-icon" />
+                          </Link>
+                        </CTooltip>
+                        <div className="vr"></div>
+                        <CTooltip content="Delete" placement="top">
+                          <CButton
+                            onClick={() => handleOnDelete(prof.professor_id)}
+                            color="danger"
+                            className="mx-1 btn-view"
+                          >
+                            <FiArchive className="nav-icon" />
+                          </CButton>
+                        </CTooltip>
+                        <div className="vr"></div>
+                        <CTooltip content="Update" placement="top">
+                          <Link
+                            className="btn btn-view mx-1"
+                            to={`/professor/edit/${prof.professor_id}`}
+                          >
+                            <RiEdit2Fill className="nav-icon" />
+                          </Link>
+                        </CTooltip>
+                        <div className="vr"></div>
+                        <CTooltip content="Subjects" placement="top">
+                          <Link
+                            className="btn btn-view mx-1"
+                            to={`/professor/subjects/${prof.professor_id}`}
+                          >
+                            <GrBook className="nav-icon" />
+                          </Link>
+                        </CTooltip>
+                      </div>
                     </CTableDataCell>
                   )
                 },
