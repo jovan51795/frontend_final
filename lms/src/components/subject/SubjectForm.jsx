@@ -49,7 +49,7 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
     subjectCode: Joi.string().required(),
     subjectTitle: Joi.string().required(),
     units: Joi.number().min(1).required(),
-    prerequisites: Joi.string().allow(null).required(),
+    prerequisites: Joi.string().allow('').allow(null).required(),
     course: Joi.object().allow({}).optional(),
     subject_id: Joi.number().allow(),
     activeDeactive: Joi.boolean().allow(),
@@ -60,7 +60,8 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
     course: Joi.allow(),
     attendance: Joi.allow(),
     department_id: Joi.number().allow(null).optional(),
-    departmentName: Joi.string().allow('').optional(),
+    departmentName: Joi.string().allow('').allow(null).optional(),
+    subject_detail_history: Joi.allow(),
   })
 
   const handleOnChange = (e) => {
@@ -94,6 +95,7 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
 
   const isFormInvalid = () => {
     const result = schema.validate(subjectForm)
+    console.log(result)
     return !!result.error
   }
 

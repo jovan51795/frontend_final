@@ -19,7 +19,6 @@ import React, { useState } from 'react'
 import camelCaseToWords from '../../services/lodashService'
 
 const ProfessorForm = ({ onSubmit, initialValue }) => {
-  console.log(initialValue)
   const [form, setFrom] = useState(
     initialValue || {
       professorNo: '',
@@ -85,7 +84,6 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
 
   const isFormValid = () => {
     const result = schema.validate(form)
-    console.log(result)
     return !!result.error
   }
   return (
