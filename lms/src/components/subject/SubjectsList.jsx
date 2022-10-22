@@ -50,12 +50,17 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
   }
 
   const columns = [
-    { key: 'subject_id', filter: false, sorter: true },
-    { key: 'subjectCode', filter: false, sorter: true },
-    { key: 'subjectTitle', filter: false, sorter: true },
-    { key: 'units', filter: false, sorter: true },
-    { key: 'prerequisites', filter: false, sorter: true },
-    { key: 'activeDeactive', label: 'status', filter: false, sorter: true },
+    { key: 'subjectCode', filter: false, sorter: true, _style: { width: '150px' } },
+    { key: 'subjectTitle', filter: false, sorter: true, _style: { width: '150px' } },
+    { key: 'units', filter: false, sorter: true, _style: { width: '100px' } },
+    { key: 'prerequisites', filter: false, sorter: true, _style: { width: '150px' } },
+    {
+      key: 'activeDeactive',
+      label: 'status',
+      filter: false,
+      sorter: true,
+      _style: { width: '100px' },
+    },
     { key: 'actions', filter: false, sorter: false },
   ]
   return (
@@ -122,26 +127,34 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
                   },
                   actions: (sub) => {
                     return (
-                      <CTableDataCell className="d-flex">
-                        <CTooltip content="View Details" placement="top">
-                          <Link className="btn btn-info" to={`/subject/details/${sub.subject_id}`}>
-                            <CIcon icon={cilArrowThickRight} />
-                          </Link>
-                        </CTooltip>
-                        <CTooltip content="delete" placement="top">
-                          <CButton
-                            onClick={() => onDelete(sub.subject_id)}
-                            color="danger"
-                            className="mx-3"
-                          >
-                            <CIcon icon={cilTrash} />
-                          </CButton>
-                        </CTooltip>
-                        <CTooltip content="delete" placement="top">
-                          <Link className="btn btn-success" to={`/subject/edit/${sub.subject_id}`}>
-                            <CIcon icon={cilPencil} />
-                          </Link>
-                        </CTooltip>
+                      <CTableDataCell>
+                        <div className="d-flex">
+                          <CTooltip content="View Details" placement="top">
+                            <Link
+                              className="btn btn-info"
+                              to={`/subject/details/${sub.subject_id}`}
+                            >
+                              <CIcon icon={cilArrowThickRight} />
+                            </Link>
+                          </CTooltip>
+                          <CTooltip content="delete" placement="top">
+                            <CButton
+                              onClick={() => onDelete(sub.subject_id)}
+                              color="danger"
+                              className="mx-3"
+                            >
+                              <CIcon icon={cilTrash} />
+                            </CButton>
+                          </CTooltip>
+                          <CTooltip content="delete" placement="top">
+                            <Link
+                              className="btn btn-success"
+                              to={`/subject/edit/${sub.subject_id}`}
+                            >
+                              <CIcon icon={cilPencil} />
+                            </Link>
+                          </CTooltip>
+                        </div>
                       </CTableDataCell>
                     )
                   },
