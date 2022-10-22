@@ -13,14 +13,9 @@ const StudentDashboardCalendar = ({ schedules }) => {
   const studentSchedules = []
 
   schedules.map((sched) => {
-    let time = ''
+    let time = sched[1] ? sched[1].split('-') : '00:00-00:00'
     let startTime = ''
     let endTime = ''
-    if ((sched[1] = null)) {
-      time = '00:00-00:00'
-    } else if (sched[1] != null) {
-      time = sched[1].split('-')
-    }
     startTime = time[0]
     endTime = time[1]
     studentSchedules.push({
