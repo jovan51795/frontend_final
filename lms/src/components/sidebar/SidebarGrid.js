@@ -33,7 +33,7 @@ const Sidebar2 = ({ onLogout }) => {
       setnavigation(_navFaculty)
     } else if (userInFo && userInFo.object.type === 'parent') {
       setWork('Parent')
-      setNumber(`Parent No.: ${userInFo.object.studentNo}`)
+      setNumber(`Parent No.: ${userInFo.object.parent_id}`)
       setnavigation(_navParent)
     }
   }, [userInFo])

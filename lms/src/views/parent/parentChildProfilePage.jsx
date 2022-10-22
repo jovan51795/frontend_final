@@ -1,7 +1,14 @@
 import React from 'react'
+import StudentProfileForm from 'src/components/Student-Module/StudentProfileForm'
+import { getUserInfo } from 'src/services/userInfo'
+
 
 const parentChildProfilePage = () => {
-  return <div>parentChildProfilePage</div>
+  const userInfo = getUserInfo().object.student;
+  const userInfoType = getUserInfo().object.type;
+  console.log(userInfo)
+  return (<><div>
+    <StudentProfileForm studentInfo={userInfo} type={userInfoType}/></div></>)
 }
 
 export default parentChildProfilePage
