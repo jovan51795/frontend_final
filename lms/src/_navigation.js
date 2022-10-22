@@ -111,7 +111,7 @@ export const _navStudent = [
   {
     label: 'Course Evaluation',
     icon: <GiDiploma className="nav-icon" />,
-    link: '/student/course-eval',
+    link: `${userInFo && userInFo.type}/course-eval`,
   },
 ]
 
