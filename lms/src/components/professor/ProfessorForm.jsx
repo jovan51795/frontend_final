@@ -19,10 +19,12 @@ import React, { useState } from 'react'
 import camelCaseToWords from '../../services/lodashService'
 
 const ProfessorForm = ({ onSubmit, initialValue }) => {
+  console.log(initialValue)
   const [form, setFrom] = useState(
     initialValue || {
       professorNo: '',
-      professorName: '',
+      firstName: '',
+      lastName: '',
       work: '',
       gender: '',
       status: 'Regular',
@@ -33,11 +35,17 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
   const [errors, setErrors] = useState({})
 
   const schema = Joi.object({
+    professor_id: Joi.number().allow(),
     professorNo: Joi.string().allow('').min(4).required(),
-    professorName: Joi.string().allow('').min(7).required(),
+    firstName: Joi.string().allow('').min(7).required(),
+    lastName: Joi.string().allow('').min(7).required(),
     work: Joi.string().allow('').min(7).required(),
     gender: Joi.string().allow('').min(4).required(),
     status: Joi.string().allow('').required(),
+    password: Joi.string().allow(''),
+    activeDeactive: Joi.boolean().allow(),
+    type: Joi.string().allow(),
+    student: Joi.allow(),
     birthdate: Joi.string()
       .required()
       .optional()
@@ -74,6 +82,12 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
     e.preventDefault()
     onSubmit(form)
   }
+
+  const isFormValid = () => {
+    const result = schema.validate(form)
+    console.log(result)
+    return !!result.error
+  }
   return (
     <CForm onSubmit={handleSubmit}>
       <CCard>
@@ -94,14 +108,26 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
             </CCol>
           </CRow>
           <CRow className="mb-3">
-            <CFormLabel className="col-sm-2 col-form-label">Name</CFormLabel>
+            <CFormLabel className="col-sm-2 col-form-label">First Name</CFormLabel>
             <CCol sm={10}>
               <CFormInput
-                name="professorName"
-                value={form.professorName}
+                name="firstName"
+                value={form.firstName}
                 onChange={(e) => handleChange(e, false)}
-                invalid={!!errors.professorName}
-                feedback={errors.professorName}
+                invalid={!!errors.firstName}
+                feedback={errors.firstName}
+              />
+            </CCol>
+          </CRow>
+          <CRow className="mb-3">
+            <CFormLabel className="col-sm-2 col-form-label">Last Name</CFormLabel>
+            <CCol sm={10}>
+              <CFormInput
+                name="lastName"
+                value={form.lastName}
+                onChange={(e) => handleChange(e, false)}
+                invalid={!!errors.lastName}
+                feedback={errors.lastName}
               />
             </CCol>
           </CRow>
@@ -175,7 +201,9 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
           </CRow>
         </CCardBody>
         <CCardFooter className="d-flex justify-content-end">
-          <CButton type="submit">Submit</CButton>
+          <CButton type="submit" disabled={isFormValid()}>
+            Submit
+          </CButton>
         </CCardFooter>
       </CCard>
     </CForm>
