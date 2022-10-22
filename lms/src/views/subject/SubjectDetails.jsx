@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Loading from 'src/components/loading/Loading'
 import Details from 'src/components/subject/Details'
 import { getSubjectById } from '../../services/subjectService'
 
@@ -23,6 +24,8 @@ const SubjectDetails = () => {
         <Details subject={subject} />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 

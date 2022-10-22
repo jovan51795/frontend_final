@@ -4,6 +4,7 @@ import StudentForm from 'src/components/students/StudentForm'
 import { getStudentById } from '../../services/studentService'
 import { updateStudentById } from '../../redux/actions/studentActions'
 import { useDispatch } from 'react-redux'
+import Loading from 'src/components/loading/Loading'
 
 const EditStudent = () => {
   const param = useParams()
@@ -26,6 +27,8 @@ const EditStudent = () => {
         <StudentForm initialValue={student} onSubmit={handleSubmit} />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 

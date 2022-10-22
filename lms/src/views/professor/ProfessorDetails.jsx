@@ -7,88 +7,94 @@ import { professorDetails } from '../../redux/actions/professorAction'
 import 'src/scss/_admin.scss'
 import { IoIosArrowBack } from 'react-icons/io'
 import { Btn } from 'src/styles/Btn.styles.'
+import Loading from 'src/components/loading/Loading'
 
 const ProfessorDetails = () => {
   const prof = useSelector((state) => state.professor)
   const param = useParams()
   const dispath = useDispatch()
+  console.log(prof)
 
   useEffect(() => {
     dispath(professorDetails(+param.id))
   }, [param, dispath])
-  return (
-    <>
-      <CCard>
-        <CCardHeader>
-          <CCardTitle className="txt-style">PROFESSOR DETAILS</CCardTitle>
-        </CCardHeader>
-        <div className="container px-5">
-          <CCardBody>
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">PROFESSOR NO. :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">{prof.professorNo}</div>
-              </CCol>
-            </CRow>
-            <hr />
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">PROFESSOR NAME :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">
-                  {prof.firstName} {prof.lastName}
-                </div>
-              </CCol>
-            </CRow>
-            <hr />
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">GENDER :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">{prof.gender}</div>
-              </CCol>
-            </CRow>
-            <hr />
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">DATE OF BIRTH :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">{prof.birthdate}</div>
-              </CCol>
-            </CRow>
-            <hr />
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">WORK :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">{prof.work}</div>
-              </CCol>
-            </CRow>
-            <hr />
-            <CRow>
-              <CCol sm={6} className="mb-3">
-                <div className="sub">STATUS :</div>
-              </CCol>
-              <CCol sm={6} className="mb-3">
-                <div className="sub2">{prof.status}</div>
-              </CCol>
-            </CRow>
-          </CCardBody>
-        </div>
-      </CCard>
-      <CContainer className="py-4">
-        <Btn big="true" to="/professors">
-          <IoIosArrowBack className="a-icon" /> BACK
-        </Btn>
-      </CContainer>
-    </>
-  )
+  if (prof.professor_id) {
+    return (
+      <>
+        <CCard>
+          <CCardHeader>
+            <CCardTitle className="txt-style">PROFESSOR DETAILS</CCardTitle>
+          </CCardHeader>
+          <div className="container px-5">
+            <CCardBody>
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">PROFESSOR NO. :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">{prof.professorNo}</div>
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">PROFESSOR NAME :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">
+                    {prof.firstName} {prof.lastName}
+                  </div>
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">GENDER :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">{prof.gender}</div>
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">DATE OF BIRTH :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">{prof.birthdate}</div>
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">WORK :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">{prof.work}</div>
+                </CCol>
+              </CRow>
+              <hr />
+              <CRow>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub">STATUS :</div>
+                </CCol>
+                <CCol sm={6} className="mb-3">
+                  <div className="sub2">{prof.status}</div>
+                </CCol>
+              </CRow>
+            </CCardBody>
+          </div>
+        </CCard>
+        <CContainer className="py-4">
+          <Btn big="true" to="/professors">
+            <IoIosArrowBack className="a-icon" /> BACK
+          </Btn>
+        </CContainer>
+      </>
+    )
+  } else {
+    return <Loading />
+  }
 }
 
 export default ProfessorDetails

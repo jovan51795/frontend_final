@@ -6,6 +6,7 @@ import { IoIosArrowBack } from 'react-icons/io'
 import 'src/scss/_admin.scss'
 import { Btn } from 'src/styles/Btn.styles.'
 import { CContainer } from '@coreui/react-pro'
+import Loading from 'src/components/loading/Loading'
 
 const StudentDetails = () => {
   const param = useParams()
@@ -148,6 +149,8 @@ const StudentDetails = () => {
         </CRow>
       </>
     )
+  } else {
+    return <Loading />
   }
 }
 
