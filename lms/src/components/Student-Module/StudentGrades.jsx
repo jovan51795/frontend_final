@@ -31,7 +31,7 @@ const StudentGrades = ({ grades }) => {
       totalUnits += x[2]
       totalProduct += x[2] * x[3]
     })
-    return totalProduct / totalUnits
+    return (totalProduct / totalUnits).toFixed(2)
   }
 
   return (
