@@ -84,7 +84,6 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
 
   const isFormValid = () => {
     const result = schema.validate(form)
-    console.log(result)
     return !!result.error
   }
   return (
