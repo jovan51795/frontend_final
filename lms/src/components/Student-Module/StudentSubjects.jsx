@@ -9,6 +9,7 @@ import {
   CTableDataCell,
   CTableBody,
   CButton,
+  CTableCaption,
 } from '@coreui/react'
 import React from 'react'
 
@@ -38,9 +39,7 @@ const StudentSubjects = ({ subjects }) => {
                 <CTableRow key={subject.subject_id}>
                   <CTableDataCell>{subject.subjectCode}</CTableDataCell>
                   <CTableDataCell>{subject.subjectTitle}</CTableDataCell>
-                  <CTableDataCell>
-                    {subject.professor.firstName} {subject.professor.lastName}
-                  </CTableDataCell>
+                  <CTableDataCell> {subject.professor}</CTableDataCell>
                   <CTableDataCell>{subject.units}</CTableDataCell>
                 </CTableRow>
               ))}
