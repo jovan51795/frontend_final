@@ -4,6 +4,7 @@ import SubjectsList from 'src/components/subject/SubjectsList'
 import { getAll } from '../../services/subjectService'
 import { getAllDepartmentWithSubject } from '../../services/departmentService'
 import { deleteSubject } from '../../redux/actions/subjectAction'
+import Loading from 'src/components/loading/Loading'
 
 const SubjectList = () => {
   const [subjects, setsubjects] = useState(null)
@@ -34,6 +35,8 @@ const SubjectList = () => {
         <SubjectsList department={departments} subjects={subjects} onDelete={handleDeleteSubject} />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 

@@ -26,6 +26,7 @@ import { getAllProfessor } from '../../services/professorService'
 import { Btn } from 'src/styles/Btn.styles.'
 import { ImUserTie } from 'react-icons/im'
 import 'src/scss/_admin.scss'
+import Loading from 'src/components/loading/Loading'
 
 const ProfessorList = () => {
   const dispatch = useDispatch()
@@ -149,81 +150,10 @@ const ProfessorList = () => {
             />
           </CCardBody>
         </CCard>
-        {/* <CCard className="notrounded">
-          <CCardBody style={{ overflow: 'auto scroll', width: '100%' }}>
-            <CTable caption="top">
-              <CTableCaption className="text-center txt-style pt-1">
-                FACULTY MASTER LIST
-              </CTableCaption>
-              <CTableHead>
-                <CTableRow>
-                  <CTableHeaderCell className="col-title">PROFESSOR NO.</CTableHeaderCell>
-                  <CTableHeaderCell className="col-title">NAME</CTableHeaderCell>
-                  <CTableHeaderCell className="col-title">WORK</CTableHeaderCell>
-                  <CTableHeaderCell className="col-title">GENDER</CTableHeaderCell>
-                  <CTableHeaderCell className="col-title">STATUS</CTableHeaderCell>
-                  <CTableHeaderCell className="col-title">ACTIONS</CTableHeaderCell>
-                </CTableRow>
-              </CTableHead>
-              <CTableBody>
-                {professors.map((prof) => (
-                  <CTableRow key={prof.professor_id} className="text-center">
-                    <CTableDataCell>{prof.professorNo}</CTableDataCell>
-                    <CTableDataCell>
-                      {prof.firstName} {prof.lastName}
-                    </CTableDataCell>
-                    <CTableDataCell>{prof.work}</CTableDataCell>
-                    <CTableDataCell>{prof.gender}</CTableDataCell>
-                    <CTableDataCell>
-                      {prof.status === 'Regular' ? (
-                        <span className="badge bg-info">{prof.status}</span>
-                      ) : (
-                        <span className="badge bg-warning">{prof.status}</span>
-                      )}
-                    </CTableDataCell>
-                    <CTableDataCell style={{ display: 'flex' }}>
-                      <CTooltip content="View Details" placement="top">
-                        <Link className="btn btn-view mx-1" to={`/professor/${prof.professor_id}`}>
-                          <FiFileText className="nav-icon" />
-                        </Link>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Delete" placement="top">
-                        <CButton
-                          onClick={() => handleOnDelete(prof.professor_id)}
-                          color="danger"
-                          className="mx-1 btn-view"
-                        >
-                          <FiArchive className="nav-icon" />
-                        </CButton>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Update" placement="top">
-                        <Link
-                          className="btn btn-view mx-1"
-                          to={`/professor/edit/${prof.professor_id}`}
-                        >
-                          <RiEdit2Fill className="nav-icon" />
-                        </Link>
-                      </CTooltip>
-                      <div className="vr"></div>
-                      <CTooltip content="Subjects" placement="top">
-                        <Link
-                          className="btn btn-view mx-1"
-                          to={`/professor/subjects/${prof.professor_id}`}
-                        >
-                          <GrBook className="nav-icon" />
-                        </Link>
-                      </CTooltip>
-                    </CTableDataCell>
-                  </CTableRow>
-                ))}
-              </CTableBody>
-            </CTable>
-          </CCardBody>
-        </CCard> */}
       </>
     )
+  } else {
+    return <Loading />
   }
 }
 

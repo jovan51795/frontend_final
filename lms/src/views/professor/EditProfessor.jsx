@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import ProfessorForm from 'src/components/professor/ProfessorForm'
 import { getProfById } from '../../services/professorService'
 import { updateProfessor } from '../../redux/actions/professorAction'
+import Loading from 'src/components/loading/Loading'
 
 const EditProfessor = () => {
   const [prof, setProf] = useState(null)
@@ -26,6 +27,8 @@ const EditProfessor = () => {
         <ProfessorForm initialValue={prof} onSubmit={handleSubmit} />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 

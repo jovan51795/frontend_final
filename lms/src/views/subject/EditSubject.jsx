@@ -5,6 +5,7 @@ import SubjectForm from 'src/components/subject/SubjectForm'
 import { getSubjectById } from '../../services/subjectService'
 import { updateSubject } from '../../redux/actions/subjectAction'
 import { useDispatch } from 'react-redux'
+import Loading from 'src/components/loading/Loading'
 
 const EditSubject = () => {
   const dispatch = useDispatch()
@@ -29,6 +30,8 @@ const EditSubject = () => {
         <SubjectForm initialValue={subject} onSubmit={handleOnSubmit} />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 
