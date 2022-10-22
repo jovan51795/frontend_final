@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
+  CFormInput,
+  CFormSelect,
+  CInputGroup,
   CRow,
   CTable,
   CTableBody,
@@ -18,7 +21,33 @@ import CIcon from '@coreui/icons-react'
 import { cilArrowThickRight, cilPencil, cilTrash } from '@coreui/icons'
 import { Link } from 'react-router-dom'
 
-const SubjectsList = ({ subjects, onDelete }) => {
+const SubjectsList = ({ subjects, onDelete, department }) => {
+  const [subject, setSubject] = useState([...subjects])
+  const [dep, setDep] = useState([...department])
+  const [depFilter, setDepFilter] = useState({})
+
+  const handleFilter = (e, type) => {
+    var search = e.currentTarget.value
+    const subs = subjects
+    e.preventDefault()
+    if (type === 'input') {
+      if (search === '') {
+        return setSubject([...subs])
+      }
+      const sub = subjects.filter(
+        (s) =>
+          s.subjectCode.toLowerCase().includes(search.toLowerCase()) ||
+          s.subjectTitle.toLowerCase().includes(search.toLowerCase()),
+      )
+      setSubject([...sub])
+    } else {
+      if (search === 'All') {
+        return setSubject([...subs])
+      }
+      const sub = subjects.filter((s) => s.departmentName === search)
+      setSubject([...sub])
+    }
+  }
   return (
     <>
       <CRow>
@@ -35,6 +64,25 @@ const SubjectsList = ({ subjects, onDelete }) => {
           <CCard>
             <CCardHeader>
               <strong>Subjects Table</strong>
+              <CInputGroup className="d-flex align-items-center justify-content-center">
+                <CRow className="w-100">
+                  <CCol lg={8} className=" mt-2">
+                    <CFormInput
+                      name="subject"
+                      onChange={(e) => handleFilter(e, 'input')}
+                      placeholder="Search Subject"
+                    />
+                  </CCol>
+                  <CCol lg={4} className="mt-2">
+                    <CFormSelect name="department" onChange={(e) => handleFilter(e, 'dep')}>
+                      <option>All</option>
+                      {dep.map((depart, idx) => (
+                        <option key={idx}>{depart.departmentName}</option>
+                      ))}
+                    </CFormSelect>
+                  </CCol>
+                </CRow>
+              </CInputGroup>
             </CCardHeader>
             <CCardBody className="subject-list-table">
               <CTable className="overflow-auto">
@@ -45,12 +93,11 @@ const SubjectsList = ({ subjects, onDelete }) => {
                     <CTableHeaderCell scope="col">Units</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Prerequisites</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Status</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Department</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Actions</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {subjects.map((sub) => (
+                  {subject.map((sub) => (
                     <CTableRow key={sub.subject_id}>
                       <CTableDataCell>{sub.subjectCode} </CTableDataCell>
                       <CTableDataCell>{sub.subjectTitle} </CTableDataCell>
@@ -63,7 +110,6 @@ const SubjectsList = ({ subjects, onDelete }) => {
                           <span className="badge bg-warning">deactivated</span>
                         )}
                       </CTableDataCell>
-                      <CTableDataCell>{sub.departmentName}</CTableDataCell>
                       <CTableDataCell className="d-flex">
                         <CTooltip content="View Details" placement="top">
                           <Link className="btn btn-info" to={`/subject/details/${sub.subject_id}`}>
