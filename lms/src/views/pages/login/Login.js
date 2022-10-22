@@ -20,7 +20,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import Joi from 'joi'
 import Header from 'src/components/header/Header'
 import { AppFooter } from 'src/components'
-import { adminLogin, professorLogin, studentLogin } from '../../../services/auth'
+import { adminLogin, professorLogin, studentLogin, parentLogin } from '../../../services/auth'
 import { toast } from 'react-toastify'
 
 const Login = () => {
@@ -77,6 +77,9 @@ const Login = () => {
         redirect(res.data)
       })
     } else if (param.type === 'parent') {
+      parentLogin(loginForm).then((res) => {
+        redirect(res.data)
+      })
     }
   }
   const redirect = (data) => {
