@@ -22,3 +22,9 @@ export const professorLogin = (data) => {
   console.log('prof')
   return http.post('/professor/login', data)
 }
+
+
+export const parentLogin = (data) => {
+  console.log('parent')
+  return http.post('/parent/login', data)
+}
