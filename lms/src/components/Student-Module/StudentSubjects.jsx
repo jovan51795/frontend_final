@@ -9,6 +9,7 @@ import {
   CTableDataCell,
   CTableBody,
   CButton,
+  CTableCaption,
 } from '@coreui/react'
 import React from 'react'
 

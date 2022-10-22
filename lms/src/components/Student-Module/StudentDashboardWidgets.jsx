@@ -13,7 +13,7 @@ const StudentDashboardWidgets = ({ grades }) => {
     totalProduct += grade[2] * grade[3]
     totalSubjects++
   })
-  const GWA = (totalProduct / totalUnits).toFixed(2) || 0
+  const GWA = (totalProduct / totalUnits || 0).toFixed(2)
   return (
     <CRow>
       <CCol xs={12} sm={6} lg={4}>

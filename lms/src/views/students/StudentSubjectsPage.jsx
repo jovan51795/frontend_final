@@ -13,7 +13,7 @@ const StudentSubjectsPage = () => {
     setSubjects(getUserInfo().object.subject)
   }
 
-  console.log(subjects)
+  // console.log(subjects)
 
   if (subjects) {
     return (
