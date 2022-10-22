@@ -4,6 +4,8 @@ import {
   CButton,
   CCard,
   CCardBody,
+  CCardHeader,
+  CCardTitle,
   CTable,
   CTableBody,
   CTableCaption,
@@ -12,7 +14,7 @@ import {
   CTableHeaderCell,
   CTooltip,
 } from '@coreui/react'
-import { CTableRow } from '@coreui/react-pro'
+import { CSmartTable, CTableRow } from '@coreui/react-pro'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiFileText, FiArchive } from 'react-icons/fi'
@@ -47,6 +49,15 @@ const ProfessorList = () => {
       getAll()
     }
   })
+
+  const columns = [
+    { key: 'professorNo', filter: false, sorter: true },
+    { key: 'name', filter: false, sorter: true },
+    { key: 'work', filter: false, sorter: true },
+    { key: 'gender', filter: false, sorter: true },
+    { key: 'status', filter: false, sorter: true },
+    { key: 'actions', filter: false, sorter: false },
+  ]
   if (professors) {
     return (
       <>
@@ -58,7 +69,87 @@ const ProfessorList = () => {
           </div>
         </div>
         <hr className="mb-5 m-0" />
-        <CCard className="notrounded">
+        <CCard>
+          <CCardHeader>
+            <CCardTitle>FACULTY MASTER LIST</CCardTitle>
+          </CCardHeader>
+          <CCardBody>
+            <CSmartTable
+              columns={columns}
+              columnFilter
+              columnSorter
+              items={professors}
+              itemsPerPageSelect
+              itemsPerPage={5}
+              pagination
+              sorterValue={{ column: 'subjectCode', state: 'asc' }}
+              tableProps={{
+                hover: true,
+                responsive: true,
+              }}
+              scopedColumns={{
+                name: (prof) => {
+                  return (
+                    <td>
+                      {prof.firstName} {prof.lastName}
+                    </td>
+                  )
+                },
+                status: (prof) => {
+                  return prof.status === 'Regular' ? (
+                    <td>
+                      <span className="badge bg-info">{prof.status}</span>
+                    </td>
+                  ) : (
+                    <td>
+                      <span className="badge bg-warning">{prof.status}</span>
+                    </td>
+                  )
+                },
+                actions: (prof) => {
+                  return (
+                    <CTableDataCell style={{ display: 'flex' }}>
+                      <CTooltip content="View Details" placement="top">
+                        <Link className="btn btn-view mx-1" to={`/professor/${prof.professor_id}`}>
+                          <FiFileText className="nav-icon" />
+                        </Link>
+                      </CTooltip>
+                      <div className="vr"></div>
+                      <CTooltip content="Delete" placement="top">
+                        <CButton
+                          onClick={() => handleOnDelete(prof.professor_id)}
+                          color="danger"
+                          className="mx-1 btn-view"
+                        >
+                          <FiArchive className="nav-icon" />
+                        </CButton>
+                      </CTooltip>
+                      <div className="vr"></div>
+                      <CTooltip content="Update" placement="top">
+                        <Link
+                          className="btn btn-view mx-1"
+                          to={`/professor/edit/${prof.professor_id}`}
+                        >
+                          <RiEdit2Fill className="nav-icon" />
+                        </Link>
+                      </CTooltip>
+                      <div className="vr"></div>
+                      <CTooltip content="Subjects" placement="top">
+                        <Link
+                          className="btn btn-view mx-1"
+                          to={`/professor/subjects/${prof.professor_id}`}
+                        >
+                          <GrBook className="nav-icon" />
+                        </Link>
+                      </CTooltip>
+                    </CTableDataCell>
+                  )
+                },
+              }}
+            />
+          </CCardBody>
+        </CCard>
+        {/* <CCard className="notrounded">
           <CCardBody style={{ overflow: 'auto scroll', width: '100%' }}>
             <CTable caption="top">
               <CTableCaption className="text-center txt-style pt-1">
@@ -130,7 +221,7 @@ const ProfessorList = () => {
               </CTableBody>
             </CTable>
           </CCardBody>
-        </CCard>
+        </CCard> */}
       </>
     )
   }
