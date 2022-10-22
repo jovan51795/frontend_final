@@ -23,7 +23,7 @@ const StudentProfileForm = ({ studentInfo, type }) => {
   const userType = () => {
     if (type === 'parent') {
       return <div className="col-md-12 comp-title pt-3">MY STUDENT PROFILE</div>
-    } else {
+    } else if (type === 'student') {
       return <div className="col-md-12 comp-title pt-3">MY PROFILE</div>
     }
   }
