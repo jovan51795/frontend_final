@@ -35,8 +35,8 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
 
   const schema = Joi.object({
     professor_id: Joi.number().allow(),
-    professorNo: Joi.string().allow('').min(4).required(),
-    firstName: Joi.string().allow('').min(7).required(),
+    professorNo: Joi.string().allow('').required(),
+    firstName: Joi.string().allow('').required(),
     lastName: Joi.string().allow('').min(7).required(),
     work: Joi.string().allow('').min(7).required(),
     gender: Joi.string().allow('').min(4).required(),
@@ -84,6 +84,7 @@ const ProfessorForm = ({ onSubmit, initialValue }) => {
 
   const isFormValid = () => {
     const result = schema.validate(form)
+    console.log(result)
     return !!result.error
   }
   return (
