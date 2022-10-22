@@ -19,19 +19,31 @@ const StudentSchedule = () => {
       }
     })
   }
-
-  return (
-    <>
-      <CCard className="mb-4">
-        <CCardHeader>
-          <strong>My Schedule</strong>
-        </CCardHeader>
-        <CCardBody style={{ height: '800px', width: 'auto', overflow: 'scroll', overflow: 'auto' }}>
-          <StudentDashboardCalendar schedules={schedules} />
-        </CCardBody>
-      </CCard>
-    </>
-  )
+  console.log(schedules)
+  if (schedules) {
+    return (
+      <>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <strong>My Schedule</strong>
+          </CCardHeader>
+          <CCardBody
+            style={{ height: '800px', width: 'auto', overflow: 'scroll', overflow: 'auto' }}
+          >
+            <StudentDashboardCalendar schedules={schedules} />
+          </CCardBody>
+        </CCard>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <div>
+          <h1>No Schedules Yet!</h1>
+        </div>
+      </>
+    )
+  }
 }
 
 export default StudentSchedule
