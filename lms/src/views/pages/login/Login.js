@@ -18,23 +18,14 @@ import 'src/scss/_login.scss'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 import Joi from 'joi'
-import { useDispatch, useSelector } from 'react-redux'
-import { adminLogin, studentLogin, professorLogin } from 'src/redux/actions/adminAuthActions'
 import Header from 'src/components/header/Header'
 import { AppFooter } from 'src/components'
-import { getUserInfo } from 'src/services/userInfo'
+import { adminLogin, professorLogin, studentLogin } from '../../../services/auth'
+import { toast } from 'react-toastify'
 
 const Login = () => {
   const param = useParams()
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const userInFo = getUserInfo()
-
-  useSelector((state) => {
-    if (state.adminAuth && state.adminAuth.status === 1) {
-      navigate(`/${param.type}/dashboard`)
-    }
-  })
 
   const [loginForm, setLoginForm] = useState({
     username: '',
@@ -74,12 +65,26 @@ const Login = () => {
   const handleOnSubmit = (event) => {
     event.preventDefault()
     if (param.type === 'student') {
-      dispatch(studentLogin(loginForm))
+      studentLogin(loginForm).then((res) => {
+        redirect(res.data)
+      })
     } else if (param.type === 'admin') {
-      dispatch(adminLogin(loginForm))
+      adminLogin(loginForm).then((res) => {
+        redirect(res.data)
+      })
     } else if (param.type === 'faculty') {
-      dispatch(professorLogin(loginForm))
+      professorLogin(loginForm).then((res) => {
+        redirect(res.data)
+      })
     } else if (param.type === 'parent') {
+    }
+  }
+  const redirect = (data) => {
+    if (data && data.status === 1) {
+      localStorage.setItem('lms', JSON.stringify(data))
+      navigate(`/${param.type}/dashboard`)
+    } else {
+      toast.error(data.message)
     }
   }
 
@@ -155,23 +160,6 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCard>
-              {/* <CCard className="text-white bg-primary py-5">
-                  <CCardBody className="text-center">
-                    <div>
-                      <h2>Sign up</h2>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua.
-                      </p>
-                      <Link to="/register">
-                        <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                          Register Now!
-                        </CButton>
-                      </Link>
-                    </div>
-                  </CCardBody>
-                </CCard> */}
-              {/* </CCardGroup> */}
             </CCol>
           </CRow>
         </CContainer>
