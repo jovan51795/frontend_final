@@ -217,7 +217,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
               </CFormSelect>
             </CCol>
             <CCol lg={6} className="mb-3">
-              <CFormLabel>Sem</CFormLabel>
+              <CFormLabel>Semester</CFormLabel>
               <CFormSelect
                 name="sem"
                 value={form.sem}
@@ -226,10 +226,11 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                 invalid={!!errors.sem}
                 feedback={errors.sem}
               >
-                <option defaultValue="1st Sem" value="1st Sem">
-                  1st Sem
+                <option defaultValue="1st Semester" value="1st Semester">
+                  1st Semester
                 </option>
-                <option value="2nd Sem">2nd Sem</option>
+                <option value="2nd Semester">2nd Semester</option>
+                <option value="3rd Semester">3rd Semester</option>
               </CFormSelect>
             </CCol>
             <CCol lg={6} className="mb-3">
