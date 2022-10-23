@@ -3,8 +3,8 @@ import 'src/scss/_profile.scss'
 
 const StudentProfileForm = ({ studentInfo, type }) => {
   const fullname = `${studentInfo.firstName} ${studentInfo.middleName} ${studentInfo.lastName}`
-  const splitDate = studentInfo.birthDate.split('-')
-  const date = new Date(splitDate[0] + '-' + splitDate[2] + '-' + splitDate[1])
+
+  const date = new Date(studentInfo.birthDate)
   const month = [
     'January',
     'February',

@@ -1,37 +1,23 @@
+import React from 'react'
 import {
   CCard,
-  CCardBody,
   CCardHeader,
+  CCardBody,
   CTable,
   CTableHead,
-  CTableHeaderCell,
   CTableRow,
+  CTableHeaderCell,
   CTableDataCell,
   CTableBody,
-  CButton,
   CTableCaption,
 } from '@coreui/react'
-import React from 'react'
 
-const StudentSubjects = ({ subjects }) => {
-  let totalUnits = 0
-  subjects.forEach((subject) => {
-    totalUnits += subject.units
-  })
-  console.log(subjects)
-
-  const isProfessorNull = (prof) => {
-    if (prof != null) {
-      return prof
-    } else {
-      return 'No professor assigned'
-    }
-  }
+const StudentCourseEval = () => {
   return (
-    <div>
+    <>
       <CCard className="mb-4">
         <CCardHeader>
-          <strong>Subject List</strong>
+          <strong>Course Evaluation</strong>
         </CCardHeader>
         <CCardBody>
           <CTable hover align="middle">
@@ -44,27 +30,25 @@ const StudentSubjects = ({ subjects }) => {
               </CTableRow>
             </CTableHead>
             <CTableBody>
-              {subjects.map((subject) => (
-                <CTableRow key={subject.subject_id}>
-                  <CTableDataCell>{subject.subjectCode}</CTableDataCell>
-                  <CTableDataCell>{subject.subjectTitle}</CTableDataCell>
-                  <CTableDataCell>{isProfessorNull(subject.prof)}</CTableDataCell>
-                  <CTableDataCell>{subject.units}</CTableDataCell>
-                </CTableRow>
-              ))}
+              <CTableRow>
+                <CTableDataCell></CTableDataCell>
+                <CTableDataCell></CTableDataCell>
+                <CTableDataCell> </CTableDataCell>
+                <CTableDataCell></CTableDataCell>
+              </CTableRow>
 
               <CTableRow>
                 <CTableDataCell colSpan={3} style={{ textAlign: 'right' }}>
                   <b>Total Units:</b>
                 </CTableDataCell>
-                <CTableDataCell>{totalUnits}</CTableDataCell>
+                <CTableDataCell></CTableDataCell>
               </CTableRow>
             </CTableBody>
           </CTable>
         </CCardBody>
       </CCard>
-    </div>
+    </>
   )
 }
 
-export default StudentSubjects
+export default StudentCourseEval
