@@ -11,6 +11,7 @@ import {
   CTableBody,
   CTableCaption,
 } from '@coreui/react'
+import { toast } from 'react-toastify'
 import { getCourseEvaluation } from 'src/services/subjectService'
 import { getUserInfo } from 'src/services/userInfo'
 
@@ -18,20 +19,37 @@ const StudentCourseEval = ({ courses }) => {
   const userInfoId = getUserInfo().object.student_id
   const [data, setData] = useState([])
 
+  // useEffect(() => {
+  //   getCourse(1, '1st Semester', 'Freshman')
+  // }, [])
+
+  // console.log(data)
+
+  // const getCourse = (id, sem, year) => {
+  //   getCourseEvaluation(id, sem, year).then((res) => {
+  //     if (res && res.data && res.data.object) {
+  //       let d = res.data.object
+  //       setData(d)
+  //     }
+  //   })
+  // }
+
+
   useEffect(() => {
-    getCourse(1, '1st Semester', 'Freshman')
+    let sem = userInfoId.object.sem
+    let yrlvl = userInfoId.object.yearLevel
+
+
+    let firstSem = getCourseEvaluation(+userInfoId, "1st Semester", "FreshMan").then((res) => {
+      if (res.data && res.data.status === 1) {
+        setData(res.data.object)
+      } else if (res.data && res.data.status === 0) {
+        toast.error(res.data.message)
+      }
+    }
+    )
   }, [])
 
-  console.log(data)
-
-  const getCourse = (id, sem, year) => {
-    getCourseEvaluation(id, sem, year).then((res) => {
-      if (res && res.data && res.data.object) {
-        let d = res.data.object
-        setData(d)
-      }
-    })
-  }
 
   return (
     <>
@@ -52,12 +70,24 @@ const StudentCourseEval = ({ courses }) => {
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
+
+                    {data?.map((data) => (
+                  <CTableRow key={data[0]}>
+
+                    <CTableDataCell>{data[6]}</CTableDataCell>
+                    <CTableDataCell>{data[7]}</CTableDataCell>
+                    <CTableDataCell>{data[8]} </CTableDataCell>
+                  </CTableRow>
+                ))}
+
+
+
                   {/* {
                     (getCourse(1, sem.id, year.level).map = (d) => (
-                      <CTableRow key={d[0]}>
-                        <CTableHeaderCell>{d[0]}</CTableHeaderCell>
-                        <CTableHeaderCell>s</CTableHeaderCell>
-                        <CTableHeaderCell>s</CTableHeaderCell>
+                      <CTableRow key={data[0]}>
+                        <CTableDataCell>{data[6]}</CTableDataCell>
+                        <CTableDataCell>{data[7]}</CTableDataCell>
+                        <CTableDataCell>{data[8]} </CTableDataCell>
                       </CTableRow>
                     ))
                   } */}
