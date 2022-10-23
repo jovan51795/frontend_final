@@ -38,12 +38,6 @@ const StudentDashboard = () => {
       <div className="py-2">
         <Bulletin />
       </div>
-      <CRow>
-        {/* <CCol md={6}>thth</CCol> */}
-        <CCol className="student-news">
-          <NewsCarousel />
-        </CCol>
-      </CRow>
     </>
   )
 }

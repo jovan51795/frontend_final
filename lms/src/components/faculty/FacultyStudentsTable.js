@@ -6,11 +6,18 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+  CTooltip,
+  CRow,
+  CCol,
 } from '@coreui/react'
 import { toast } from 'react-toastify'
 import { Btn } from 'src/styles/Btn.styles.'
 import { getUserInfo } from 'src/services/userInfo'
 import { getStudentByProf } from 'src/services/professorService'
+import { BsCalendarCheck } from 'react-icons/bs'
+import { GrScorecard } from 'react-icons/gr'
+import 'src/scss/_faculty.scss'
+import { Link } from 'react-router-dom'
 
 const FacultyStudentsTable = ({ subjectId }) => {
   const professorId = getUserInfo().object.professor_id
@@ -48,20 +55,31 @@ const FacultyStudentsTable = ({ subjectId }) => {
               <CTableDataCell>{profStudents[2]}</CTableDataCell>
               <CTableDataCell>{profStudents[3]}</CTableDataCell>
               <CTableDataCell>
-                <Btn
-                  className="d-flex"
-                  // to={`/professor/attendance?subID=${subjectId}&profID=${professorId}&studID=${profStudents[0]}`}
-                  to={`/professor/attendance/subject/${subjectId}/prof/${professorId}/student/${profStudents[0]}`}
-                >
-                  Attendance
-                </Btn>
-                <Btn
-                  className="d-flex"
-                  // to={`/professor/grades?subID=${subjectId}&profID=${professorId}&studID=${profStudents[0]}`}
-                  to={`/professor/grades/subject/${subjectId}/prof/${professorId}/student/${profStudents[0]}`}
-                >
-                  Evaluate
-                </Btn>
+                <CRow className="d-flex justify-content-center">
+                  <CCol className="m-0 p-0">
+                    <CTooltip content="Attendance" placement="top">
+                      <Link
+                        // className="p-0 m-0"
+                        // to={`/professor/attendance?subID=${subjectId}&profID=${professorId}&studID=${profStudents[0]}`}
+                        to={`/professor/attendance/subject/${subjectId}/prof/${professorId}/student/${profStudents[0]}`}
+                      >
+                        <BsCalendarCheck className="nav-icon" />
+                      </Link>
+                    </CTooltip>
+                  </CCol>
+                  <div className="vr"></div>
+                  <CCol>
+                    <CTooltip content="Evaluate" placement="top">
+                      <Link
+                        // className=""
+                        // to={`/professor/grades?subID=${subjectId}&profID=${professorId}&studID=${profStudents[0]}`}
+                        to={`/professor/grades/subject/${subjectId}/prof/${professorId}/student/${profStudents[0]}`}
+                      >
+                        <GrScorecard className="nav-icon" />
+                      </Link>
+                    </CTooltip>
+                  </CCol>
+                </CRow>
               </CTableDataCell>
             </CTableRow>
           ))}

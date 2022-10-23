@@ -7,6 +7,7 @@ import { BsCardHeading } from 'react-icons/bs'
 import { FaBookReader } from 'react-icons/fa'
 import FacultyClassesTable from 'src/components/faculty/FacultyClassesTable'
 import GradeList from 'src/components/faculty/GradeList'
+import 'src/scss/_faculty.scss'
 
 const FacultySubjects = () => {
   const userInfo = getUserInfo().object
@@ -32,6 +33,7 @@ const FacultySubjects = () => {
               href="javascript:void(0);"
               active={activeKey === 1}
               onClick={() => setActiveKey(1)}
+              className="tab1"
             >
               <FaBookReader className="nav-icon pb-1" />
               &nbsp;&nbsp;STUDENT MASTERLIST
@@ -42,6 +44,7 @@ const FacultySubjects = () => {
               href="javascript:void(0);"
               active={activeKey === 2}
               onClick={() => setActiveKey(2)}
+              className="tab2"
             >
               <BsCardHeading className="nav-icon mb-1" />
               &nbsp;&nbsp;GRADES MASTERLIST

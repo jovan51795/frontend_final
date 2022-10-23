@@ -3,6 +3,9 @@ import {
   CCard,
   CListGroup,
   CListGroupItem,
+  CRow,
+  CCol,
+  CContainer,
   CTable,
   CTableBody,
   CTableDataCell,
@@ -13,6 +16,8 @@ import {
 import { toast } from 'react-toastify'
 import { Btn } from 'src/styles/Btn.styles.'
 import { getAllStudentGrade, getStudentByProf } from 'src/services/professorService'
+import { BsArrowRight } from 'react-icons/bs'
+import 'src/scss/_faculty.scss'
 
 const FacultyGradesTable = ({ professor_id, subject_id }) => {
   const [gradesInfo, setGradesInfo] = useState([])
@@ -47,8 +52,10 @@ const FacultyGradesTable = ({ professor_id, subject_id }) => {
           <CListGroup flush key={profStudents[0]}>
             <CListGroupItem>
               <CListGroup>
-                {profStudents[0]} {profStudents[3]}, {profStudents[1]} {profStudents[2]}
-                <CListGroupItem>
+                <span className="fs-5 fw-bold py-2">
+                  {profStudents[0]} - {profStudents[3]}, {profStudents[1]} {profStudents[2]}
+                </span>
+                <CListGroupItem className="noborder">
                   {gradesInfo
                     ?.filter((g) => g[0] === profStudents[0])
                     ?.map((grades) => (
@@ -68,20 +75,30 @@ const FacultyGradesTable = ({ professor_id, subject_id }) => {
                             <CTableDataCell>{grades[4]}</CTableDataCell>
                             <CTableDataCell>{grades[5]}</CTableDataCell>
                             <CTableDataCell>{grades[6]}</CTableDataCell>
-                            <CTableDataCell>{grades[8]}</CTableDataCell>
+                            <CTableDataCell className="fw-bold">
+                              {grades[8].toUpperCase()}
+                            </CTableDataCell>
                           </CTableRow>
                         </CTableBody>
                       </CTable>
                     ))}
                   {!gradesInfo.find((e) => e[0] === profStudents[0]) && (
-                    <div>
-                      <Btn
-                        className="d-flex"
-                        to={`/professor/grades/subject/${subject_id}/prof/${professor_id}/student/${profStudents[0]}`}
-                      >
-                        Evaluate
-                      </Btn>
-                    </div>
+                    <CContainer>
+                      <CRow>
+                        <CCol className="fs-5">
+                          {' '}
+                          NOT YET EVALUATED <BsArrowRight />
+                        </CCol>
+                        <CCol>
+                          <Btn
+                            className="d-flex m-0"
+                            to={`/professor/grades/subject/${subject_id}/prof/${professor_id}/student/${profStudents[0]}`}
+                          >
+                            Evaluate
+                          </Btn>
+                        </CCol>
+                      </CRow>
+                    </CContainer>
                   )}
                 </CListGroupItem>
               </CListGroup>

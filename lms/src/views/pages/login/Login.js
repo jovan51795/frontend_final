@@ -152,13 +152,13 @@ const Login = () => {
                           </CButton>
                         </CCol>
                       </CRow>
-                      <CRow className="login-flex ">
+                      {/* <CRow className="login-flex ">
                         <CCol xs={6} className="text-right">
                           <CButton color="link" className=" px-0">
                             Forgot password?
                           </CButton>
                         </CCol>
-                      </CRow>
+                      </CRow> */}
                     </div>
                   </CForm>
                 </CCardBody>

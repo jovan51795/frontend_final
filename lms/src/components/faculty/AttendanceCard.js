@@ -14,9 +14,13 @@ import {
   CButton,
 } from '@coreui/react'
 import Joi from 'joi'
+import { IoIosArrowBack } from 'react-icons/io'
+import { Btn } from 'src/styles/Btn.styles.'
+import 'src/scss/_faculty.scss'
 
 const AttendanceCard = ({ student, onSubmit }) => {
   const date = new Date()
+  const today = date.getDay()
   const [attendance, setAttendance] = useState({
     isPresent: false,
   })
@@ -35,11 +39,11 @@ const AttendanceCard = ({ student, onSubmit }) => {
     return value
   }
 
-    const handleOnChange = (event) => {
-      setAttendance({
-        ...attendance,
-        [event.currentTarget.name]: str2bool(event.currentTarget.value),
-      })
+  const handleOnChange = (event) => {
+    setAttendance({
+      ...attendance,
+      [event.currentTarget.name]: str2bool(event.currentTarget.value),
+    })
 
     const { error } = schema
       .extract(event.currentTarget.name)
@@ -72,7 +76,7 @@ const AttendanceCard = ({ student, onSubmit }) => {
     <>
       <CContainer>
         <CCard>
-          <CCardHeader>ATTENDANCE CARD</CCardHeader>
+          <CCardHeader className="fs-5 fw-bold text-center">ATTENDANCE CARD</CCardHeader>
           {student?.map((student) => (
             <CListGroup flush key={student[0]}>
               <CListGroupItem>
@@ -86,7 +90,7 @@ const AttendanceCard = ({ student, onSubmit }) => {
                   <CCol md={3} sm={4}>
                     STUDENT NAME:{' '}
                   </CCol>
-                  <CCol md={9} sm={8}>
+                  <CCol md={9} sm={8} className="fw-bold">
                     {student[3].toUpperCase()}, {student[1].toUpperCase()}{' '}
                     {student[2].toUpperCase()}
                   </CCol>
@@ -94,53 +98,83 @@ const AttendanceCard = ({ student, onSubmit }) => {
               </CListGroupItem>
               <CListGroupItem>
                 <CRow>
-                  <CCol md={6} sm={6}>
-                    Current Date: {date.toUTCString()}
-                  </CCol>
-                  <CCol md={6} sm={6}>
-                    <CForm onSubmit={handleSubmit}>
-                      <CRow>
-                        <CFormLabel>Attendance</CFormLabel>
-                        <CCol>
-                          <CFormCheck
-                            name="isPresent"
-                            type="radio"
-                            value={true}
-                            label="Present"
-                            onChange={handleOnChange}
-                          />
-                        </CCol>
-                        <CCol>
-                          <CFormCheck
-                            name="isPresent"
-                            type="radio"
-                            value={false}
-                            label="Absent"
-                            onChange={handleOnChange}
-                          />
-                        </CCol>
-                      </CRow>
-                      <CRow>
-                        <CCol>
-                          <div className="d-grid">
-                            <CButton
-                              type="submit"
-                              color="primary"
-                              disabled={isFormInvalid()}
-                              className="btn-color"
-                            >
-                              Submit
-                            </CButton>
-                          </div>
-                        </CCol>
-                      </CRow>
-                    </CForm>
+                  <CCol sm={12} className="text-center py-3 txt-style">
+                    Current Date: &ensp;
+                    {(() => {
+                      switch (today) {
+                        case 1:
+                          return 'Monday'
+                        case 2:
+                          return 'Tuesday'
+                        case 3:
+                          return 'Wednesday'
+                        case 4:
+                          return 'Thursday'
+                        case 5:
+                          return 'Friday'
+                        case 6:
+                          return 'Saturday'
+                        default:
+                          return 'Sunday'
+                      }
+                    })()}
+                    ,&nbsp;{date.toLocaleString()}
                   </CCol>
                 </CRow>
+                <CForm onSubmit={handleSubmit}>
+                  <CRow className="d-flex justify-content-center">
+                    <CFormLabel className="txt-head py-1 fs-5">Attendance onLogout:</CFormLabel>
+                    <CCol></CCol>
+                    <CCol>
+                      <CFormCheck
+                        name="isPresent"
+                        type="radio"
+                        value={true}
+                        label="PRESENT"
+                        onChange={handleOnChange}
+                        className="fs-5 fw-bold py-3"
+                        style={{ color: 'green' }}
+                      />
+                    </CCol>
+                    <CCol>
+                      <CFormCheck
+                        name="isPresent"
+                        type="radio"
+                        value={false}
+                        label="ABSENT"
+                        onChange={handleOnChange}
+                        className="fs-5 fw-bold py-3"
+                        style={{ color: 'red' }}
+                      />
+                    </CCol>
+                    <CCol></CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol>
+                      <div className="d-grid">
+                        <CButton
+                          type="submit"
+                          color="primary"
+                          disabled={isFormInvalid()}
+                          className="btn-color"
+                        >
+                          Submit
+                        </CButton>
+                      </div>
+                    </CCol>
+                  </CRow>
+                </CForm>
               </CListGroupItem>
             </CListGroup>
           ))}
         </CCard>
+        <CRow>
+          <CContainer className="py-4">
+            <Btn big="true" to="/faculty/classes">
+              <IoIosArrowBack className="a-icon" /> BACK
+            </Btn>
+          </CContainer>
+        </CRow>
       </CContainer>
     </>
   )

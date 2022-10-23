@@ -10,6 +10,7 @@ import {
   CContainer,
   CCardBody,
 } from '@coreui/react'
+
 import { CCardHeader } from '@coreui/react-pro'
 
 const ClassCard = ({ gradeData }) => {

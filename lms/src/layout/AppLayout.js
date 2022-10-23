@@ -96,7 +96,7 @@ const AppLayout = () => {
             </Link>
           </div>
           <div className="col-md-3"></div>
-          <div className="col-md-3 navbar-right pt-5">
+          {/* <div className="col-md-3 navbar-right pt-5">
             <form className="d-flex input-group w-auto pr-1">
               <input
                 type="search"
@@ -109,7 +109,7 @@ const AppLayout = () => {
                 <FaSearch />
               </span>
             </form>
-          </div>
+          </div> */}
         </div>
         {/*End of Main Header*/}
         <div className="row">

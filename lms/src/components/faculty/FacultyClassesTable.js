@@ -19,17 +19,31 @@ const FacultySubjectsTable = ({ profsubject }) => {
         {profsubject?.map((profsubject) => (
           <CListGroup className="my-3 sub-list" key={profsubject[2]}>
             <CListGroupItem>
-              <div>SUBJECT ID: {profsubject[2]}</div>
-              <div>SUBJECT TITLE: {profsubject[0]}</div>
-              <div>SUBJECT CODE: {profsubject[1]}</div>
-              <div className="py-2">
+              <span className="s-list">SUBJECT ID:</span>
+              <span>&ensp;&ensp;&ensp;&ensp;&nbsp;{profsubject[2]}</span>
+              <br />
+              <span className="s-list">SUBJECT CODE: </span>
+              <span>&ensp;{profsubject[1]}</span>
+              <br />
+              <span className="s-list">SUBJECT TITLE: </span>
+              <span className="mainsubj">&ensp;{profsubject[0]}</span>
+
+              {/* <div className="py-2">
                 <Btn to={`/faculty/attendance/${profsubject[2]}`}>Attendance Log</Btn>
-              </div>
+              </div> */}
             </CListGroupItem>
             {/* <CListGroupItem> */}
             <CAccordion>
               <CAccordionItem itemKey={profsubject[2]}>
-                <CAccordionHeader>Student List</CAccordionHeader>
+                <CAccordionHeader>
+                  <span
+                    className="text-decoration-underline px-3 fw-bold "
+                    style={{ color: '#2C8263' }}
+                  >
+                    {' '}
+                    STUDENTS LIST
+                  </span>
+                </CAccordionHeader>
                 <CAccordionBody>
                   <FacultyStudentsTable subjectId={profsubject[2]} />
                 </CAccordionBody>
