@@ -34,7 +34,8 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       birthDate: '',
       address: '',
       mobileNumber: '',
-      emergencyContactPerson: '',
+      emergencyContactFirstName: '',
+      emergencyContactLastName: '',
       emergencyContactNumber: '',
       department: {},
       course: {},
@@ -75,7 +76,8 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       }),
     address: Joi.string().allow(),
     mobileNumber: Joi.string().allow(),
-    emergencyContactPerson: Joi.string().allow(),
+    emergencyContactFirstName: Joi.string().allow(),
+    emergencyContactLastName: Joi.string().allow(),
     emergencyContactNumber: Joi.string().allow(),
     department: Joi.object().allow({}).optional(),
     course: Joi.object().allow({}).optional(),
@@ -340,12 +342,23 @@ const StudentForm = ({ onSubmit, initialValue }) => {
             <CCol lg={6} className="mb-3">
               <CFormLabel>Emergency Contact Person:</CFormLabel>
               <CFormInput
-                name="emergencyContactPerson"
-                value={form.emergencyContactPerson}
+                name="emergencyContactFirstName"
+                value={form.emergencyContactFirstName}
                 onChange={handleChange}
-                placeholder="Contact Person"
-                invalid={!!errors.emergencyContactPerson}
-                feedback={errors.emergencyContactPerson}
+                placeholder="First Name"
+                invalid={!!errors.emergencyContactFirstName}
+                feedback={errors.emergencyContactFirstName}
+              />
+            </CCol>
+            <CCol lg={6} className="mb-3">
+              <CFormLabel className="mb-4"></CFormLabel>
+              <CFormInput
+                name="emergencyContactLastName"
+                value={form.emergencyContactLastName}
+                onChange={handleChange}
+                placeholder="Last Name"
+                invalid={!!errors.emergencyContactLastName}
+                feedback={errors.emergencyContactLastName}
               />
             </CCol>
             <CCol lg={6} className="mb-3">
