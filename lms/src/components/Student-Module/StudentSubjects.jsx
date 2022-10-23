@@ -22,7 +22,7 @@ const StudentSubjects = ({ subjects }) => {
 
   const isProfessorNull = (prof) => {
     if (prof != null) {
-      return prof
+      return prof.firstName +" "+ prof.lastName
     } else {
       return 'No professor assigned'
     }
@@ -48,7 +48,7 @@ const StudentSubjects = ({ subjects }) => {
                 <CTableRow key={subject.subject_id}>
                   <CTableDataCell>{subject.subjectCode}</CTableDataCell>
                   <CTableDataCell>{subject.subjectTitle}</CTableDataCell>
-                  <CTableDataCell>{isProfessorNull(subject.prof)}</CTableDataCell>
+                  <CTableDataCell>{isProfessorNull(subject.professor)}</CTableDataCell>
                   <CTableDataCell>{subject.units}</CTableDataCell>
                 </CTableRow>
               ))}
