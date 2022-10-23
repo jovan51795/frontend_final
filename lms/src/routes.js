@@ -44,7 +44,7 @@ const StudentDetails = React.lazy(() => import('./views/students/StudentDetails'
 const EditStudent = React.lazy(() => import('./views/students/EditStudent'))
 const StudentSchedule = React.lazy(() => import('./views/students/StudentSchedule'))
 const StudentAttendance = React.lazy(() => import('./views/students/StudentAttendancePage'))
-const StudentCourseEval = React.lazy(() => import('./views/students/StudentCourseEval'))
+const StudentCourseEval = React.lazy(() => import('./views/students/StudentCourseEvalPage'))
 
 //professor-subjects
 const ProfessorSubjectList = React.lazy(() =>

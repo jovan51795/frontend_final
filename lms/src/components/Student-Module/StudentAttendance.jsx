@@ -4,41 +4,38 @@ import { data } from 'src/components/Student-Module/data'
 import CIcon from '@coreui/icons-react'
 import { cilSquare } from '@coreui/icons'
 import { FaSquare } from 'react-icons/fa'
+import {
+  CTable,
+  CTableBody,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+} from '@coreui/react'
 
-const StudentAttendance = () => {
+const StudentAttendance = ({ data }) => {
+  console.log(data)
   return (
-    <div style={{ height: '200px' }}>
-      <div>
-        <FaSquare style={{ color: 'green' }} />
-        <b> : Present</b> <br />
-        <FaSquare style={{ color: 'red' }} />
-        <b> : Absent</b>
-      </div>
-      <ResponsiveCalendar
-        data={data}
-        from="2022-01-01"
-        to="2022-12-31"
-        emptyColor="#eeeeee"
-        colors={['#61cdbb', '#97e3d5', '#e8c1a0', '#f47560']}
-        margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
-        yearSpacing={40}
-        monthBorderColor="#ffffff"
-        dayBorderWidth={2}
-        dayBorderColor="#ffffff"
-        legends={[
-          {
-            anchor: 'bottom-right',
-            direction: 'row',
-            translateY: 36,
-            itemCount: 4,
-            itemWidth: 42,
-            itemHeight: 36,
-            itemsSpacing: 14,
-            itemDirection: 'right-to-left',
-          },
-        ]}
-      />
-    </div>
+    <CTable hover align="middle">
+      <CTableHead>
+        <CTableRow>
+          <CTableHeaderCell scope="col">Date</CTableHeaderCell>
+          <CTableHeaderCell scope="col" style={{ textAlign: 'center' }}>
+            Status
+          </CTableHeaderCell>
+        </CTableRow>
+      </CTableHead>
+      <CTableBody>
+        {data.map((x) => (
+          <CTableRow key={x}>
+            <CTableDataCell>{x[1]}</CTableDataCell>
+            <CTableDataCell style={{ textAlign: 'center' }}>
+              {x[0] ? 'Present' : 'Absent'}
+            </CTableDataCell>
+          </CTableRow>
+        ))}
+      </CTableBody>
+    </CTable>
   )
 }
 
