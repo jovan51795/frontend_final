@@ -34,14 +34,21 @@ const StudentsList = () => {
   }
 
   const columns = [
-    { key: 'studentNo', sorter: true, filter: false },
-    { key: 'firstName', sorter: true, filter: false },
-    { key: 'lastName', sorter: true, filter: false },
-    { key: 'academicYear', sorter: true, filter: false },
-    { key: 'sem', label: 'semester', sorter: true, filter: false },
-    { key: 'status', sorter: true, filter: false },
-    { key: 'actions', sorter: false, filter: false },
+    { key: 'studentNo', sorter: true, filter: false, _style: { width: '17%' } },
+    { key: 'firstName', sorter: true, filter: false, _style: { width: '16%' } },
+    { key: 'lastName', sorter: true, filter: false, _style: { width: '16%' } },
+    {
+      key: 'yearLevel',
+      label: 'Year Level',
+      sorter: true,
+      filter: false,
+      _style: { width: '15%' },
+    },
+    { key: 'sem', label: 'Semester', sorter: false, filter: false, _style: { width: '12%' } },
+    { key: 'status', sorter: false, filter: false, _style: { width: '8%' } },
+    { key: 'actions', sorter: false, filter: false, _style: { width: '11%' } },
   ]
+  console.log(students)
   if (students.length > 0) {
     return (
       <>
@@ -49,11 +56,13 @@ const StudentsList = () => {
           <CCol>
             <CCard>
               <CCardHeader>
-                <CCardTitle> STUDENTS MASTER LIST</CCardTitle>
+                <CCardTitle className="text-center"> STUDENTS MASTER LIST</CCardTitle>
               </CCardHeader>
               <CCardBody>
                 <CSmartTable
                   columns={columns}
+                  tableFilter
+                  cleaner
                   columnFilter
                   columnSorter
                   items={students}

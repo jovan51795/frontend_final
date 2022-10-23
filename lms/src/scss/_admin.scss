@@ -76,6 +76,14 @@
   --cui-btn-hover-bg: none;
 }
 
+.ms-btn-view {
+  --cui-btn-padding-x: 0.3rem;
+  --cui-btn-padding-y: 0.25rem;
+  --cui-btn-bg: none !important;
+  --cui-btn-border-color: none;
+  --cui-btn-hover-bg: none;
+}
+
 .delete {
   background-color: #ffffff;
   --cui-btn-padding-x: 0.3rem;
