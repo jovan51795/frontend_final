@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { CNav, CNavItem, CNavLink, CTabContent, CTabPane } from '@coreui/react'
+import { CNav, CNavItem, CNavLink, CTabContent, CTabPane, CContainer, CRow } from '@coreui/react'
 import { toast } from 'react-toastify'
 import { getStudentGrade, setStudentGrade } from 'src/services/professorService'
 import EvaluationCard from 'src/components/faculty/EvaluationCard'
 import ClassCard from 'src/components/faculty/ClassCard'
+import { IoIosArrowBack } from 'react-icons/io'
+import { Btn } from 'src/styles/Btn.styles.'
 import 'src/scss/_custom.scss'
 
 const GradingSheet = () => {
@@ -76,6 +78,13 @@ const GradingSheet = () => {
             <ClassCard />
           </CTabPane> */}
         </CTabContent>
+        <CRow>
+          <CContainer className="py-4">
+            <Btn big="true" to="/faculty/classes">
+              <IoIosArrowBack className="a-icon" /> BACK
+            </Btn>
+          </CContainer>
+        </CRow>
       </>
     )
   }

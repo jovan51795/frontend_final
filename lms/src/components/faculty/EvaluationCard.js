@@ -6,17 +6,18 @@ import {
   CCardHeader,
   CListGroup,
   CListGroupItem,
-  CRow,
-  CCol,
   CContainer,
   CCardBody,
   CForm,
-  CFormTextarea,
+  CRow,
+  CCol,
   CFormInput,
   CFormSelect,
   CButton,
 } from '@coreui/react'
 import 'src/scss/_grades.scss'
+import { IoIosArrowBack } from 'react-icons/io'
+import { Btn } from 'src/styles/Btn.styles.'
 import Joi from 'joi'
 
 const EvaluationCard = ({ student, onSubmit, gradeData }) => {
