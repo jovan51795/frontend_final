@@ -12,6 +12,7 @@ import {
   CFormInput,
   CFormLabel,
   CRow,
+  CFormSelect,
 } from '@coreui/react'
 import { useState } from 'react'
 import { getAll } from '../../services/departmentService'
@@ -32,6 +33,7 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
       units: 0,
       prerequisites: '',
       course: {},
+      yearLevel: '',
     },
   )
 
@@ -62,6 +64,8 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
     department_id: Joi.number().allow(null).optional(),
     departmentName: Joi.string().allow('').allow(null).optional(),
     subject_detail_history: Joi.allow(),
+    yearLevel: Joi.string().allow('').required(),
+    sem: Joi.string().allow(),
   })
 
   const handleOnChange = (e) => {
@@ -225,6 +229,24 @@ const SubjectForm = ({ onSubmit, initialValue }) => {
                       invalid={!!errors.prerequisites}
                       feedback={errors.prerequisites}
                     />
+                  </CCol>
+                </CRow>
+                <CRow>
+                  <CFormLabel className="col-sm-2 col-form-label">Year Level</CFormLabel>
+                  <CCol sm={10} className="mb-3">
+                    <CFormSelect
+                      name="yearLevel"
+                      value={subjectForm.yearLevel}
+                      onChange={handleOnChange}
+                      invalid={!!errors.yearLevel}
+                      feedback={errors.yearLevel}
+                    >
+                      <option value="1st Year">1st Year</option>
+                      <option value="2nd Year">2nd Year</option>
+                      <option value="3rd Year">3rd Year</option>
+                      <option value="4th Year">4th Year</option>
+                      <option value="5th Year">5th Year</option>
+                    </CFormSelect>
                   </CCol>
                 </CRow>
                 <div className="d-grid">
