@@ -21,9 +21,6 @@ const AttendanceCard = ({ student, onSubmit }) => {
     isPresent: false,
   })
 
-  const present = true
-  const absent = false
-
   const [errors, setErrors] = useState({})
 
   const schema = Joi.object({
@@ -38,11 +35,11 @@ const AttendanceCard = ({ student, onSubmit }) => {
     return value
   }
 
-  const handleOnChange = (event) => {
-    setAttendance({
-      ...attendance,
-      [event.currentTarget.name]: str2bool(event.currentTarget.value),
-    })
+    const handleOnChange = (event) => {
+      setAttendance({
+        ...attendance,
+        [event.currentTarget.name]: str2bool(event.currentTarget.value),
+      })
 
     const { error } = schema
       .extract(event.currentTarget.name)

@@ -32,9 +32,9 @@ export const getAllStudentGrade = (professorId, subjectId) => {
   )
 }
 
-export const setStudentAttendance = (studenId, subjectId, professorId) => {
+export const setStudentAttendance = (studenId, subjectId, professorId, attendance) => {
   return http.post(
-    `/professor/attendancesheet/${studenId}/subject/${subjectId}/prof/${professorId}`,
+    `/professor/attendancesheet/${studenId}/subject/${subjectId}/prof/${professorId}`, attendance
   )
 }
 

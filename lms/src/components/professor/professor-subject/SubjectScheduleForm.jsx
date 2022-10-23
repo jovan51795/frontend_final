@@ -88,7 +88,7 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   value={form.academicYear}
                   onChange={handleChange}
                 >
-                  <option selected value="">
+                  <option disabled selected value="">
                     Academic Year
                   </option>
                   <option value="2021-2022">2021-2022</option>
@@ -103,11 +103,12 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   value={form.sem}
                   onChange={handleChange}
                 >
-                  <option selected value="">
+                  <option disabled selected value="">
                     Semester
                   </option>
-                  <option value="1st sem">1st sem</option>
-                  <option value="2nd sem">2nd sem</option>
+                  <option value="1st Semester">1st sem</option>
+                  <option value="2nd Semester">2nd sem</option>
+                  <option value="3rd Semester">3rd sem</option>
                 </CFormSelect>
               </CCol>
             </CRow>
@@ -134,7 +135,7 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   value={form.schedule}
                   onChange={handleChange}
                 >
-                  <option selected value="">
+                  <option disabled selected value="">
                     Schedule Time
                   </option>
                   {timeSchedules.map((time) => (
@@ -165,7 +166,7 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   value={form.yearLevel}
                   onChange={handleChange}
                 >
-                  <option selected value="">
+                  <option disabled selected value="">
                     Year Level
                   </option>
                   <option value="Freshmen">Freshmen</option>
@@ -182,7 +183,7 @@ const SubjectScheduleForm = ({ onSubmit }) => {
                   value={form.status}
                   onChange={handleChange}
                 >
-                  <option selected value="">
+                  <option disabled selected value="">
                     Status
                   </option>
                   <option value="Ongoing">Ongoing</option>
