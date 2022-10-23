@@ -45,19 +45,6 @@ export const setStudentGrade = (studenId, subjectId, professorId, grades) => {
   )
 }
 
-// export function setStudentGrade(studenId, subjectId, professorId, grade) {
-//   const gradeClone = { ...grade }
-//   Object.keys(grade).forEach((key) => {
-//     if (grade[key] === '' || grade[key] === null || grade[key] === 'undefined') {
-//       delete gradeClone[key]
-//     }
-//   })
-//   return http.post(
-//     `/professor/setgradesto/${studenId}/subject/${subjectId}/prof/${professorId}`,
-//     gradeClone,
-//   )
-// }
-
 export const getPass = (id) => {
   return http.get(`/professor/getpass/${id}`)
 }

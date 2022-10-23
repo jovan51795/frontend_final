@@ -20,8 +20,6 @@ import 'src/scss/_grades.scss'
 import Joi from 'joi'
 
 const EvaluationCard = ({ student, onSubmit, gradeData }) => {
-  const { subject_id, professor_id, student_id } = useParams()
-
   const [grades, setGrades] = useState({
     prelimGrade: '',
     midtermGrade: '',
@@ -65,7 +63,7 @@ const EvaluationCard = ({ student, onSubmit, gradeData }) => {
     return !!result.error
   }
 
-  console.log(gradeData)
+  // console.log(gradeData)
   return (
     <>
       <CContainer>

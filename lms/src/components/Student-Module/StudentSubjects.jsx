@@ -18,7 +18,7 @@ const StudentSubjects = ({ subjects }) => {
   subjects.forEach((subject) => {
     totalUnits += subject.units
   })
-  console.log(subjects)
+  // console.log(subjects)
 
   const isProfessorNull = (prof) => {
     if (prof != null) {
@@ -27,6 +27,7 @@ const StudentSubjects = ({ subjects }) => {
       return 'No professor assigned'
     }
   }
+
   return (
     <div>
       <CCard className="mb-4">
@@ -39,7 +40,7 @@ const StudentSubjects = ({ subjects }) => {
               <CTableRow>
                 <CTableHeaderCell scope="col">Subject Code</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Title</CTableHeaderCell>
-                <CTableHeaderCell scope="col">Professor</CTableHeaderCell>
+                {/* <CTableHeaderCell scope="col">Professor</CTableHeaderCell> */}
                 <CTableHeaderCell scope="col">Units</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
