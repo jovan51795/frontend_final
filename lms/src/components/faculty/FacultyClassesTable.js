@@ -10,6 +10,7 @@ import {
 } from '@coreui/react'
 import 'src/scss/_faculty.scss'
 import FacultyStudentsTable from './FacultyStudentsTable'
+import { Btn } from 'src/styles/Btn.styles.'
 
 const FacultySubjectsTable = ({ profsubject }) => {
   return (
@@ -21,6 +22,9 @@ const FacultySubjectsTable = ({ profsubject }) => {
               <div>SUBJECT ID: {profsubject[2]}</div>
               <div>SUBJECT TITLE: {profsubject[0]}</div>
               <div>SUBJECT CODE: {profsubject[1]}</div>
+              <div className="py-2">
+                <Btn to={`/faculty/attendance/${profsubject[2]}`}>Attendance Log</Btn>
+              </div>
             </CListGroupItem>
             {/* <CListGroupItem> */}
             <CAccordion>

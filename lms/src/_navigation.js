@@ -6,7 +6,7 @@ import { RiAdminFill, RiUserSettingsFill } from 'react-icons/ri'
 import { ImLibrary, ImBooks } from 'react-icons/im'
 import { MdCalendarViewMonth, MdOutlineClass } from 'react-icons/md'
 import { GiDiploma } from 'react-icons/gi'
-import { BsCardHeading } from 'react-icons/bs'
+import { BsListCheck } from 'react-icons/bs'
 import { getUserInfo } from './services/userInfo'
 
 const userInFo = getUserInfo().object
@@ -65,11 +65,11 @@ export const _navFaculty = [
     icon: <MdOutlineClass className="nav-icon" />,
     link: '/faculty/classes',
   },
-  // {
-  //   label: 'Grades Masterlist',
-  //   icon: <BsCardHeading className="nav-icon" />,
-  //   link: '/faculty/grades-list',
-  // },
+  {
+    label: 'Attendance Monitoring',
+    icon: <BsListCheck className="nav-icon" />,
+    link: '/faculty/attendance',
+  },
   {
     label: 'My Schedule',
     icon: <FaCalendarAlt className="nav-icon" />,

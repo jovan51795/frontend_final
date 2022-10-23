@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getStudentAttendance } from 'src/services/professorService'
+import { getStudentAttendance, setStudentAttendance } from 'src/services/professorService'
 import { toast } from 'react-toastify'
 import { CSmartTable } from '@coreui/react-pro'
 import { CBadge, CFormCheck, CButton, CCollapse, CCardBody } from '@coreui/react'
@@ -20,8 +20,20 @@ const AttendanceSheet = () => {
     })
   }, [subject_id, professor_id, student_id])
 
+  const handleSubmit = (attendance) => {
+    console.log('submitting')
+    setStudentAttendance(+student_id, +subject_id, +professor_id, attendance).then((res) => {
+      if (res && res.data && res.data.status === 1) {
+        toast.success(res.data.message)
+        console.log(res.data)
+      } else if (res && res.data && res.data.status === 0) {
+        toast.error(res.data.message)
+      }
+    })
+  }
+
   if (student.length !== 0) {
-    return <AttendanceCard student={student} />
+    return <AttendanceCard student={student} onSubmit={handleSubmit} />
   }
 }
 export default AttendanceSheet

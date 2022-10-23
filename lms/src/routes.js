@@ -30,6 +30,7 @@ const FacultyDashboard = React.lazy(() => import('./views/faculty/FacultyDashboa
 const FacultyProfile = React.lazy(() => import('./views/faculty/FacultyProfile'))
 const FacultyClasses = React.lazy(() => import('./views/faculty/FacultyClasses'))
 const AttendanceSheet = React.lazy(() => import('./views/faculty/AttendanceSheet'))
+const AttendanceMonitoring = React.lazy(() => import('./views/faculty/AttendanceMonitoring'))
 const GradingSheet = React.lazy(() => import('./views/faculty/GradingSheet'))
 const EditFacultyProfile = React.lazy(() => import('./views/faculty/EditFacultyProfile'))
 const FacultySchedule = React.lazy(() => import('./views/faculty/FacultySchedule'))
@@ -101,6 +102,11 @@ export const routes = [
   { path: '/faculty/profile/edit', name: 'Edit Profile', element: EditFacultyProfile },
   { path: '/faculty/classes', name: 'Class Subjects', element: FacultyClasses },
   { path: '/faculty/schedule', name: 'Class Schedule', element: FacultySchedule },
+  {
+    path: '/faculty/attendance/:subject_id',
+    name: 'Class Schedule',
+    element: AttendanceMonitoring,
+  },
   {
     path: '/professor/attendance/subject/:subject_id/prof/:professor_id/student/:student_id',
     name: 'Attendance',

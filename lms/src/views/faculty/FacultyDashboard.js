@@ -11,14 +11,16 @@ const FacultyDashboard = () => {
 
   return (
     <div>
-      <div className="comptitle">Welcome {userInfo.firstName} {userInfo.lastName}</div>
+      <div className="comptitle">
+        Welcome {userInfo.firstName} {userInfo.lastName}
+      </div>
       <div className="row no-gutters mt-4">
         <div className=" col-md-12 col-lg-12 p-2">
           <PassingBarChart />
         </div>
-       
+        <hr />
       </div>
-      <div className="row no-gutters left">
+      <div className="row no-gutters">
         <div className="col-md-8 col-lg-8 mt-4">
           <Bulletin />
         </div>
