@@ -39,6 +39,8 @@ const StudentForm = ({ onSubmit, initialValue }) => {
       department: {},
       course: {},
       subject: [],
+      yearLevel: '',
+      gender: '',
     },
   )
   const [errors, seterrors] = useState({})
@@ -87,6 +89,8 @@ const StudentForm = ({ onSubmit, initialValue }) => {
     mobileNumber: Joi.allow(),
     emergencyContactPerson: Joi.allow(),
     emergencyContactNumber: Joi.allow(),
+    yearLevel: Joi.string().allow('').required(),
+    gender: Joi.string().allow('').required,
   })
 
   const handleChange = (e) => {
@@ -202,6 +206,70 @@ const StudentForm = ({ onSubmit, initialValue }) => {
               />
             </CCol>
             <CCol lg={6} className="mb-3">
+              <CFormLabel>Birth Date</CFormLabel>
+              <CFormInput
+                name="birthDate"
+                value={form.birthDate}
+                onChange={handleChange}
+                type="date"
+                placeholder="Birth Date"
+                invalid={!!errors.birthDate}
+                feedback={errors.birthDate}
+              />
+            </CCol>
+            <CCol lg={6} className="mb-3">
+              <CFormLabel>Mobile Number</CFormLabel>
+              <CFormInput
+                name="mobileNumber"
+                value={form.mobileNumber}
+                onChange={handleChange}
+                placeholder="Mobile Number"
+                invalid={!!errors.mobileNumber}
+                feedback={errors.mobileNumber}
+              />
+            </CCol>
+            <CCol>
+              <CRow>
+                <CFormLabel>Gender</CFormLabel>
+                <CCol>
+                  <CFormCheck
+                    name="gender"
+                    type="radio"
+                    value="Male"
+                    label="Male"
+                    onChange={handleChange}
+                  />
+                </CCol>
+                <CCol>
+                  <CFormCheck
+                    name="gender"
+                    type="radio"
+                    value="Female"
+                    label="Female"
+                    onChange={handleChange}
+                  />
+                </CCol>
+              </CRow>
+            </CCol>
+            <CCol lg={12}>
+              <CFormLabel>Address</CFormLabel>
+              <CFormInput
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+                placeholder="Address"
+                invalid={!!errors.address}
+                feedback={errors.address}
+              />
+            </CCol>
+          </CRow>
+        </CCardBody>
+        <CCardHeader>
+          <CCardTitle className="text-center txt-style">ACADEMIC INFORMATION</CCardTitle>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
+            <CCol lg={6} className="mb-3">
               <CFormLabel>Academic Year</CFormLabel>
               <CFormInput
                 name="academicYear"
@@ -242,40 +310,28 @@ const StudentForm = ({ onSubmit, initialValue }) => {
               </CFormSelect>
             </CCol>
             <CCol lg={6} className="mb-3">
-              <CFormLabel>Birth Date</CFormLabel>
-              <CFormInput
-                name="birthDate"
-                value={form.birthDate}
+              <CFormLabel>Year Level</CFormLabel>
+              <CFormSelect
+                name="yearLevel"
+                value={form.yearLevel}
                 onChange={handleChange}
-                type="date"
-                placeholder="Birth Date"
-                invalid={!!errors.birthDate}
-                feedback={errors.birthDate}
-              />
+                invalid={!!errors.yearLevel}
+                feedback={errors.yearLevel}
+              >
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+              </CFormSelect>
             </CCol>
-            <CCol lg={6} className="mb-3">
-              <CFormLabel>Mobile Number</CFormLabel>
-              <CFormInput
-                name="mobileNumber"
-                value={form.mobileNumber}
-                onChange={handleChange}
-                placeholder="Mobile Number"
-                invalid={!!errors.mobileNumber}
-                feedback={errors.mobileNumber}
-              />
-            </CCol>
-            <CCol lg={12} className="mb-3">
-              <CFormLabel>Address</CFormLabel>
-              <CFormInput
-                name="address"
-                value={form.address}
-                onChange={handleChange}
-                placeholder="Address"
-                invalid={!!errors.address}
-                feedback={errors.address}
-              />
-            </CCol>
-            <div className="sub p-2 text-center">EMERGENCY CONTACT INFORMATION</div>
+          </CRow>
+        </CCardBody>
+        <CCardHeader>
+          <CCardTitle className="text-center txt-style">EMERGENCY CONTACT INFORMATION</CCardTitle>
+        </CCardHeader>
+        <CCardBody>
+          <CRow>
             <CCol lg={6} className="mb-3">
               <CFormLabel>Emergency Contact Person:</CFormLabel>
               <CFormInput
@@ -299,73 +355,65 @@ const StudentForm = ({ onSubmit, initialValue }) => {
               />
             </CCol>
           </CRow>
+        </CCardBody>
+        <CCardHeader>
+          <CCardTitle className="text-center txt-style">DEPARTMENT AND COURSE</CCardTitle>
+        </CCardHeader>
+        <CCardBody>
           <CRow>
-            <CCol>
-              <CCard className="notrounded">
-                <CCardHeader>
-                  <CCardTitle className="text-center txt-style">DEPARTMENT AND COURSE</CCardTitle>
-                </CCardHeader>
-                <CCardBody>
-                  <CRow>
-                    {departments.map((dep) => (
-                      <CCol key={dep.departmentId} sm={6} lg={6} className="mb-2">
-                        <CFormCheck
-                          checked={
-                            form.department && form.department.departmentId === dep.departmentId
-                              ? true
-                              : false
-                          }
-                          type="radio"
-                          value={dep}
-                          name="department"
-                          label={dep.departmentName}
-                          onChange={(e) => handleChangeDep(e, dep, 'dep')}
-                        />
-                        {dep.course.map((crs) => (
-                          <CRow key={crs.courseId} className="ms-2">
-                            <CCol>
-                              <CFormCheck
-                                checked={
-                                  form.course && form.course.courseId === crs.courseId
-                                    ? true
-                                    : false
-                                }
-                                value={crs}
-                                name="course"
-                                type="radio"
-                                label={crs.courseTitle}
-                                onChange={(e) => handleChangeDep(e, crs, 'course')}
-                              />
-                              <CCard className="notrounded my-2">
-                                <CCardHeader>
-                                  <span>Subjects {!subjects.toString()}</span>
-                                </CCardHeader>
-                                <CCardBody>
-                                  {subjects.map((sub, idx) => (
-                                    <CRow key={sub.subject_id}>
-                                      <CCol>
-                                        {sub.course && crs.courseId === sub.course.courseId && (
-                                          <CFormCheck
-                                            //   checked={handleCourseCheck(sub)}
-                                            name="subject"
-                                            onChange={(e) => handleChangeSub(e, sub)}
-                                            label={sub.subjectTitle}
-                                          />
-                                        )}
-                                      </CCol>
-                                    </CRow>
-                                  ))}
-                                </CCardBody>
-                              </CCard>
-                            </CCol>
-                          </CRow>
-                        ))}
-                      </CCol>
-                    ))}
+            {departments.map((dep) => (
+              <CCol key={dep.departmentId} sm={6} lg={6} className="mb-2">
+                <CFormCheck
+                  checked={
+                    form.department && form.department.departmentId === dep.departmentId
+                      ? true
+                      : false
+                  }
+                  type="radio"
+                  value={dep}
+                  name="department"
+                  label={dep.departmentName}
+                  onChange={(e) => handleChangeDep(e, dep, 'dep')}
+                />
+                {dep.course.map((crs) => (
+                  <CRow key={crs.courseId} className="ms-2">
+                    <CCol>
+                      <CFormCheck
+                        checked={
+                          form.course && form.course.courseId === crs.courseId ? true : false
+                        }
+                        value={crs}
+                        name="course"
+                        type="radio"
+                        label={crs.courseTitle}
+                        onChange={(e) => handleChangeDep(e, crs, 'course')}
+                      />
+                      <CCard className="notrounded my-2">
+                        <CCardHeader>
+                          <span>Subjects {!subjects.toString()}</span>
+                        </CCardHeader>
+                        <CCardBody>
+                          {subjects.map((sub, idx) => (
+                            <CRow key={sub.subject_id}>
+                              <CCol>
+                                {sub.course && crs.courseId === sub.course.courseId && (
+                                  <CFormCheck
+                                    //   checked={handleCourseCheck(sub)}
+                                    name="subject"
+                                    onChange={(e) => handleChangeSub(e, sub)}
+                                    label={sub.subjectTitle}
+                                  />
+                                )}
+                              </CCol>
+                            </CRow>
+                          ))}
+                        </CCardBody>
+                      </CCard>
+                    </CCol>
                   </CRow>
-                </CCardBody>
-              </CCard>
-            </CCol>
+                ))}
+              </CCol>
+            ))}
           </CRow>
         </CCardBody>
         <CCardFooter>
