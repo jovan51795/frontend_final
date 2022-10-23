@@ -11,12 +11,29 @@ import {
   CTableBody,
   CTableCaption,
 } from '@coreui/react'
+import { toast } from 'react-toastify'
 import { getCourseEvaluation } from 'src/services/subjectService'
 import { getUserInfo } from 'src/services/userInfo'
 
 const StudentCourseEval = ({ courses }) => {
   const userInfoId = getUserInfo().object.student_id
   const [data, setData] = useState([])
+
+  // useEffect(() => {
+  //   getCourse(1, '1st Semester', 'Freshman')
+  // }, [])
+
+  // console.log(data)
+
+  // const getCourse = (id, sem, year) => {
+  //   getCourseEvaluation(id, sem, year).then((res) => {
+  //     if (res && res.data && res.data.object) {
+  //       let d = res.data.object
+  //       setData(d)
+  //     }
+  //   })
+  // }
+
 
   useEffect(() => {
     getCourse(userInfoId)
