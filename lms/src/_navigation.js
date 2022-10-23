@@ -15,7 +15,7 @@ export const _navAdmin = [
   {
     label: 'My Dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    link: '/dashboard',
+    link: '/admin/dashboard',
   },
   {
     label: 'My Profile',
