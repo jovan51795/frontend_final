@@ -21,5 +21,5 @@ export const getFacultyScheduleById = (id) => {
 }
 
 export const getCourseEvaluation = (id, sem, year) => {
-  return http.get(`/student/evaluation`)
+  return http.get(`student/evaluation/?id=${id}&sem=${sem}&yrlvl=${year}`)
 }
