@@ -9,16 +9,14 @@ import {
   CFormSelect,
   CInputGroup,
   CRow,
-  CTable,
-  CTableBody,
   CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
   CTooltip,
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { cilArrowThickRight, cilPencil, cilTrash } from '@coreui/icons'
+import 'src/scss/_admin.scss'
+import { Btn } from 'src/styles/Btn.styles.'
+import { BiBookmarkAltPlus } from 'react-icons/bi'
+import { FiFileText, FiArchive } from 'react-icons/fi'
+import { RiEdit2Fill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import { CSmartTable } from '@coreui/react-pro'
 
@@ -48,37 +46,41 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
       setSubject([...sub])
     }
   }
-
+  console.log(subject)
   const columns = [
-    { key: 'subjectCode', filter: false, sorter: true, _style: { width: '150px' } },
-    { key: 'subjectTitle', filter: false, sorter: true, _style: { width: '150px' } },
-    { key: 'units', filter: false, sorter: true, _style: { width: '100px' } },
-    { key: 'prerequisites', filter: false, sorter: true, _style: { width: '150px' } },
+    { key: 'subject_id', label: 'ID', filter: false, sorter: true, _style: { width: '10%' } },
+    { key: 'subjectCode', filter: false, sorter: true, _style: { width: '18%' } },
+    { key: 'subjectTitle', filter: false, sorter: true, _style: { width: '17%' } },
+    { key: 'units', filter: false, sorter: true, _style: { width: '10%' } },
+    { key: 'prerequisites', filter: false, sorter: true, _style: { width: '17%' } },
     {
       key: 'activeDeactive',
-      label: 'status',
+      label: 'Status',
       filter: false,
       sorter: true,
-      _style: { width: '100px' },
+      _style: { width: '11%' },
     },
-    { key: 'actions', filter: false, sorter: false },
+    { key: 'actions', filter: false, sorter: false, _style: { width: '18%' } },
   ]
   return (
     <>
       <CRow>
         <CCol className="mb-3">
-          <CCard>
-            <CCardBody className="d-flex justify-content-end">
-              <Link className="btn btn-success fw-bolder text-dark" to="/subject/add">
-                Add Subject
-              </Link>
-            </CCardBody>
-          </CCard>
+          <div className="container">
+            <div className="d-flex justify-content-end align-items-center">
+              <Btn to="/professor/add" className="my-3">
+                <BiBookmarkAltPlus className="pb-1 fs-5" /> Add Subject
+              </Btn>
+            </div>
+          </div>
+          <hr className="m-0" />
         </CCol>
         <CCol xs={12}>
           <CCard>
             <CCardHeader>
-              <strong>Subjects Table</strong>
+              <CRow className="text-center fs-4 py-2">
+                <strong>SUBJECTS MASTERLIST</strong>
+              </CRow>
               <CInputGroup className="d-flex align-items-center justify-content-center">
                 <CRow className="w-100">
                   <CCol lg={8} className=" mt-2">
@@ -128,33 +130,33 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
                   actions: (sub) => {
                     return (
                       <CTableDataCell>
-                        <div className="d-flex">
-                          <CTooltip content="View Details" placement="top">
-                            <Link
-                              className="btn btn-info"
-                              to={`/subject/details/${sub.subject_id}`}
-                            >
-                              <CIcon icon={cilArrowThickRight} />
-                            </Link>
-                          </CTooltip>
-                          <CTooltip content="delete" placement="top">
-                            <CButton
-                              onClick={() => onDelete(sub.subject_id)}
-                              color="danger"
-                              className="mx-3"
-                            >
-                              <CIcon icon={cilTrash} />
-                            </CButton>
-                          </CTooltip>
-                          <CTooltip content="delete" placement="top">
-                            <Link
-                              className="btn btn-success"
-                              to={`/subject/edit/${sub.subject_id}`}
-                            >
-                              <CIcon icon={cilPencil} />
-                            </Link>
-                          </CTooltip>
-                        </div>
+                        <CTooltip content="View Details" placement="top" className="align-middle">
+                          <Link
+                            className="btn ms-btn-view align-middle"
+                            to={`/subject/details/${sub.subject_id}`}
+                          >
+                            <FiFileText className="nav-icon" />
+                          </Link>
+                        </CTooltip>
+                        <div className="vr"></div>
+                        <CTooltip content="delete" placement="top">
+                          <CButton
+                            onClick={() => onDelete(sub.subject_id)}
+                            color="danger"
+                            className="mx-1 ms-btn-view align-middle"
+                          >
+                            <FiArchive className="nav-icon" />
+                          </CButton>
+                        </CTooltip>
+                        <div className="vr"></div>
+                        <CTooltip content="delete" placement="top">
+                          <Link
+                            className="btn ms-btn-view align-middle"
+                            to={`/subject/edit/${sub.subject_id}`}
+                          >
+                            <RiEdit2Fill className="nav-icon" />
+                          </Link>
+                        </CTooltip>
                       </CTableDataCell>
                     )
                   },

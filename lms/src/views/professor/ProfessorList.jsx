@@ -57,8 +57,8 @@ const ProfessorList = () => {
       <>
         <div className="container">
           <div className="d-flex justify-content-end align-items-center">
-            <Btn big="true" to="/professor/add" className="my-3">
-              <ImUserTie /> Add Faculty Member
+            <Btn to="/professor/add" className="my-3">
+              <ImUserTie className="pb-1" /> Add Faculty Member
             </Btn>
           </div>
         </div>
@@ -69,6 +69,8 @@ const ProfessorList = () => {
           </CCardHeader>
           <CCardBody>
             <CSmartTable
+              tableFilter
+              cleaner
               columns={columns}
               columnFilter
               columnSorter
