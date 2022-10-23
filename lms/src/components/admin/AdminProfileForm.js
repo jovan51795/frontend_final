@@ -122,6 +122,7 @@ const AdminProfileForm = ({ adminInfo }) => {
           </div>
           {toggleInput && (
             <div className="row">
+              <hr />
               <div className="col-sm-4">
                 <p className="mb-0 fw-bold txt-color">LASTNAME</p>
               </div>
@@ -180,6 +181,7 @@ const AdminProfileForm = ({ adminInfo }) => {
           </div>
           {toggleInput && (
             <>
+              <hr />
               <div className="row">
                 <div className="col-sm-4">
                   <p className="mb-0 fw-bold txt-color">PASSWORD</p>
