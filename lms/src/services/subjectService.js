@@ -19,3 +19,7 @@ export const getStudentScheduleById = (id) => {
 export const getFacultyScheduleById = (id) => {
   return http.get(`/professor/schedule/${id}`)
 }
+
+export const getCourseEvaluation = (id, sem, year) => {
+  return http.get(`/student/evaluation`)
+}
