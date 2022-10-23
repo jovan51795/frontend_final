@@ -1,9 +1,5 @@
 import React from 'react'
-import { ResponsiveCalendar } from '@nivo/calendar'
-import { data } from 'src/components/Student-Module/data'
-import CIcon from '@coreui/icons-react'
-import { cilSquare } from '@coreui/icons'
-import { FaSquare } from 'react-icons/fa'
+
 import {
   CTable,
   CTableBody,

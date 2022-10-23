@@ -4,7 +4,7 @@ import React from 'react'
 const EnrollSubjects = () => {
   return (
     <>
-      <CCard>
+      <CCard className="mb-4">
         <CHeader>
           <CHeader>
             <strong>Enroll Subjects</strong>
