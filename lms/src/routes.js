@@ -67,7 +67,7 @@ export const routes = [
   { path: '/', exact: true, name: 'Home' },
 
   //ADMIN MODULE
-  { path: 'admin/dashboard', name: 'Dashboard', element: Dashboard },
+  { path: '/admin/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/admin/profile', name: 'Profile', element: AdminProfile },
   { path: '/students', name: 'ABC Students', element: StudentList },
   { path: '/student/add', name: 'Student Add', element: AddStudent },

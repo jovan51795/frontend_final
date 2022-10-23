@@ -12,6 +12,7 @@ import {
   CTableCaption,
 } from '@coreui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const StudentSubjects = ({ subjects }) => {
   let totalUnits = 0
@@ -22,7 +23,7 @@ const StudentSubjects = ({ subjects }) => {
 
   const isProfessorNull = (prof) => {
     if (prof != null) {
-      return prof.firstName +" "+ prof.lastName
+      return prof.firstName + ' ' + prof.lastName
     } else {
       return 'No professor assigned'
     }
@@ -34,13 +35,13 @@ const StudentSubjects = ({ subjects }) => {
         <CCardHeader>
           <strong>Subject List</strong>
         </CCardHeader>
-        <CCardBody>
+        <CCardBody style={{ oveflow: 'scroll', overflow: 'auto', height: '1000px' }}>
           <CTable hover align="middle">
             <CTableHead>
               <CTableRow>
                 <CTableHeaderCell scope="col">Subject Code</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Title</CTableHeaderCell>
-                {/* <CTableHeaderCell scope="col">Professor</CTableHeaderCell> */}
+                <CTableHeaderCell scope="col">Professor</CTableHeaderCell>
                 <CTableHeaderCell scope="col">Units</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
@@ -61,6 +62,14 @@ const StudentSubjects = ({ subjects }) => {
                 <CTableDataCell>{totalUnits}</CTableDataCell>
               </CTableRow>
             </CTableBody>
+
+            <div className="mt-4">
+              <CButton className="btn-primary">
+                <Link to="/student/enroll" style={{ textDecoration: 'none' }}>
+                  <span style={{ color: 'white' }}>Enroll Subjects</span>
+                </Link>
+              </CButton>
+            </div>
           </CTable>
         </CCardBody>
       </CCard>
