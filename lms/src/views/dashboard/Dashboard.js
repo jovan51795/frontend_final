@@ -30,7 +30,7 @@ import { getDashboardReports } from 'src/services/dashboardServices'
 import { useState, useEffect } from 'react'
 
 const Dashboard = () => {
-  const [reports, setReports] = useState()
+  const [reports, setReports] = useState([])
   useEffect(() => {
     getreports()
   }, [])
@@ -41,6 +41,7 @@ const Dashboard = () => {
       }
     })
   }
+  console.log(reports)
 
   return (
     <>
