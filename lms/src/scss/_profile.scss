@@ -38,3 +38,30 @@
 hr {
   margin: 3px 0 !important;
 }
+
+.btn-color3 {
+  background-color: transparent !important;
+  --cui-btn-border-color: black;
+  --cui-btn-disabled-border-color: black;
+
+  &:hover {
+    background-color: #076eb0 !important;
+    color: white !important;
+  }
+}
+
+.btn-color4 {
+  background-color: #003169 !important;
+  color: white !important;
+  --cui-btn-border-color: black;
+
+  &:hover {
+    background-color: #076eb0 !important;
+    color: black !important;
+  }
+}
+
+.medium {
+  font-size: 18px;
+  padding-bottom: 1px;
+}

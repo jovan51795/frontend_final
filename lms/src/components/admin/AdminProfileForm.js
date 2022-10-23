@@ -1,6 +1,7 @@
 import Joi from 'joi'
 import React, { useState } from 'react'
 import 'src/scss/_profile.scss'
+import { MdEdit } from 'react-icons/md'
 import camelCaseToWords from '../../services/lodashService'
 import { updateAdmin } from '../../services/adminService'
 import { toast } from 'react-toastify'
@@ -83,8 +84,8 @@ const AdminProfileForm = ({ adminInfo }) => {
       </div>
       <div className="card profile-card justify-content-center m-4">
         <div className="card-header d-flex justify-content-end">
-          <button className="btn btn-default" onClick={handleEdit}>
-            {toggleInput ? 'Cancel' : 'Edit'}
+          <button className="btn btn-default btn-color3" onClick={handleEdit}>
+            {toggleInput ? 'CANCEL' : 'EDIT'}
           </button>
         </div>
         <div className="card-body">
@@ -119,7 +120,6 @@ const AdminProfileForm = ({ adminInfo }) => {
               )}
             </div>
           </div>
-          <hr />
           {toggleInput && (
             <div className="row">
               <div className="col-sm-4">
@@ -178,7 +178,6 @@ const AdminProfileForm = ({ adminInfo }) => {
               )}
             </div>
           </div>
-          <hr />
           {toggleInput && (
             <>
               <div className="row">
@@ -226,10 +225,17 @@ const AdminProfileForm = ({ adminInfo }) => {
           <div className="row"></div>
         </div>
         {toggleInput && (
-          <div className="card-footer d-flex justify-content-end">
-            <button className="btn btn-success" disabled={formIsValid()} onClick={handleSubmit}>
-              Update
-            </button>
+          <div className="card-footer">
+            <div className="row d-flex px-2 justify-content-center">
+              <button
+                className="btn btn-success btn-color4"
+                disabled={formIsValid()}
+                onClick={handleSubmit}
+                style={{ color: 'white' }}
+              >
+                Update
+              </button>
+            </div>
           </div>
         )}
       </div>

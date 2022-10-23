@@ -25,7 +25,7 @@ const FacultyStudentsTable = ({ subjectId }) => {
       }
     })
   }, [subjectId, professorId])
-
+  console.log(profStudents)
   return (
     <>
       <CTable hover align="middle">
