@@ -8,15 +8,12 @@ const StudentCourseEvalPage = () => {
       sems: [
         {
           id: '1st Semester',
-          subjects: [],
         },
         {
           id: '2nd Semester',
-          subjects: [],
         },
         {
           id: '3rd Semester',
-          subjects: [],
         },
       ],
     },
@@ -25,15 +22,40 @@ const StudentCourseEvalPage = () => {
       sems: [
         {
           id: '1st Semester',
-          subjects: [],
         },
         {
           id: '2nd Semester',
-          subjects: [],
         },
         {
           id: '3rd Semester',
-          subjects: [],
+        },
+      ],
+    },
+    {
+      level: 'Junior',
+      sems: [
+        {
+          id: '1st Semester',
+        },
+        {
+          id: '2nd Semester',
+        },
+        {
+          id: '3rd Semester',
+        },
+      ],
+    },
+    {
+      level: 'Senior',
+      sems: [
+        {
+          id: '1st Semester',
+        },
+        {
+          id: '2nd Semester',
+        },
+        {
+          id: '3rd Semester',
         },
       ],
     },

@@ -36,20 +36,29 @@ const StudentCourseEval = ({ courses }) => {
 
 
   useEffect(() => {
-    let sem = userInfoId.object.sem
-    let yrlvl = userInfoId.object.yearLevel
-
-
-    let firstSem = getCourseEvaluation(+userInfoId, "1st Semester", "FreshMan").then((res) => {
-      if (res.data && res.data.status === 1) {
-        setData(res.data.object)
-      } else if (res.data && res.data.status === 0) {
-        toast.error(res.data.message)
-      }
-    }
-    )
+    getCourse(userInfoId)
   }, [])
 
+  const getCourse = (id) => {
+    getCourseEvaluation(id).then((res) => {
+      if (res && res.data && res.data.object) {
+        let d = res.data.object
+        setData(d)
+      }
+    })
+  }
+
+  const getTotalUnits = (sem, year) => {
+    let totalUnits = 0
+    data
+      .filter((x) => {
+        return x[5] === sem && x[9] === year
+      })
+      .forEach((y) => {
+        totalUnits += y[8]
+      })
+    return totalUnits
+  }
 
   return (
     <>
@@ -64,39 +73,32 @@ const StudentCourseEval = ({ courses }) => {
               <CTable hover align="middle">
                 <CTableHead>
                   <CTableRow>
+                    <CTableHeaderCell scope="col">Department</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Subject Code</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Title</CTableHeaderCell>
                     <CTableHeaderCell scope="col">Units</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-
-                    {data?.map((data) => (
-                  <CTableRow key={data[0]}>
-
-                    <CTableDataCell>{data[6]}</CTableDataCell>
-                    <CTableDataCell>{data[7]}</CTableDataCell>
-                    <CTableDataCell>{data[8]} </CTableDataCell>
-                  </CTableRow>
-                ))}
-
-
-
-                  {/* {
-                    (getCourse(1, sem.id, year.level).map = (d) => (
-                      <CTableRow key={data[0]}>
-                        <CTableDataCell>{data[6]}</CTableDataCell>
-                        <CTableDataCell>{data[7]}</CTableDataCell>
-                        <CTableDataCell>{data[8]} </CTableDataCell>
+                  {data
+                    .filter((x) => {
+                      return x[5] === sem.id && x[9] === year.level
+                    })
+                    .map((e) => (
+                      <CTableRow key={e}>
+                        <CTableDataCell>{e[2]}</CTableDataCell>
+                        <CTableDataCell>{e[6]}</CTableDataCell>
+                        <CTableDataCell>{e[7]}</CTableDataCell>
+                        <CTableDataCell>{e[8]}</CTableDataCell>
                       </CTableRow>
-                    ))
-                  } */}
-
+                    ))}
                   <CTableRow>
                     <CTableDataCell colSpan={3} style={{ textAlign: 'right' }}>
-                      <b>Total Units:</b>
+                      <b>Total Units: </b>
                     </CTableDataCell>
-                    <CTableDataCell></CTableDataCell>
+                    <CTableDataCell>
+                      <b>{getTotalUnits(sem.id, year.level)}</b>
+                    </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
               </CTable>

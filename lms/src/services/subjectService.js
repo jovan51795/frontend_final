@@ -20,6 +20,6 @@ export const getFacultyScheduleById = (id) => {
   return http.get(`/professor/schedule/${id}`)
 }
 
-export const getCourseEvaluation = (id, sem, year) => {
-  return http.get(`student/evaluation/?id=${id}&sem=${sem}&yrlvl=${year}`)
+export const getCourseEvaluation = (id) => {
+  return http.get(`student/evaluation/?id=${id}`)
 }
