@@ -13,6 +13,8 @@ import {
 } from '@coreui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Loading from '../loading/Loading'
+
 
 const StudentSubjects = ({ subjects }) => {
   let totalUnits = 0
@@ -28,8 +30,7 @@ const StudentSubjects = ({ subjects }) => {
       return 'No professor assigned'
     }
   }
-
-  return (
+if(subjects.length > 0){  return (
     <div>
       <CCard className="mb-4">
         <CCardHeader>
@@ -75,6 +76,8 @@ const StudentSubjects = ({ subjects }) => {
       </CCard>
     </div>
   )
+}else{
+<  Loading/>
 }
-
+}
 export default StudentSubjects

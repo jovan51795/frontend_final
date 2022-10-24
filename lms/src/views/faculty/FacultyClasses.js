@@ -30,7 +30,7 @@ const FacultySubjects = () => {
         <CNav variant="tabs" role="tablist">
           <CNavItem>
             <CNavLink
-              href="javascript:void(0);"
+              
               active={activeKey === 1}
               onClick={() => setActiveKey(1)}
               className="tab1"
@@ -41,10 +41,10 @@ const FacultySubjects = () => {
           </CNavItem>
           <CNavItem>
             <CNavLink
-              href="javascript:void(0);"
+              
               active={activeKey === 2}
               onClick={() => setActiveKey(2)}
-              className="tab2"
+              className="tab2 me-6"
             >
               <BsCardHeading className="nav-icon mb-1" />
               &nbsp;&nbsp;GRADES MASTERLIST

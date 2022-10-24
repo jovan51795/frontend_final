@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Bulletin from 'src/components/info-section/Bulletin'
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
@@ -91,6 +91,8 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
+
+      <Bulletin />
     </>
   )
 }
