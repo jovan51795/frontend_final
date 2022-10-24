@@ -51,11 +51,7 @@ const getProf = ()=>{
       })
       }  
     //   console.log(schedule)
-      console.log(prof.filter((x)=>{
-        x.professor_id = 1
-      }).map(x =>{
-        console.log(x)
-      }))
+      console.log(prof)
 
   return (
 <>

@@ -3,12 +3,11 @@ import StudentProfileForm from 'src/components/Student-Module/StudentProfileForm
 import { getUserInfo } from 'src/services/userInfo'
 
 
-const parentChildProfilePage = () => {
+const ParentChildProfilePage = () => {
   const userInfo = getUserInfo().object.student;
   const userInfoType = getUserInfo().object.type;
-  console.log(userInfo)
   return (<><div>
     <StudentProfileForm studentInfo={userInfo} type={userInfoType}/></div></>)
 }
 
-export default parentChildProfilePage
+export default ParentChildProfilePage

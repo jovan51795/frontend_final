@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Bulletin from 'src/components/info-section/Bulletin'
 import {
   CCard,
   CCardBody,
@@ -106,6 +106,8 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
+
+      <Bulletin />
     </>
   )
 }

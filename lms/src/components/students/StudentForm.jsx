@@ -406,7 +406,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                         label={crs.courseTitle}
                         onChange={(e) => handleChangeDep(e, crs, 'course')}
                       />
-                      <CCard className="notrounded my-2">
+                      {/* <CCard className="notrounded my-2">
                         <CCardHeader>
                           <span>Subjects {!subjects.toString()}</span>
                         </CCardHeader>
@@ -426,7 +426,7 @@ const StudentForm = ({ onSubmit, initialValue }) => {
                             </CRow>
                           ))}
                         </CCardBody>
-                      </CCard>
+                      </CCard> */}
                     </CCol>
                   </CRow>
                 ))}
