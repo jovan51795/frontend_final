@@ -149,7 +149,7 @@ const SubjectsList = ({ subjects, onDelete, department }) => {
                           </CButton>
                         </CTooltip>
                         <div className="vr"></div>
-                        <CTooltip content="delete" placement="top">
+                        <CTooltip content="update" placement="top">
                           <Link
                             className="btn ms-btn-view align-middle"
                             to={`/subject/edit/${sub.subject_id}`}
