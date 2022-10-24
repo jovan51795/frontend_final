@@ -1,13 +1,6 @@
 import React from 'react'
 import Bulletin from 'src/components/info-section/Bulletin'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-
-} from '@coreui/react'
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from '@coreui/react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
@@ -36,23 +29,19 @@ import {
 import { getDashboardReports } from 'src/services/dashboardServices'
 import { useState, useEffect } from 'react'
 
-
-
 const Dashboard = () => {
   const [reports, setReports] = useState([])
-      useEffect(() => {
-        getreports()
-        
-      
-        }, [])
- const getreports =()=>{
-  getDashboardReports().then((res)=>{
-    if(res&&res.data){
-      setReports(res.data.object)
-    }
-  })
- }  
- console.log(reports)
+  useEffect(() => {
+    getreports()
+  }, [])
+  const getreports = () => {
+    getDashboardReports().then((res) => {
+      if (res && res.data) {
+        setReports(res.data.object)
+      }
+    })
+  }
+  console.log(reports)
 
   return (
     <>
@@ -77,8 +66,6 @@ const Dashboard = () => {
                       </div>
                     </CCol>
                   </CRow>
-
-                  
                 </CCol>
 
                 <CCol xs={12} md={6} xl={6}>
@@ -96,8 +83,6 @@ const Dashboard = () => {
                       </div>
                     </CCol>
                   </CRow>
-                 
-
                 </CCol>
               </CRow>
 
