@@ -1,6 +1,6 @@
 import axios from 'axios'
 const http = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'http://lms-env-1.eba-dbsqxbvg.ap-southeast-2.elasticbeanstalk.com/api',
 })
 
 http.interceptors.response.use(null, (error) => {
